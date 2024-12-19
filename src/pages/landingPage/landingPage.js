@@ -40,7 +40,6 @@ export function initLandingPage() {
 			artistsSelect.addEventListener("change", function (e) {
 				const artist = e.target.value;
 				setArtist(artist);
-
 				location.hash = "#artistHomePage";
 			});
 		})
