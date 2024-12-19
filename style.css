@@ -1,0 +1,6 @@
+@import "./src/pages/landingPage/landingPage.css";
+@import "./src/pages/visitorHomePage/visitorHomePage.css";
+
+.page {
+	display: none;
+}
