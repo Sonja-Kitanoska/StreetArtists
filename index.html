@@ -24,7 +24,8 @@
 		<script type="module" src="main.js" defer></script>
 	</head>
 
-	<body>
+	<body class="vh-100 sand-bg">
+		<!-- HEADER -->
 		<header
 			class="header sand-bg d-flex align-items-center justify-content-center px-2"
 		>
@@ -46,7 +47,7 @@
 						<a href="index.html#auction">Auction</a>
 					</div>
 				</div>
-				<!-- AUCTION -->
+				<!-- AUCTION ICON-->
 				<img
 					id="auctionIcon"
 					src="./src/assets/ant-design_home-filled@2x.png"
@@ -54,18 +55,35 @@
 					alt="Auction"
 				/>
 			</div>
-
-			<!-- <div
-				id="auction"
-				class="icon-container d-flex align-items-center ms-auto d-none"
-			></div> -->
 		</header>
 
+		<!-- LANDING PAGE -->
 		<section class="page landing-page" id="landingPage">
-			<h3>Landing Page</h3>
-			<select id="artists"></select>
+			<div class="d-flex flex-column align-items-center sand-bg">
+				<div class="img-container my-4">
+					<img src="./src/assets/Logo.png" alt="Logo" class="w-100" />
+				</div>
+				<div class="box">
+					<div class="artist-div dark-sand-bg brown-text h-100 w-100 p-4">
+						<p class="reenie-beanie font-size-45 mb-0">Join as Artist</p>
+						<div class="relative">
+							<select
+								id="artists"
+								class="roboto-light dark-sand-bg brown-text d-flex justify-between ms-auto"
+							></select>
+							<i class="fa-solid fa-caret-down select-icon"></i>
+						</div>
+					</div>
+					<div class="visitor-div brown-bg sand-text h-100 w-100 p-4 d-flex">
+						<p class="reenie-beanie font-size-45 align-self-end mb-0">
+							Join as Visitor
+						</p>
+					</div>
+				</div>
+			</div>
 		</section>
 
+		<!-- VISITOR HOME PAGE -->
 		<section class="page visitor-home-page" id="visitorHomePage">
 			<h3>visitorHomePage</h3>
 		</section>

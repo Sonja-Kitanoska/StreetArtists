@@ -13,12 +13,7 @@ function handleRouting() {
 	const allPages = document.querySelectorAll(".page");
 	allPages.forEach((page) => (page.style.display = "none"));
 
-	let hash = location.hash; // #landingPage
-
-	if (!hash) {
-		location.hash = "#landingPage";
-		hash = "#landingPage";
-	}
+	let hash = location.hash || "#landingPage";
 
 	document.querySelector(hash).style.display = "block";
 

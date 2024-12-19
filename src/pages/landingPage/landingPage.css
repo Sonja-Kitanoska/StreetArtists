@@ -1,0 +1,57 @@
+.landing-page select {
+	width: 97px;
+	height: 27px;
+	border: 1px solid #a16a5e;
+	border-radius: 2px;
+	padding-left: 10px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	cursor: pointer;
+}
+
+.landing-page select:focus-visible {
+	outline: none;
+}
+
+.default-option {
+	font-size: 13px;
+}
+
+.select-icon {
+	position: absolute;
+	right: 13px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: #a16a5e;
+	font-size: 20px;
+}
+
+.img-container {
+	height: 145px;
+	width: 145px;
+}
+
+.box {
+	width: 260px;
+	height: 392.5px;
+	position: relative;
+	display: flex;
+	cursor: pointer;
+}
+
+.artist-div {
+	clip-path: polygon(0 0, 100% 0, 100% 75%, 0 25%);
+	position: absolute;
+}
+
+.visitor-div {
+	clip-path: polygon(0 25%, 100% 75%, 100% 100%, 0 100%);
+	position: absolute;
+}
+
+.artist-div:hover,
+.visitor-div:hover {
+	transform: scale(1.05);
+}

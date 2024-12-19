@@ -11,6 +11,8 @@
 	height: 69px;
 	font-size: 30px;
 	box-shadow: 0px 2px 2px 0px #00000040;
+	position: relative;
+	z-index: 1;
 }
 
 .logo-container {
@@ -24,6 +26,7 @@
 	width: 33px;
 }
 
+/* HELPER CLASSES */
 /* FONTS */
 
 /* .roboto-light {
@@ -59,4 +62,9 @@
 
 .brown-bg {
 	background-color: #a16a5e;
+}
+
+/* FONT SIZES */
+.font-size-45 {
+	font-size: 45px;
 }
