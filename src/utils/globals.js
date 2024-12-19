@@ -41,6 +41,10 @@ export function updateHeader(type = "landingPage") {
 		auctionIcon.classList.remove("d-none");
 		auctionIcon.classList.add("d-block");
 
+		auctionIcon.addEventListener("click", () => {
+			location.hash = "auction";
+		});
+
 		menu.classList.remove("d-block");
 		menu.classList.add("d-none");
 	} else if (type === "artist") {

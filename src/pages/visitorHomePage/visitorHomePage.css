@@ -1,5 +1,40 @@
-.visitor-home-page {
-	.page {
-		background-color: red;
+.find-one-btn {
+	border-radius: 2px;
+	font-size: 12px;
+	padding: 3px 10px;
+	width: 113px;
+	box-shadow: 0px 1px 1px 0px #00000040;
+}
+
+.banner-container {
+	background-image: url("../../assets/Bricks.png");
+	background-repeat: no repeat;
+	background-size: cover;
+	background-position: center;
+	height: 142px;
+}
+
+.infinite-slider {
+	max-width: 100%;
+	overflow: hidden;
+	background-color: #edd5bb;
+	cursor: pointer;
+}
+
+.slider-inner {
+	width: max-content;
+	display: flex;
+	flex-wrap: nowrap;
+	animation: move 20s linear infinite;
+	gap: 25px;
+}
+
+.slider-inner.reverse {
+	animation-direction: reverse;
+}
+
+@keyframes move {
+	to {
+		transform: translate(-50%);
 	}
 }

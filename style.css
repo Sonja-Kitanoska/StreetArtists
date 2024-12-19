@@ -29,11 +29,17 @@
 /* HELPER CLASSES */
 /* FONTS */
 
-/* .roboto-light {
+.roboto {
 	font-family: "Roboto", serif;
-	font-weight: 300;
-	font-style: normal;
-} */
+}
+
+.roboto-500 {
+	font-weight: 500;
+}
+
+.roboto-700 {
+	font-weight: 700;
+}
 
 .reenie-beanie {
 	font-family: "Reenie Beanie", serif;
