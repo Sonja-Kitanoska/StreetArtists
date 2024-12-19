@@ -1,11 +1,12 @@
-import { getArtist } from "../../utils/globals.js"
+import { getArtist, updateHeader } from "../../utils/globals.js";
 
 export function initArtistHomePage() {
-    console.log('ArtistHomePage')
+	console.log("ArtistHomePage");
+	updateHeader("artist");
 
-    const currentArtist = getArtist()
+	const currentArtist = getArtist();
 
-    console.log(currentArtist) //
+	console.log(currentArtist); //
 
-    document.querySelector("#artist").textContent = currentArtist
+	document.querySelector("#artist").textContent = currentArtist;
 }

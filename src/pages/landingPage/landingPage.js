@@ -1,11 +1,10 @@
 import { formatDate } from "../../utils/dates.js";
-import { setArtist } from "../../utils/globals.js";
+import { setArtist, updateHeader } from "../../utils/globals.js";
 
 const usersSelect = document.querySelector("#artists");
 
 export function initLandingPage() {
-	console.log("This is landing Page");
-
+	updateHeader();
 	const formattedDate = formatDate(new Date());
 	console.log(formattedDate);
 

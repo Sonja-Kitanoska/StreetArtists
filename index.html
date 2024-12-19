@@ -25,7 +25,41 @@
 	</head>
 
 	<body>
-		<header>This is header for all pages</header>
+		<header
+			class="header sand-bg d-flex align-items-center justify-content-center px-2"
+		>
+			<!-- LOGO -->
+			<div id="logo" class="logo-container d-none">
+				<img src="./src/assets/Logo.png" alt="Logo" class="w-100" />
+			</div>
+			<!-- STREET ARTISTS -->
+			<h2 id="streetArtists" class="reenie-beanie brown-text mb-0">
+				Street ARTists
+			</h2>
+			<div class="icon-container d-flex align-items-center ms-auto d-none">
+				<!-- MENU -->
+				<div id="menu" class="menu-container d-none">
+					<i class="fa-solid fa-bars brown-text" type="button"></i>
+					<div class="menu-links d-none" id="menuLinks">
+						<a href="index.html#artistHomePage">Home</a>
+						<a href="index.html#artistItemsPage">Items</a>
+						<a href="index.html#auction">Auction</a>
+					</div>
+				</div>
+				<!-- AUCTION -->
+				<img
+					id="auctionIcon"
+					src="./src/assets/ant-design_home-filled@2x.png"
+					class="w-100"
+					alt="Auction"
+				/>
+			</div>
+
+			<!-- <div
+				id="auction"
+				class="icon-container d-flex align-items-center ms-auto d-none"
+			></div> -->
+		</header>
 
 		<section class="page landing-page" id="landingPage">
 			<h3>Landing Page</h3>

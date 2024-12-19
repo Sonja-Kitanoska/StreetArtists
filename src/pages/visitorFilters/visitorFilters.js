@@ -1,1 +1,5 @@
-export function initVisitorFilters() {}
+import { updateHeader } from "../../utils/globals.js";
+
+export function initVisitorFilters() {
+	updateHeader();
+}
