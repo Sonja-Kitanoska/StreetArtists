@@ -38,3 +38,28 @@
 		transform: translate(-50%);
 	}
 }
+
+.carousel-item {
+	height: 244px;
+	font-size: 9px;
+}
+
+.dark-orange-bg {
+	background-color: #e09686;
+}
+
+.carousel-caption img {
+	margin-top: -25px;
+	border: 2px solid #a16a5e;
+}
+
+.seperator {
+	height: 100%;
+	width: 1px;
+	background: #a16a5e;
+	padding: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	left: 54%;
+}
