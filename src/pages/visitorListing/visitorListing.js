@@ -16,8 +16,6 @@ export function initVisitorListing() {
 			const priceSpanClass =
 				index % 2 === 0 ? "even-index-colors" : "odd-index-colors";
 
-			console.log("Rendering card for item: ", item);
-
 			artistCard.innerHTML = `
 				<div class="img-container">
 					<img
