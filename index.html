@@ -252,66 +252,93 @@
 				id="offcanvasExample"
 				aria-labelledby="offcanvasExampleLabel"
 			>
-				<div class="offcanvas-header sand-text">
-					<h5 class="offcanvas-title" id="offcanvasExampleLabel">Filter by</h5>
-					<button
-						type="button"
-						class="btn-close"
+				<div
+					class="offcanvas-header sand-text justify-content-between align-items-center"
+				>
+					<h5
+						class="offcanvas-title roboto-500 font-size-30"
+						id="offcanvasExampleLabel"
+					>
+						Filter by
+					</h5>
+					<div
+						class="close-icon"
 						data-bs-dismiss="offcanvas"
+						type="button"
 						aria-label="Close"
-					></button>
+					></div>
 				</div>
-				<div class="offcanvas-body sand-text">
-					<form class="filter-form">
+				<div class="offcanvas-body sand-text relative">
+					<div class="filters-div roboto-300 sand-text d-flex flex-column">
 						<!-- By Item Title -->
-						<div class="form-group">
-							<label for="itemTitle">By Item Title</label>
+						<div class="filter-container">
+							<label for="itemTitle" class="w-100 mb-3">By Item Title</label>
 							<input
 								type="text"
 								id="itemTitle"
 								name="itemTitle"
-								placeholder="Enter item title"
+								placeholder="Label"
+								class="brown-bg sand-text mb-4"
 							/>
 						</div>
-
+						<div class="divider mb-3"></div>
 						<!-- By Artist -->
-						<div class="form-group">
-							<label for="artist">By Artist</label>
-							<select id="artist" name="artist">
+						<div class="filter-container">
+							<label for="artist" class="w-100 mb-3">By Artist</label>
+							<select id="artist" name="artist" class="brown-bg sand-text mb-4">
 								<option value="">Choose</option>
 							</select>
 						</div>
-
+						<div class="divider mb-3"></div>
 						<!-- By Price -->
-						<div class="form-group">
-							<p>By Price</p>
+						<div class="filter-container">
+							<p class="mb-3">By Price</p>
 							<label for="minPrice">Min</label>
 							<input
 								type="number"
 								id="minPrice"
 								name="minPrice"
-								placeholder="Min price"
+								placeholder="Label"
+								class="brown-bg sand-text mb-4"
 							/>
 							<label for="maxPrice">Max</label>
 							<input
 								type="number"
 								id="maxPrice"
 								name="maxPrice"
-								placeholder="Max price"
+								placeholder="Label"
+								class="brown-bg sand-text mb-4"
 							/>
 						</div>
-
+						<div class="divider mb-3"></div>
 						<!-- By Type -->
-						<div class="form-group">
-							<label for="type">By Type</label>
-							<select id="type" name="type">
-								<option value="">Select type</option>
-								<option value="type1">Type 1</option>
-								<option value="type2">Type 2</option>
-								<option value="type3">Type 3</option>
+						<div class="filter-container">
+							<label for="type" class="w-100 mb-3">By Type</label>
+							<select id="type" name="type" class="brown-bg sand-text">
+								<option value="">Choose</option>
 							</select>
 						</div>
-					</form>
+					</div>
+					<div class="check-container dark-orange-bg">
+						<div
+							class="w-100 h-100 d-flex align-items-center justify-content-center"
+						>
+							<svg
+								width="45"
+								height="47"
+								viewBox="0 0 45 47"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M3 24.2727L17.6774 42L42 3"
+									stroke="#FCEBD5"
+									stroke-width="5"
+									stroke-linecap="round"
+								/>
+							</svg>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

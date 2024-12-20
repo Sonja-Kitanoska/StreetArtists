@@ -27,10 +27,11 @@
 	color: #fcebd5;
 }
 
-.filters-image {
+.filters-image,
+.check-container {
 	border: none;
 	cursor: pointer;
-	width: 67px;
+	width: 65px;
 	height: 67px;
 	position: fixed;
 	bottom: 2%;
@@ -44,4 +45,55 @@
 }
 .offcanvas-backdrop.show {
 	opacity: 0;
+}
+
+.close-icon {
+	width: 39px;
+	height: 39px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.close-icon:before,
+.close-icon:after {
+	content: "";
+	position: absolute;
+	width: 39px;
+	height: 2px;
+	background-color: #fcebd5;
+	border-radius: 10px;
+}
+
+.close-icon:before {
+	transform: rotate(45deg);
+}
+
+.close-icon:after {
+	transform: rotate(-45deg);
+}
+
+.filters-div input::placeholder {
+	color: #fcebd5;
+}
+
+.filters-div input,
+.filters-div select {
+	border: 1px solid #fcebd5;
+}
+
+.filters-div input,
+.filters-div select {
+	width: 97px;
+	height: 27px;
+	border-radius: 2px;
+}
+
+.divider {
+	height: 2px;
+	background-color: #fcebd5;
+	width: 100%;
+	margin-top: 8px;
+	border-radius: 2px;
 }
