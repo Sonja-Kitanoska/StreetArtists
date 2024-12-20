@@ -2,7 +2,7 @@ import { updateHeader } from "../../utils/globals.js";
 import { itemTypes, items } from "../../../data/db.js";
 
 export function initVisitorListing() {
-	updateHeader();
+	updateHeader("visitor");
 
 	items.forEach((item, index) => {
 		if (item.isPublished) {
@@ -38,5 +38,10 @@ export function initVisitorListing() {
 			const visitorListingSection = document.querySelector("#visitorListing");
 			visitorListingSection.appendChild(artistCard);
 		}
+	});
+
+	const filtersImage = document.querySelector(".filters-image");
+	filtersImage.addEventListener("click", () => {
+		location.hash = "visitorFilters";
 	});
 }

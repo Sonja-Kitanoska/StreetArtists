@@ -7,6 +7,7 @@ import { initVisitorListing } from "./src/pages/visitorListing/visitorListing.js
 import { initArtistMenu } from "./src/pages/artistMenu/artistMenu.js";
 import { initArtistCaptureImagePopup } from "./src/pages/artistCaptureImagePopup/artistCaptureImagePopup.js";
 import { initAuction } from "./src/pages/auction/auction.js";
+import { initVisitorFilters } from "./src/pages/visitorFilters/visitorFilters.js";
 
 function handleRouting() {
 	const allPages = document.querySelectorAll(".page");
@@ -27,6 +28,10 @@ function handleRouting() {
 
 		case "#visitorListing":
 			initVisitorListing();
+			break;
+
+		case "#visitorFilters":
+			initVisitorFilters();
 			break;
 
 		case "#artistHomePage":

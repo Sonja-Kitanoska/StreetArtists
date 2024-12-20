@@ -41,8 +41,9 @@
 
 .offcanvas {
 	box-sizing: unset;
-	margin-top: 69px;
+	margin-top: 70px;
 }
+
 .offcanvas-backdrop.show {
 	opacity: 0;
 }
