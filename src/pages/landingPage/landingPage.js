@@ -46,4 +46,9 @@ export function initLandingPage() {
 		.catch((error) => {
 			console.log(error);
 		});
+
+	const visitorDiv = document.querySelector(".visitor-div");
+	visitorDiv.addEventListener("click", () => {
+		location.hash = "visitorHomePage";
+	});
 }
