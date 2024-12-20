@@ -37,3 +37,11 @@
 	right: 4%;
 	z-index: 1;
 }
+
+.offcanvas {
+	box-sizing: unset;
+	margin-top: 69px;
+}
+.offcanvas-backdrop.show {
+	opacity: 0;
+}
