@@ -5,17 +5,20 @@ export function initVisitorListing() {
 	updateHeader();
 
 	items.forEach((item, index) => {
-		const artistCard = document.createElement("div");
-		artistCard.classList.add("artist-card", "mt-4");
-		artistCard.setAttribute("id", `${item.id}`);
+		if (item.isPublished) {
+			const artistCard = document.createElement("div");
+			artistCard.classList.add("artist-card", "mt-4");
+			artistCard.setAttribute("id", `${item.id}`);
 
-		const cardBodyClass =
-			index % 2 === 0 ? "odd-index-colors" : "even-index-colors";
+			const cardBodyClass =
+				index % 2 === 0 ? "odd-index-colors" : "even-index-colors";
 
-		const priceSpanClass =
-			index % 2 === 0 ? "even-index-colors" : "odd-index-colors";
+			const priceSpanClass =
+				index % 2 === 0 ? "even-index-colors" : "odd-index-colors";
 
-		artistCard.innerHTML = `
+			console.log("Rendering card for item: ", item);
+
+			artistCard.innerHTML = `
 				<div class="img-container">
 					<img
 						src="${item.image}"
@@ -34,8 +37,8 @@ export function initVisitorListing() {
 						${item.description}
 					</p>
 				</div>`;
-
-		const visitorListingSection = document.querySelector("#visitorListing");
-		visitorListingSection.appendChild(artistCard);
+			const visitorListingSection = document.querySelector("#visitorListing");
+			visitorListingSection.appendChild(artistCard);
+		}
 	});
 }
