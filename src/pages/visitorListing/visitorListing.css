@@ -1,0 +1,28 @@
+.visitor-listing .img-container {
+	height: 165px;
+	width: 100%;
+}
+
+.visitor-listing .img-container img {
+	object-fit: cover;
+	object-position: center;
+}
+
+.visitor-listing .artist-card {
+	box-shadow: 0px 2px 2px 0px #00000040;
+}
+
+.visitor-listing .price-span {
+	box-shadow: 0px 1px 1px 0px #00000040;
+	border-radius: 5px;
+}
+
+.odd-index-colors {
+	color: #a16a5e;
+	background-color: #fcebd5;
+}
+
+.even-index-colors {
+	background-color: #a16a5e;
+	color: #fcebd5;
+}
