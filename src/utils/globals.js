@@ -1,4 +1,10 @@
+// import { items } from "../../data/db.js";
+
 let currentArtist;
+
+// let itemsList = localStorage.getItem
+// 	? JSON.parse(localStorage.getItem("items"))
+// 	: items;
 
 export function getArtist() {
 	return currentArtist;
@@ -7,6 +13,14 @@ export function getArtist() {
 export function setArtist(selectedArtist) {
 	currentArtist = selectedArtist;
 }
+
+// export function getItems() {
+// 	return itemsList;
+// }
+
+// export function setItems(items) {
+// 	localStorage.setItem("items", JSON.stringify(items));
+// }
 
 export function updateHeader(type = "landingPage") {
 	const logo = document.querySelector("#logo");
