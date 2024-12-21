@@ -114,15 +114,13 @@ export function initVisitorListing() {
 
 		// Filter logic
 		const filteredItems = itemsList.filter((item) => {
-			const matchedTitle = item.title
-				.toLowerCase()
-				.includes(titleFilter.toLowerCase());
+			const matchedTitle = item.title.toLowerCase().includes(titleFilter);
 			const matchedArtist = artistFilter
-				? item.artist.toLowerCase() === artistFilter.toLowerCase()
+				? item.artist.toLowerCase() === artistFilter
 				: true;
 			const matchedPrice = item.price >= minPrice && item.price <= maxPrice;
 			const matchedType = typeFilter.toLowerCase()
-				? item.type.toLowerCase() === typeFilter.toLowerCase()
+				? item.type.toLowerCase() === typeFilter
 				: true;
 
 			console.log(`Checking item: ${item.title}`);
