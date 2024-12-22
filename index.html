@@ -409,7 +409,6 @@
 				</div>
 			</div>
 		</section>
-
 		<section class="page artist-menu" id="artistMenu">
 			<h3>artist menu</h3>
 		</section>
@@ -417,8 +416,85 @@
 		<section class="page artist-items-page" id="artistItemsPage">
 			<h3>artist items page</h3>
 		</section>
-		<section class="page artist-add-new-item-page" id="artistAddNewItemPage">
-			<h3>artist add new item page</h3>
+		<!-- ARTIRST ADD NEW ITEM PAGE -->
+		<section
+			class="page artist-add-new-item-page brown-bg container py-4 sand-text font-size-18 h-100"
+			id="artistAddNewItemPage"
+		>
+			<div
+				class="d-flex justify-content-between align-items-center mb-2font-size-18"
+			>
+				<h2 class="roboto-500 font-size-30">Add New Item</h2>
+				<div class="d-flex gap-2 align-items-center">
+					<label for="isPublished" class="roboto-300">Is published</label>
+					<input type="checkbox" checked />
+				</div>
+			</div>
+			<div class="w-100 mb-4">
+				<label for="title" class="roboto-300">Title</label>
+				<input
+					type="text"
+					id="title"
+					name="title"
+					required
+					class="w-100 brown-bg roboto-300"
+				/>
+			</div>
+			<div class="mb-4">
+				<label for="description" class="roboto-300">Description</label>
+				<textarea
+					id="description"
+					name="description"
+					required
+					class="w-100 brown-bg roboto-300"
+				></textarea>
+			</div>
+			<div class="row mb-4">
+				<div class="col-6">
+					<div class="d-flex flex-column">
+						<label for="title" class="roboto-300">Type</label>
+						<input
+							type="text"
+							id="title"
+							name="title"
+							required
+							class="brown-bg roboto-300"
+						/>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="d-flex flex-column">
+						<label for="title" class="roboto-300">Price</label>
+						<input
+							type="text"
+							id="title"
+							name="title"
+							required
+							class="brown-bg roboto-300"
+						/>
+					</div>
+				</div>
+			</div>
+			<div class="mb-4">
+				<label for="title" class="roboto-300">Image URL</label>
+				<input
+					type="text"
+					id="title"
+					name="title"
+					required
+					class="w-100 brown-bg roboto-300"
+				/>
+			</div>
+			<p class="text-center roboto-300">or</p>
+			<div>
+				<div
+					class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
+				>
+					<i class="fa-solid fa-camera"></i>
+					<p class="roboto-300">Take a snapshot</p>
+				</div>
+			</div>
+			<div></div>
 		</section>
 
 		<section

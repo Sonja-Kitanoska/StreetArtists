@@ -1,2 +1,29 @@
-.visitor-home-page {
+.artist-add-new-item-page input[type="checkbox"] {
+	-webkit-appearance: initial;
+	appearance: initial;
+	width: 18px;
+	height: 17px;
+	border: none;
+	background: #a16a5e;
+	border: 1px solid #fcebd5;
+	border-radius: 2px;
+	position: relative;
+}
+.artist-add-new-item-page input[type="checkbox"]:checked {
+	background: url("../../assets/checkbox.png") no-repeat center;
+}
+
+.take-snapshot-container {
+	border: 1px dashed;
+	height: 309px;
+}
+
+.take-snapshot-container i {
+	font-size: 60px;
+}
+
+.artist-add-new-item-page input,
+.artist-add-new-item-page textarea {
+	border-radius: 2px;
+	border: 1px solid #fcebd5;
 }
