@@ -6,7 +6,5 @@ export function initArtistHomePage() {
 
 	const currentArtist = getArtist();
 
-	console.log(currentArtist); //
-
-	document.querySelector("#artist").textContent = currentArtist;
+	console.log(currentArtist);
 }

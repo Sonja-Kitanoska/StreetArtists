@@ -1,0 +1,9 @@
+.chart-btn {
+	width: 100px;
+	height: 27px;
+	border: none;
+	border-radius: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

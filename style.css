@@ -2,6 +2,7 @@
 @import "./src/pages/visitorHomePage/visitorHomePage.css";
 @import "./src/pages/visitorListing/visitorListing.css";
 @import "./src/pages/visitorFilters/visitorFilters.css";
+@import "./src/pages/artistHomePage/artistHomePage.css";
 
 .page {
 	display: none;
@@ -107,4 +108,8 @@
 
 .font-size-30 {
 	font-size: 30px;
+}
+
+.font-size-18 {
+	font-size: 18px;
 }
