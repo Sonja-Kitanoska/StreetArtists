@@ -21,8 +21,6 @@ export function initVisitorListing() {
 	let itemsList = [...items];
 
 	const filteredItems = filterItems();
-	itemsList = filteredItems;
-	renderCards(itemsList);
 	if (filteredItems) {
 		itemsList = filteredItems;
 		renderCards(itemsList);
@@ -30,23 +28,35 @@ export function initVisitorListing() {
 	}
 
 	resetFilters();
+
 	document.body.style.overflow = "auto";
 
 	function renderCards(items) {
 		cardsContainer.innerHTML = "";
-		items.forEach((item, index) => {
-			if (item.isPublished) {
-				const artistCard = document.createElement("div");
-				artistCard.classList.add("artist-card", "mt-4");
-				artistCard.setAttribute("id", `${item.id}`);
 
-				const cardBodyClass =
-					index % 2 === 0 ? "odd-index-colors" : "even-index-colors";
+		const publishedItems = items.filter((item) => item.isPublished);
+		if (publishedItems.length === 0) {
+			cardsContainer.innerHTML = `
+				<div class="no-results">
+					<p>No items matched your filters.</p>
+					<p>Please adjust the filters and try again.</p>
+				</div>`;
+			cardsContainer.classList.add("h-100");
+			return;
+		}
 
-				const priceSpanClass =
-					index % 2 === 0 ? "even-index-colors" : "odd-index-colors";
+		publishedItems.forEach((item, index) => {
+			const artistCard = document.createElement("div");
+			artistCard.classList.add("artist-card", "mt-4");
+			artistCard.setAttribute("id", `${item.id}`);
 
-				artistCard.innerHTML = `
+			const cardBodyClass =
+				index % 2 === 0 ? "odd-index-colors" : "even-index-colors";
+
+			const priceSpanClass =
+				index % 2 === 0 ? "even-index-colors" : "odd-index-colors";
+
+			artistCard.innerHTML = `
 				<div class="img-container">
 					<img
 						src="${item.image}"
@@ -65,12 +75,11 @@ export function initVisitorListing() {
 						${item.description}
 					</p>
 				</div>`;
-				cardsContainer.appendChild(artistCard);
-			}
+			cardsContainer.appendChild(artistCard);
 		});
 	}
 
-	renderCards(itemsList);
+	// renderCards(itemsList);
 
 	const filtersImage = document.querySelector(".filters-image");
 	filtersImage.addEventListener("click", () => {
@@ -141,6 +150,7 @@ export function initVisitorListing() {
 			return matchedTitle && matchedArtist && matchedPrice && matchedType;
 		});
 		console.log("Filtered Items:", filteredItems);
+
 		return filteredItems;
 	}
 
