@@ -61,6 +61,12 @@ export function updateHeader(type = "landingPage") {
 
 		menu.classList.remove("d-block");
 		menu.classList.add("d-none");
+
+		headerText.classList.remove("d-none");
+		headerText.classList.add("d-block");
+
+		headerTextArtist.classList.remove("d-block");
+		headerTextArtist.classList.add("d-none");
 	} else if (type === "artist") {
 		console.log(location.hash, headerTextArtist);
 		menu.classList.remove("d-none");
@@ -79,3 +85,9 @@ export function updateHeader(type = "landingPage") {
 		headerTextArtist.textContent = currentArtist;
 	}
 }
+
+const menuLinks = document.querySelector("#menuLinks");
+
+menu.addEventListener("click", () => {
+	menuLinks.classList.toggle("d-none");
+});

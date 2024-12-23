@@ -24,6 +24,8 @@ export function initVisitorListing() {
 
 	document.body.style.overflow = "auto";
 
+	artistSelect.innerHTML = "";
+
 	function renderCards(items) {
 		cardsContainer.innerHTML = "";
 		items.forEach((item, index) => {
