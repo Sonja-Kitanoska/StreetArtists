@@ -1,15 +1,22 @@
 import { updateHeader } from "../../utils/globals.js";
 import { itemTypes, items } from "../../../data/db.js";
 
+const visitorListingSection = document.querySelector("#visitorListing");
+const checkContainer = document.querySelector(".check-container");
+const artistSelect = document.querySelector("#artist");
+const typeSelect = document.querySelector("#type");
+const cardsContainer = visitorListingSection.querySelector(".cards-container");
+
+function resetFilters() {
+	artistSelect.innerHTML = '<option value="">Choose</option>';
+	typeSelect.innerHTML = '<option value="">Choose</option>';
+	document.querySelector("#itemTitle").value = "";
+	document.querySelector("#minPrice").value = "";
+	document.querySelector("#maxPrice").value = "";
+}
+
 export function initVisitorListing() {
 	updateHeader("visitor");
-
-	const visitorListingSection = document.querySelector("#visitorListing");
-	const checkContainer = document.querySelector(".check-container");
-	const artistSelect = document.querySelector("#artist");
-	const typeSelect = document.querySelector("#type");
-	const cardsContainer =
-		visitorListingSection.querySelector(".cards-container");
 
 	let itemsList = [...items];
 
@@ -22,9 +29,8 @@ export function initVisitorListing() {
 		location.hash = "#visitorListing";
 	}
 
+	resetFilters();
 	document.body.style.overflow = "auto";
-
-	artistSelect.innerHTML = "";
 
 	function renderCards(items) {
 		cardsContainer.innerHTML = "";
@@ -71,9 +77,11 @@ export function initVisitorListing() {
 		location.hash = "#visitorFilters";
 	});
 
+	// artistSelect.innerHTML = '<option value="">Choose</option>';
 	fetch("https://jsonplaceholder.typicode.com/users")
 		.then((response) => response.json())
 		.then((users) => {
+			console.log(users);
 			users.forEach((user) => {
 				const option = document.createElement("option");
 				option.value = user.name.toLowerCase();
@@ -82,7 +90,7 @@ export function initVisitorListing() {
 			});
 		});
 
-	typeSelect.innerHTML = '<option value="">Choose</option>';
+	// typeSelect.innerHTML = '<option value="">Choose</option>';
 	itemTypes.forEach((type) => {
 		const option = document.createElement("option");
 		option.value = type.toLowerCase();
