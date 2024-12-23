@@ -7,7 +7,7 @@ const artistSelect = document.querySelector("#artist");
 const typeSelect = document.querySelector("#type");
 const cardsContainer = visitorListingSection.querySelector(".cards-container");
 
-function resetFilters() {
+export function resetFilters() {
 	artistSelect.innerHTML = '<option value="">Choose</option>';
 	typeSelect.innerHTML = '<option value="">Choose</option>';
 	document.querySelector("#itemTitle").value = "";
