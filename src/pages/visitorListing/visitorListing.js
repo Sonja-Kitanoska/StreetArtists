@@ -1,10 +1,10 @@
 import { updateHeader } from "../../utils/globals.js";
 import { itemTypes, items } from "../../../data/db.js";
 
-const visitorListingSection = document.querySelector("#visitorListing");
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");
 const typeSelect = document.querySelector("#type");
+const visitorListingSection = document.querySelector("#visitorListing");
 const cardsContainer = visitorListingSection.querySelector(".cards-container");
 
 export function resetFilters() {

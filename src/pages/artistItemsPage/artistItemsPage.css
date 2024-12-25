@@ -1,3 +1,28 @@
-.visitor-home-page {
-    
+.artist-items-page .img-container {
+	height: 165px;
+	width: 100%;
+}
+
+.artist-items-page .img-container img {
+	object-fit: cover;
+	object-position: center;
+}
+
+.artist-items-page .artist-card {
+	box-shadow: 0px 2px 2px 0px #00000040;
+}
+
+.artist-items-page .price-span {
+	box-shadow: 0px 1px 1px 0px #00000040;
+	border-radius: 5px;
+}
+
+.odd-index-colors {
+	color: #a16a5e;
+	background-color: #fcebd5;
+}
+
+.even-index-colors {
+	background-color: #a16a5e;
+	color: #fcebd5;
 }
