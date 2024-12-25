@@ -14,7 +14,6 @@ export function initArtistItemsPage() {
 
 	renderCards(artistItems, "artist");
 
-
 	addNewItemDiv.addEventListener("click", () => {
 		location.hash = "#artistAddNewItemPage";
 	});

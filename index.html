@@ -446,31 +446,31 @@
 				</div>
 			</div>
 			<div class="w-100 mb-4">
-				<label for="title" class="roboto-300">Title</label>
+				<label for="newItemTitle" class="roboto-300">Title</label>
 				<input
 					type="text"
-					id="title"
-					name="title"
+					id="newItemTitle"
+					name="newItemTitle"
 					required
 					class="w-100 brown-bg roboto-300"
 				/>
 			</div>
 			<div class="mb-4">
-				<label for="description" class="roboto-300">Description</label>
+				<label for="newItemDescription" class="roboto-300">Description</label>
 				<textarea
-					id="description"
-					name="description"
+					id="newItemDescription"
+					name="newItemDescription"
 					class="w-100 brown-bg roboto-300"
 				></textarea>
 			</div>
 			<div class="row mb-4">
 				<div class="col-6">
 					<div class="d-flex flex-column">
-						<label for="type" class="roboto-300">Type</label>
+						<label for="newItemType" class="roboto-300">Type</label>
 						<input
 							type="text"
-							id="type"
-							name="type"
+							id="newItemType"
+							name="newItemType"
 							required
 							class="brown-bg roboto-300"
 						/>
@@ -478,11 +478,11 @@
 				</div>
 				<div class="col-6">
 					<div class="d-flex flex-column">
-						<label for="price" class="roboto-300">Price</label>
+						<label for="newItemPrice" class="roboto-300">Price</label>
 						<input
 							type="nummber"
-							id="price"
-							name="price"
+							id="newItemPrice"
+							name="newItemPrice"
 							required
 							class="brown-bg roboto-300"
 						/>
@@ -490,11 +490,11 @@
 				</div>
 			</div>
 			<div class="mb-4">
-				<label for="imageUrl" class="roboto-300">Image URL</label>
+				<label for="newItemImageUrl" class="roboto-300">Image URL</label>
 				<input
 					type="text"
-					id="imageUrl"
-					name="imageUrl"
+					id="newItemImageUrl"
+					name="newItemImageUrl"
 					required
 					class="w-100 brown-bg roboto-300"
 				/>
@@ -512,15 +512,18 @@
 			>
 				<button
 					class="dark-orange-bg sand-text roboto-700 border-0 font-size-18"
+					id="addNewItemBtn"
 				>
 					Add New Item
 				</button>
-				<button class="gray-bg dark-gray-text roboto-700 border-0 font-size-18">
+				<button
+					class="gray-bg dark-gray-text roboto-700 border-0 font-size-18"
+					id="cancelBtn"
+				>
 					Cancel
 				</button>
 			</div>
 		</section>
-
 		<section
 			class="page artist-capture-image-popup"
 			id="artistCaptureImagePopup"

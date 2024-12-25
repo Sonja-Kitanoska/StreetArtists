@@ -2,9 +2,26 @@ import { items } from "../../data/db.js";
 
 let currentArtist;
 
-let itemsList = localStorage.getItem("items")
-	? JSON.parse(localStorage.getItem("items"))
-	: items;
+let itemsList;
+
+const storedItems = localStorage.getItem("items");
+itemsList = storedItems ? JSON.parse(storedItems) : items;
+
+// first approach
+// let itemsList;
+
+// try {
+// 	const storedItems = localStorage.getItem("items");
+// 	itemsList = storedItems ? JSON.parse(storedItems) : items;
+// } catch (error) {
+// 	console.error(
+// 		"Invalid JSON in localStorage for 'items'. Resetting to default items.",
+// 		error
+// 	);
+// 	itemsList = items; // Fallback to default items
+// }
+
+setItems(itemsList);
 
 //artist
 export function getArtist() {
