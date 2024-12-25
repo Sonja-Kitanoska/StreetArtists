@@ -7,11 +7,13 @@ let currentArtist;
 // 	: items;
 
 export function getArtist() {
+	const currentArtist = localStorage.getItem("currentArtist");
 	return currentArtist;
 }
 
 export function setArtist(selectedArtist) {
 	currentArtist = selectedArtist;
+	localStorage.setItem("currentArtist", currentArtist);
 }
 
 // export function getItems() {
