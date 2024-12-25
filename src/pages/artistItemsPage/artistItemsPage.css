@@ -54,3 +54,8 @@
 	box-shadow: 0px 1px 1px 0px #00000040;
 	border-radius: 2px;
 }
+
+.add-new-item-div {
+	border: 2px dashed #a16a5e;
+	cursor: pointer;
+}
