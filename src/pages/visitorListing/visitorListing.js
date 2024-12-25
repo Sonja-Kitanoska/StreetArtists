@@ -1,5 +1,6 @@
-import { updateHeader } from "../../utils/globals.js";
-import { itemTypes, items } from "../../../data/db.js";
+import { getItems, setItems, updateHeader } from "../../utils/globals.js";
+// import { itemTypes, items } from "../../../data/db.js";
+import { itemTypes } from "../../../data/db.js";
 
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");
@@ -18,7 +19,7 @@ export function resetFilters() {
 export function initVisitorListing() {
 	updateHeader("visitor");
 
-	let itemsList = [...items];
+	let itemsList = getItems();
 
 	const filteredItems = filterItems();
 	if (filteredItems) {

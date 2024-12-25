@@ -1,11 +1,12 @@
-// import { items } from "../../data/db.js";
+import { items } from "../../data/db.js";
 
 let currentArtist;
 
-// let itemsList = localStorage.getItem
-// 	? JSON.parse(localStorage.getItem("items"))
-// 	: items;
+let itemsList = localStorage.getItem("items")
+	? JSON.parse(localStorage.getItem("items"))
+	: items;
 
+//artist
 export function getArtist() {
 	const currentArtist = localStorage.getItem("currentArtist");
 	return currentArtist;
@@ -16,13 +17,16 @@ export function setArtist(selectedArtist) {
 	localStorage.setItem("currentArtist", currentArtist);
 }
 
-// export function getItems() {
-// 	return itemsList;
-// }
+//items
+export function getItems() {
+	const itemsList = localStorage.getItem("items");
+	return JSON.parse(itemsList);
+}
 
-// export function setItems(items) {
-// 	localStorage.setItem("items", JSON.stringify(items));
-// }
+export function setItems(items) {
+	itemsList = items;
+	localStorage.setItem("items", JSON.stringify(itemsList));
+}
 
 export function updateHeader(type = "landingPage") {
 	const logo = document.querySelector("#logo");
