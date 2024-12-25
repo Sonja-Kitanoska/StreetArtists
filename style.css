@@ -105,6 +105,14 @@
 	background-color: #d44c2e;
 }
 
+.gray-bg {
+	background-color: #e5e5e5;
+}
+
+.dark-gray-text {
+	color: #5a5a5a;
+}
+
 /* FONT SIZES */
 .font-size-45 {
 	font-size: 45px;

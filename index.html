@@ -439,8 +439,10 @@
 			>
 				<h2 class="roboto-500 font-size-30">Add New Item</h2>
 				<div class="d-flex gap-2 align-items-center">
-					<label for="isPublished" class="roboto-300">Is published</label>
-					<input type="checkbox" required checked />
+					<label for="isPublishedCheckbox" class="roboto-300"
+						>Is published</label
+					>
+					<input type="checkbox" id="isPublishedCheckbox" required checked />
 				</div>
 			</div>
 			<div class="w-100 mb-4">
@@ -464,11 +466,11 @@
 			<div class="row mb-4">
 				<div class="col-6">
 					<div class="d-flex flex-column">
-						<label for="title" class="roboto-300">Type</label>
+						<label for="type" class="roboto-300">Type</label>
 						<input
 							type="text"
-							id="title"
-							name="title"
+							id="type"
+							name="type"
 							required
 							class="brown-bg roboto-300"
 						/>
@@ -476,11 +478,11 @@
 				</div>
 				<div class="col-6">
 					<div class="d-flex flex-column">
-						<label for="title" class="roboto-300">Price</label>
+						<label for="price" class="roboto-300">Price</label>
 						<input
-							type="text"
-							id="title"
-							name="title"
+							type="nummber"
+							id="price"
+							name="price"
 							required
 							class="brown-bg roboto-300"
 						/>
@@ -488,25 +490,35 @@
 				</div>
 			</div>
 			<div class="mb-4">
-				<label for="title" class="roboto-300">Image URL</label>
+				<label for="imageUrl" class="roboto-300">Image URL</label>
 				<input
 					type="text"
-					id="title"
-					name="title"
+					id="imageUrl"
+					name="imageUrl"
 					required
 					class="w-100 brown-bg roboto-300"
 				/>
 			</div>
 			<p class="text-center roboto-300">or</p>
-			<div>
-				<div
-					class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
-				>
-					<i class="fa-solid fa-camera"></i>
-					<p class="roboto-300">Take a snapshot</p>
-				</div>
+
+			<div
+				class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
+			>
+				<i class="fa-solid fa-camera"></i>
+				<p class="roboto-300">Take a snapshot</p>
 			</div>
-			<div></div>
+			<div
+				class="add-new-item-buttons py-3 d-flex justify-content-between align-items-center gap-2"
+			>
+				<button
+					class="dark-orange-bg sand-text roboto-700 border-0 font-size-18"
+				>
+					Add New Item
+				</button>
+				<button class="gray-bg dark-gray-text roboto-700 border-0 font-size-18">
+					Cancel
+				</button>
+			</div>
 		</section>
 
 		<section
