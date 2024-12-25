@@ -3,6 +3,7 @@
 @import "./src/pages/visitorListing/visitorListing.css";
 @import "./src/pages/visitorFilters/visitorFilters.css";
 @import "./src/pages/artistHomePage/artistHomePage.css";
+@import "./src/pages/artistItemsPage/artistItemsPage.css";
 @import "./src/pages/artistAddNewItemPage/artistAddNewItemPage.css";
 
 .page {
@@ -118,7 +119,7 @@
 }
 
 .font-size-12 {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .font-size-13 {

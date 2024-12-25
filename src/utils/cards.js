@@ -42,9 +42,30 @@ export function renderCards(items, mode = "visitor") {
 		// Add additional content if mode is "artist"
 		const additionalDiv =
 			mode === "artist"
-				? `<div class="extra-div w-100">
-                       <p>Additional content for artists</p>
-                   </div>`
+				? `<div
+				class="card-buttons brown-bg gap-2 py-2 px-3"
+			>
+				<button
+					class="auction-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+				>
+					Send to Auction
+				</button>
+				<button
+					class="toggle-publish-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+				>
+					Unpublish
+				</button>
+				<button
+					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+				>
+					Remove
+				</button>
+				<button
+					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1"
+				>
+					Edit
+				</button>
+			</div`
 				: "";
 
 		artistCard.innerHTML = `
