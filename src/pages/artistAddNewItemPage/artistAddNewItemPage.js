@@ -17,11 +17,20 @@ const titleInput = artistAddNewItemPage.querySelector("#newItemTitle");
 const descriptionTextarea = artistAddNewItemPage.querySelector(
 	"#newItemDescription"
 );
-const typeInput = artistAddNewItemPage.querySelectorAll("#newItemType");
-const priceInput = artistAddNewItemPage.querySelectorAll("#newItemPrice");
-const imageUrlInput = artistAddNewItemPage.querySelectorAll("#newItemImageUrl");
+const typeInput = artistAddNewItemPage.querySelector("#newItemType");
+const priceInput = artistAddNewItemPage.querySelector("#newItemPrice");
+const imageUrlInput = artistAddNewItemPage.querySelector("#newItemImageUrl");
 const addNewItemBtn = document.querySelector("#addNewItemBtn");
 const cancelBtn = document.querySelector("#cancelBtn");
+
+function resetValues() {
+	titleInput.value = "";
+	descriptionTextarea.value = "";
+	typeInput.value = "";
+	priceInput.value = "";
+	imageUrlInput.value = "";
+	isPublishedCheckbox.checked = true;
+}
 
 export function initArtistAddNewItemPage() {
 	const currentArtist = getArtist();
@@ -44,9 +53,13 @@ export function initArtistAddNewItemPage() {
 		itemsList.push(item);
 		setItems(itemsList);
 
-		console.log("Item added successfully:", item);
-		console.log("Redirecting to artistItemsPage...");
+		resetValues();
 
+		location.hash = "#artistItemsPage";
+	});
+
+	cancelBtn.addEventListener("click", () => {
+		resetValues();
 		location.hash = "#artistItemsPage";
 	});
 }
