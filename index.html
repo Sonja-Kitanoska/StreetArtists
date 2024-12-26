@@ -429,100 +429,102 @@
 			</div>
 			<div class="cards-container"></div>
 		</section>
-		<!-- ARTIRST ADD NEW ITEM PAGE -->
+		<!-- ARTIST ADD NEW ITEM PAGE -->
 		<section
 			class="page artist-add-new-item-page brown-bg container py-4 sand-text font-size-18"
 			id="artistAddNewItemPage"
 		>
-			<div
-				class="d-flex justify-content-between align-items-center mb-2 font-size-18"
-			>
-				<h2 class="roboto-500 font-size-30">Add New Item</h2>
-				<div class="d-flex gap-2 align-items-center">
-					<label for="isPublishedCheckbox" class="roboto-300"
-						>Is published</label
-					>
-					<input type="checkbox" id="isPublishedCheckbox" required checked />
-				</div>
-			</div>
-			<div class="w-100 mb-4">
-				<label for="newItemTitle" class="roboto-300">Title</label>
-				<input
-					type="text"
-					id="newItemTitle"
-					name="newItemTitle"
-					required
-					class="w-100 brown-bg roboto-300"
-				/>
-			</div>
-			<div class="mb-4">
-				<label for="newItemDescription" class="roboto-300">Description</label>
-				<textarea
-					id="newItemDescription"
-					name="newItemDescription"
-					class="w-100 brown-bg roboto-300"
-				></textarea>
-			</div>
-			<div class="row mb-4">
-				<div class="col-6">
-					<div class="d-flex flex-column">
-						<label for="newItemType" class="roboto-300">Type</label>
-						<input
-							type="text"
-							id="newItemType"
-							name="newItemType"
-							required
-							class="brown-bg roboto-300"
-						/>
+			<form id="addNewItemForm">
+				<div
+					class="d-flex justify-content-between align-items-center mb-2 font-size-18"
+				>
+					<h2 class="roboto-500 font-size-30">Add New Item</h2>
+					<div class="d-flex gap-2 align-items-center">
+						<label for="isPublishedCheckbox" class="roboto-300"
+							>Is published</label
+						>
+						<input type="checkbox" id="isPublishedCheckbox" checked />
 					</div>
 				</div>
-				<div class="col-6">
-					<div class="d-flex flex-column">
-						<label for="newItemPrice" class="roboto-300">Price</label>
-						<input
-							type="nummber"
-							id="newItemPrice"
-							name="newItemPrice"
-							required
-							class="brown-bg roboto-300"
-						/>
+				<div class="w-100 mb-4">
+					<label for="newItemTitle" class="roboto-300">Title</label>
+					<input
+						type="text"
+						id="newItemTitle"
+						name="newItemTitle"
+						required
+						class="w-100 brown-bg roboto-300"
+					/>
+				</div>
+				<div class="mb-4">
+					<label for="newItemDescription" class="roboto-300">Description</label>
+					<textarea
+						id="newItemDescription"
+						name="newItemDescription"
+						class="w-100 brown-bg roboto-300"
+					></textarea>
+				</div>
+				<div class="row mb-4">
+					<div class="col-6">
+						<div class="d-flex flex-column">
+							<label for="newItemType" class="roboto-300">Type</label>
+							<input
+								type="text"
+								id="newItemType"
+								name="newItemType"
+								required
+								class="brown-bg roboto-300"
+							/>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="d-flex flex-column">
+							<label for="newItemPrice" class="roboto-300">Price</label>
+							<input
+								type="number"
+								id="newItemPrice"
+								name="newItemPrice"
+								required
+								class="brown-bg roboto-300"
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="mb-4">
-				<label for="newItemImageUrl" class="roboto-300">Image URL</label>
-				<input
-					type="text"
-					id="newItemImageUrl"
-					name="newItemImageUrl"
-					required
-					class="w-100 brown-bg roboto-300"
-				/>
-			</div>
-			<p class="text-center roboto-300">or</p>
+				<div class="mb-4">
+					<label for="newItemImageUrl" class="roboto-300">Image URL</label>
+					<input
+						type="text"
+						id="newItemImageUrl"
+						name="newItemImageUrl"
+						class="w-100 brown-bg roboto-300"
+					/>
+				</div>
+				<p class="text-center roboto-300">or</p>
 
-			<div
-				class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
-			>
-				<i class="fa-solid fa-camera"></i>
-				<p class="roboto-300">Take a snapshot</p>
-			</div>
-			<div
-				class="add-new-item-buttons py-3 d-flex justify-content-between align-items-center gap-2"
-			>
-				<button
-					class="dark-orange-bg sand-text roboto-700 border-0 font-size-18"
-					id="addNewItemBtn"
+				<div
+					class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
 				>
-					Add New Item
-				</button>
-				<button
-					class="gray-bg dark-gray-text roboto-700 border-0 font-size-18"
-					id="cancelBtn"
+					<i class="fa-solid fa-camera"></i>
+					<p class="roboto-300">Take a snapshot</p>
+				</div>
+				<div
+					class="add-new-item-buttons py-3 d-flex justify-content-between align-items-center gap-2"
 				>
-					Cancel
-				</button>
-			</div>
+					<button
+						type="submit"
+						class="dark-orange-bg sand-text roboto-700 border-0 font-size-18"
+						id="addNewItemBtn"
+					>
+						Add New Item
+					</button>
+					<button
+						class="gray-bg dark-gray-text roboto-700 border-0 font-size-18"
+						id="cancelBtn"
+					>
+						Cancel
+					</button>
+				</div>
+			</form>
 		</section>
 		<section
 			class="page artist-capture-image-popup"

@@ -5,14 +5,12 @@ import {
 	setItems,
 } from "../../utils/globals.js";
 
-// Select the section container
+// Selectors
 const artistAddNewItemPage = document.querySelector("#artistAddNewItemPage");
-
-// Select all inputs within the section
+const addNewItemForm = document.querySelector("#addNewItemForm");
 const isPublishedCheckbox = artistAddNewItemPage.querySelector(
 	"#isPublishedCheckbox"
 );
-
 const titleInput = artistAddNewItemPage.querySelector("#newItemTitle");
 const descriptionTextarea = artistAddNewItemPage.querySelector(
 	"#newItemDescription"
@@ -20,8 +18,23 @@ const descriptionTextarea = artistAddNewItemPage.querySelector(
 const typeInput = artistAddNewItemPage.querySelector("#newItemType");
 const priceInput = artistAddNewItemPage.querySelector("#newItemPrice");
 const imageUrlInput = artistAddNewItemPage.querySelector("#newItemImageUrl");
-const addNewItemBtn = document.querySelector("#addNewItemBtn");
 const cancelBtn = document.querySelector("#cancelBtn");
+
+let editingItem = undefined;
+let itemsList = getItems();
+
+export function editItem(id) {
+	const item = itemsList.find((item) => String(item.id) === id);
+
+	titleInput.value = item.title;
+	descriptionTextarea.value = item.description;
+	typeInput.value = item.type;
+	priceInput.value = item.price;
+	imageUrlInput.value = item.image;
+	isPublishedCheckbox.checked = item.isPublished;
+
+	editingItem = item;
+}
 
 function resetValues() {
 	titleInput.value = "";
@@ -32,34 +45,55 @@ function resetValues() {
 	isPublishedCheckbox.checked = true;
 }
 
-export function initArtistAddNewItemPage() {
-	const currentArtist = getArtist();
-	updateHeader("artist");
+function addOrEditItem() {
+	if (editingItem) {
+		editingItem.title = titleInput.value;
+		editingItem.description = descriptionTextarea.value;
+		editingItem.type = typeInput.value;
+		editingItem.image = imageUrlInput.value;
+		editingItem.price = priceInput.value;
+		editingItem.isPublished = isPublishedCheckbox.checked;
 
-	let itemsList = getItems();
-
-	addNewItemBtn.addEventListener("click", () => {
-		const item = {
+		itemsList = itemsList.map((item) =>
+			item.id === editingItem.id ? editingItem : item
+		);
+	} else {
+		const newItem = {
 			id: crypto.randomUUID(),
 			title: titleInput.value,
 			description: descriptionTextarea.value,
 			type: typeInput.value,
 			image: imageUrlInput.value,
 			price: priceInput.value,
-			artist: currentArtist,
-			isPublished: isPublishedCheckbox.value === "on" ? true : false,
+			artist: getArtist(),
+			isPublished: isPublishedCheckbox.checked,
 			dateCreated: new Date().toISOString(),
 		};
-		itemsList.push(item);
-		setItems(itemsList);
+		itemsList.push(newItem);
+	}
+	setItems(itemsList);
+	resetValues();
+}
 
-		resetValues();
+export function initArtistAddNewItemPage() {
+	updateHeader("artist");
 
-		location.hash = "#artistItemsPage";
-	});
+	addNewItemForm.addEventListener(
+		"submit",
+		(e) => {
+			e.preventDefault();
+			addOrEditItem();
+			location.hash = "#artistItemsPage";
+		},
+		{ once: true }
+	);
 
-	cancelBtn.addEventListener("click", () => {
-		resetValues();
-		location.hash = "#artistItemsPage";
-	});
+	cancelBtn.addEventListener(
+		"click",
+		() => {
+			resetValues();
+			location.hash = "#artistItemsPage";
+		},
+		{ once: true }
+	);
 }

@@ -61,11 +61,13 @@ export function renderCards(items, mode = "visitor") {
 					Remove
 				</button>
 				<button
-					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1"
+					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${item.id}"
+
+
 				>
 					Edit
 				</button>
-			</div`
+			</div>`
 				: "";
 
 		artistCard.innerHTML = `
