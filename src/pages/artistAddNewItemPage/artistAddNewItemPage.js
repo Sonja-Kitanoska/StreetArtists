@@ -1,3 +1,4 @@
+import { renderCards } from "../../utils/cards.js";
 import {
 	updateHeader,
 	getArtist,
@@ -22,9 +23,12 @@ const cancelBtn = document.querySelector("#cancelBtn");
 
 let editingItem = undefined;
 let itemsList = getItems();
+let artistItems;
 
 export function editItem(id) {
+	editingItem = undefined;
 	const item = itemsList.find((item) => String(item.id) === id);
+	artistItems = itemsList.filter((item) => item.artist === getArtist());
 
 	titleInput.value = item.title;
 	descriptionTextarea.value = item.description;
@@ -57,7 +61,7 @@ function addOrEditItem() {
 		itemsList = itemsList.map((item) =>
 			item.id === editingItem.id ? editingItem : item
 		);
-	} else {
+	} else if (editingItem === undefined) {
 		const newItem = {
 			id: crypto.randomUUID(),
 			title: titleInput.value,
@@ -71,12 +75,16 @@ function addOrEditItem() {
 		};
 		itemsList.push(newItem);
 	}
+	artistItems = itemsList.filter((item) => item.artist === getArtist());
 	setItems(itemsList);
 	resetValues();
 }
 
 export function initArtistAddNewItemPage() {
 	updateHeader("artist");
+
+	itemsList = getItems();
+	artistItems = itemsList.filter((item) => item.artist === getArtist());
 
 	addNewItemForm.addEventListener(
 		"submit",
@@ -96,4 +104,8 @@ export function initArtistAddNewItemPage() {
 		},
 		{ once: true }
 	);
+}
+
+export function resetEditingItem() {
+	editingItem = undefined;
 }

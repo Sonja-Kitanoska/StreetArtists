@@ -56,7 +56,7 @@ export function renderCards(items, mode = "visitor") {
 					Unpublish
 				</button>
 				<button
-					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${item.id}"
 				>
 					Remove
 				</button>
