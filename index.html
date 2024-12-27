@@ -17,6 +17,7 @@
 			href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet"
 		/>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script
 			src="https://kit.fontawesome.com/359c268938.js"
 			crossorigin="anonymous"
@@ -374,7 +375,7 @@
 							class="brown-bg p-2 h-100 d-flex flex-column align-items-center justify-content-between"
 						>
 							<p class="font-size-18 roboto-300 m-0">Total Items Sold</p>
-							<p class="roboto-500 font-size-45">12/35</p>
+							<p class="total-items-sold roboto-500 font-size-45"></p>
 						</div>
 					</div>
 					<div class="col-6">
@@ -382,7 +383,7 @@
 							class="brown-bg p-2 h-100 d-flex flex-column align-items-center justify-content-between"
 						>
 							<p class="font-size-18 roboto-300 m-0">Total Income</p>
-							<p class="roboto-500 font-size-45">$1700</p>
+							<p class="total-income roboto-500 font-size-45"></p>
 						</div>
 					</div>
 					<div class="col-12">
@@ -400,15 +401,27 @@
 						Display my income for last
 					</p>
 					<div class="font-size-12 d-flex justify-content-between">
-						<button class="chart-btn brown-bg sand-text roboto-700 p-3">
+						<button
+							id="last7"
+							class="chart-btn brown-bg sand-text roboto-700 p-3"
+						>
 							7 days
 						</button>
-						<button class="chart-btn dark-orange-bg sand-text roboto-700 p-3">
+						<button
+							id="last14"
+							class="chart-btn dark-orange-bg sand-text roboto-700 p-3"
+						>
 							14 days
 						</button>
-						<button class="chart-btn brown-bg sand-text roboto-700 p-3">
+						<button
+							id="last30"
+							class="chart-btn brown-bg sand-text roboto-700 p-3"
+						>
 							30 days
 						</button>
+					</div>
+					<div>
+						<canvas id="myChart" class="w-100"></canvas>
 					</div>
 				</div>
 			</div>
