@@ -28,13 +28,6 @@ export function initArtistItemsPage() {
 		location.hash = "#artistAddNewItemPage";
 	});
 
-	// addNewItemDiv.replaceWith(addNewItemDiv.cloneNode(true));
-	// const newAddNewItemDiv = document.querySelector(".add-new-item-div");
-	// newAddNewItemDiv.addEventListener("click", () => {
-	// 	console.log("addNewItemDiv clicked");
-	// 	location.hash = "#artistAddNewItemPage";
-	// });
-
 	function removeItem(id) {
 		itemsList = getItems();
 		console.log("Removing item with id:", id);
@@ -47,29 +40,16 @@ export function initArtistItemsPage() {
 		renderCards(artistItems, "artist");
 	}
 
-	// const editButtons = document.querySelectorAll(".edit-btn");
-	// editButtons.forEach((button) => {
-	// 	button.addEventListener("click", (e) => {
-	// 		const id = e.target.dataset.id;
-	// 		location.hash = "#artistAddNewItemPage";
-	// 		editItem(id);
-	// 	});
-	// });
-
-	// const removeButtons = document.querySelectorAll(".remove-btn");
-	// removeButtons.forEach((button) => {
-	// 	button.addEventListener("click", (e) => {
-	// 		const id = e.target.dataset.id;
-	// 		removeItem(id);
-	// 	});
-	// });
-
 	cardsContainer.addEventListener("click", (event) => {
 		if (event.target.classList.contains("edit-btn")) {
 			editItem(event.target.dataset.id);
 			location.hash = "#artistAddNewItemPage";
 		} else if (event.target.classList.contains("remove-btn")) {
-			removeItem(event.target.dataset.id);
+			const answer = confirm("Are you sure you want to remove this item?");
+			if (answer) {
+				removeItem(event.target.dataset.id);
+			}
+			event.stopImmediatePropagation();
 		}
 	});
 }
