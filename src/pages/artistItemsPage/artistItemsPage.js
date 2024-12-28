@@ -42,19 +42,14 @@ export function initArtistItemsPage() {
 
 	function togglePublish(id) {
 		itemsList = getItems();
-		artistItems = artistItems.map((item) => {
-			if (String(item.id) === id) {
-				item.isPublished = !item.isPublished;
-			}
-			return item;
-		});
 
-		// Update the itemsList to reflect the changes
-		itemsList = itemsList.map((item) =>
-			String(item.id) === id
-				? artistItems.find((i) => String(i.id) === id)
-				: item
-		);
+		const updatedItem = itemsList.find((item) => String(item.id) === id);
+		if (updatedItem) {
+			updatedItem.isPublished = !updatedItem.isPublished;
+		}
+
+		const artistItems = itemsList.filter((item) => item.artist === getArtist());
+
 		setItems(itemsList);
 		renderCards(artistItems, "artist");
 	}
