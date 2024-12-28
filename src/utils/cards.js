@@ -51,9 +51,9 @@ export function renderCards(items, mode = "visitor") {
 					Send to Auction
 				</button>
 				<button
-					class="toggle-publish-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
-						item.id
-					}"
+					class="toggle-publish-btn ${
+						item.isPublished ? "published" : "unpublished"
+					} roboto-700 font-size-12 border-0 px-2 py-1" data-id="${item.id}"
 				>
 					 ${item.isPublished ? "Unpublish" : "Publish"}
 				</button>
