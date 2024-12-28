@@ -40,6 +40,25 @@ export function initArtistItemsPage() {
 		renderCards(artistItems, "artist");
 	}
 
+	function togglePublish(id) {
+		itemsList = getItems();
+		artistItems = artistItems.map((item) => {
+			if (String(item.id) === id) {
+				item.isPublished = !item.isPublished;
+			}
+			return item;
+		});
+
+		// Update the itemsList to reflect the changes
+		itemsList = itemsList.map((item) =>
+			String(item.id) === id
+				? artistItems.find((i) => String(i.id) === id)
+				: item
+		);
+		setItems(itemsList);
+		renderCards(artistItems, "artist");
+	}
+
 	cardsContainer.addEventListener("click", (event) => {
 		if (event.target.classList.contains("edit-btn")) {
 			editItem(event.target.dataset.id);
@@ -49,6 +68,9 @@ export function initArtistItemsPage() {
 			if (answer) {
 				removeItem(event.target.dataset.id);
 			}
+			event.stopImmediatePropagation();
+		} else if (event.target.classList.contains("toggle-publish-btn")) {
+			togglePublish(event.target.dataset.id);
 			event.stopImmediatePropagation();
 		}
 	});

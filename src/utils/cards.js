@@ -51,18 +51,23 @@ export function renderCards(items, mode = "visitor") {
 					Send to Auction
 				</button>
 				<button
-					class="toggle-publish-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+					class="toggle-publish-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+						item.id
+					}"
 				>
-					Unpublish
+					 ${item.isPublished ? "Unpublish" : "Publish"}
 				</button>
 				<button
-					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${item.id}"
+					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+						item.id
+					}"
 				>
 					Remove
 				</button>
 				<button
-					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${item.id}"
-
+					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${
+						item.id
+					}"
 
 				>
 					Edit

@@ -27,6 +27,7 @@ let artistItems;
 
 export function editItem(id) {
 	editingItem = undefined;
+	itemsList = getItems();
 	const item = itemsList.find((item) => String(item.id) === id);
 	artistItems = itemsList.filter((item) => item.artist === getArtist());
 
