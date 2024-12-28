@@ -68,3 +68,8 @@
 	border: 2px dashed #a16a5e;
 	cursor: pointer;
 }
+
+.formatted-date {
+	color: #e09686;
+	font-size: 9px;
+}
