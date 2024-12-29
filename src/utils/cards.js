@@ -46,7 +46,12 @@ export function renderCards(items, mode = "visitor") {
 				class="card-buttons brown-bg gap-2 py-2 px-3"
 			>
 				<button
-					class="auction-btn roboto-700 font-size-12 border-0 text-white px-2 py-1"
+					class="auction-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+						item.id
+					}"
+				${item.isAuctioning ? "disabled" : ""}
+				>
+				${item.isAuctioning ? "On Auction" : "Send to Auction"}
 				>
 					Send to Auction
 				</button>

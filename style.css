@@ -5,6 +5,7 @@
 @import "./src/pages/artistHomePage/artistHomePage.css";
 @import "./src/pages/artistItemsPage/artistItemsPage.css";
 @import "./src/pages/artistAddNewItemPage/artistAddNewItemPage.css";
+@import "./src/pages/auction/auction.css";
 
 .page {
 	display: none;

@@ -54,6 +54,20 @@ export function initArtistItemsPage() {
 		renderCards(artistItems, "artist");
 	}
 
+	function sendToAuction(id) {
+		let itemsList = getItems();
+		itemsList = itemsList.map((item) => {
+			if (item.id === id) {
+				item.isAuctioning = true;
+			} else {
+				item.isAuctioning = false;
+			}
+			return item;
+		});
+
+		setItems(itemsList);
+	}
+
 	cardsContainer.addEventListener("click", (event) => {
 		if (event.target.classList.contains("edit-btn")) {
 			editItem(event.target.dataset.id);
@@ -66,6 +80,11 @@ export function initArtistItemsPage() {
 			event.stopImmediatePropagation();
 		} else if (event.target.classList.contains("toggle-publish-btn")) {
 			togglePublish(event.target.dataset.id);
+			event.stopImmediatePropagation();
+		} else if (event.target.classList.contains("auction-btn")) {
+			const itemId = event.target.dataset.id;
+			sendToAuction(itemId);
+			location.hash = "#auction";
 			event.stopImmediatePropagation();
 		}
 	});

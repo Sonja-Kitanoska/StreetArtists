@@ -1,29 +1,12 @@
 import { items } from "../../data/db.js";
 
 let currentArtist;
-
 let itemsList;
+let timerInterval;
+let remainingTime = 120; // Default to 2 minutes (120s)
+let currentBidAmount = 0; // Stores the current highest bid
 
-const storedItems = localStorage.getItem("items");
-itemsList = storedItems ? JSON.parse(storedItems) : items;
-
-// first approach
-// let itemsList;
-
-// try {
-// 	const storedItems = localStorage.getItem("items");
-// 	itemsList = storedItems ? JSON.parse(storedItems) : items;
-// } catch (error) {
-// 	console.error(
-// 		"Invalid JSON in localStorage for 'items'. Resetting to default items.",
-// 		error
-// 	);
-// 	itemsList = items; // Fallback to default items
-// }
-
-setItems(itemsList);
-
-//artist
+//ARTIST
 export function getArtist() {
 	const currentArtist = localStorage.getItem("currentArtist");
 	return currentArtist;
@@ -34,7 +17,11 @@ export function setArtist(selectedArtist) {
 	localStorage.setItem("currentArtist", currentArtist);
 }
 
-//items
+//ITEMS
+const storedItems = localStorage.getItem("items");
+itemsList = storedItems ? JSON.parse(storedItems) : items;
+setItems(itemsList);
+
 export function getItems() {
 	const itemsList = localStorage.getItem("items");
 	return JSON.parse(itemsList);
@@ -45,6 +32,46 @@ export function setItems(items) {
 	localStorage.setItem("items", JSON.stringify(itemsList));
 }
 
+//AUCTION
+
+// export function startAuctionTimer() {
+// 	const savedTime = localStorage.getItem("auctionTimer");
+
+// 	if (savedTime !== null) {
+// 		remainingTime = parseInt(savedTime);
+// 	}
+
+// 	if (timerInterval) {
+// 		clearInterval(timerInterval);
+// 	}
+
+// 	timerInterval = setInterval(() => {
+// 		if (remainingTime > 0) {
+// 			remainingTime--;
+// 			localStorage.setItem("auctionTimer", remainingTime);
+// 		} else {
+// 			clearInterval(timerInterval);
+// 			localStorage.removeItem("auctionTimer");
+// 		}
+// 		updateTimerDisplay();
+// 	}, 1000);
+// }
+
+// export function resetAuctionTimer() {
+// 	remainingTime = 120;
+// 	localStorage.setItem("auctionTimer", remainingTime);
+// 	updateTimerDisplay();
+// 	clearInterval(timerInterval);
+// 	startAuctionTimer();
+// }
+
+// export function stopAuctionTimer() {
+// 	clearInterval(timerInterval);
+// 	localStorage.removeItem("auctionTimer");
+// 	remainingTime = 120;
+// }
+
+// HEADER
 export function updateHeader(type = "landingPage") {
 	const logo = document.querySelector("#logo");
 	const iconContainer = document.querySelector(".icon-container");
