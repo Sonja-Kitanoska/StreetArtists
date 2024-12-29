@@ -11,7 +11,14 @@
 	background-repeat: no repeat;
 	background-size: cover;
 	background-position: center;
-	height: 142px;
+	min-height: 142px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.banner-container > div {
+	padding-inline: 8px;
 }
 
 .infinite-slider {
@@ -39,6 +46,13 @@
 	}
 }
 
+.slider-inner img {
+	width: 200px;
+	height: auto;
+	object-fit: cover;
+}
+
+/* Carousel */
 .carousel-item {
 	height: 244px;
 	font-size: 9px;
@@ -54,12 +68,30 @@
 }
 
 .seperator {
-	height: 100%;
+	height: 80%;
 	width: 1px;
 	background: #a16a5e;
 	padding: 0;
-	top: 0;
-	bottom: 0;
+	top: 10%;
+	bottom: 10%;
 	position: absolute;
 	left: 54%;
+}
+
+.carousel-caption {
+	height: 100%;
+	bottom: 0;
+	top: 0;
+}
+
+span.carousel-control-next-icon,
+span.carousel-control-prev-icon {
+	width: 0;
+	height: 0;
+}
+
+.next-icon,
+.previous-icon {
+	font-size: 52px;
+	color: #a16a5e;
 }

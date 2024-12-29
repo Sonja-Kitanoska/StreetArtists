@@ -1,15 +1,12 @@
-import { formatDate } from "../../utils/dates.js";
 import { setArtist, updateHeader } from "../../utils/globals.js";
 
 const artistsSelect = document.querySelector("#artists");
 const artistDiv = document.querySelector(".artist-div");
 const header = document.querySelector(".header");
+const landingPageLogo = document.querySelector("#landingPageLogo");
 
 export function initLandingPage() {
 	updateHeader();
-
-	// const formattedDate = formatDate(new Date());
-	// console.log(formattedDate);
 
 	artistDiv.addEventListener("mouseenter", () => {
 		header.style.backgroundColor = "#f5e3cb";

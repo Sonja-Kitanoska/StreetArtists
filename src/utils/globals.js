@@ -141,3 +141,7 @@ const menuLinks = document.querySelector("#menuLinks");
 menu.addEventListener("click", () => {
 	menuLinks.classList.toggle("d-none");
 });
+
+logo.addEventListener("click", ()=>{
+	location.hash="#landingPage"
+})
