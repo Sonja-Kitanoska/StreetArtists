@@ -52,8 +52,7 @@ export function renderCards(items, mode = "visitor") {
 				${item.isAuctioning ? "disabled" : ""}
 				>
 				${item.isAuctioning ? "On Auction" : "Send to Auction"}
-				>
-					Send to Auction
+			
 				</button>
 				<button
 					class="toggle-publish-btn ${
