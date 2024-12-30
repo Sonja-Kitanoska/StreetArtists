@@ -46,10 +46,10 @@ export function renderCards(items, mode = "visitor") {
 				class="card-buttons brown-bg gap-2 py-2 px-3"
 			>
 				<button
-					class="auction-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+					class="auction-btn roboto roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
 						item.id
-					}"
-				${item.isAuctioning ? "disabled" : ""}
+					}" 
+
 				>
 				${item.isAuctioning ? "On Auction" : "Send to Auction"}
 			
@@ -62,14 +62,14 @@ export function renderCards(items, mode = "visitor") {
 					 ${item.isPublished ? "Unpublish" : "Publish"}
 				</button>
 				<button
-					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+					class="remove-btn roboto roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
 						item.id
 					}"
 				>
 					Remove
 				</button>
 				<button
-					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${
+					class="edit-btn roboto roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${
 						item.id
 					}"
 

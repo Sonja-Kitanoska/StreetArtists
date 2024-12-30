@@ -1,6 +1,12 @@
 import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/globals.js";
-import { getArtist, getItems, setItems } from "../../utils/globals.js";
+import {
+	getArtist,
+	getItems,
+	setItems,
+	remainingTime,
+	startAuctionTimer,
+} from "../../utils/globals.js";
 import { editItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 import { resetEditingItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 
@@ -11,6 +17,7 @@ const cardsContainer = document.querySelector(
 
 let itemsList = getItems();
 let artistItems;
+let isAuctioning = false;
 
 export function initArtistItemsPage() {
 	const currentArtist = getArtist();
@@ -55,20 +62,38 @@ export function initArtistItemsPage() {
 	}
 
 	function sendToAuction(id) {
-		let itemsList = getItems();
-		itemsList = itemsList.map((item) => {
-			if (item.id === id) {
-				item.isAuctioning = true;
-			} else {
-				item.isAuctioning = false;
-			}
-			return item;
-		});
+		if (isAuctioning) {
+			alert("An auction is already in progress!");
+			return;
+		}
+		itemsList = getItems();
+
+		isAuctioning = true;
+
+		itemsList = itemsList.map((item) =>
+			String(item.id) === id
+				? { ...item, isAuctioning: true }
+				: { ...item, isAuctioning: false }
+		);
+
+		artistItems = itemsList.filter((item) => item.artist === getArtist());
 
 		setItems(itemsList);
+
+		renderCards(artistItems, "artist");
+		
+		document.querySelectorAll(".auction-btn").forEach((button) => {
+			if (button.dataset.id !== id) {
+				button.disabled = true;
+			}
+		});
+		startAuctionTimer();
+
+		console.log("Item sent to auction, auction started.");
 	}
 
 	cardsContainer.addEventListener("click", (event) => {
+		console.log("Event listener triggered:", event.target);
 		if (event.target.classList.contains("edit-btn")) {
 			editItem(event.target.dataset.id);
 			location.hash = "#artistAddNewItemPage";
@@ -82,9 +107,7 @@ export function initArtistItemsPage() {
 			togglePublish(event.target.dataset.id);
 			event.stopImmediatePropagation();
 		} else if (event.target.classList.contains("auction-btn")) {
-			const itemId = event.target.dataset.id;
-			sendToAuction(itemId);
-			location.hash = "#auction";
+			sendToAuction(event.target.dataset.id);
 			event.stopImmediatePropagation();
 		}
 	});

@@ -14,7 +14,7 @@ export const items = [
 		artist: "Leanne Graham",
 		dateCreated: "2024-12-27T11:18:10.662Z",
 		isPublished: true,
-		isAuctioning: true,
+		isAuctioning: false,
 		dateSold: "2024-12-22T21:09:22.968Z",
 		priceSold: 1175,
 	},

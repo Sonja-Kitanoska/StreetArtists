@@ -9,6 +9,7 @@ let itemsList = getItems();
 const currentArtist = getArtist();
 
 export function initArtistHomePage() {
+	const currentArtist = getArtist();
 	console.log("ArtistHomePage");
 	updateHeader("artist");
 
