@@ -5,6 +5,7 @@ let itemsList;
 let timerInterval;
 export let remainingTime = 120; // Default to 2 minutes (120s)
 let currentBidAmount = 0; // Stores the current highest bid
+let role;
 
 //ARTIST
 export function getArtist() {
@@ -69,6 +70,16 @@ export function stopAuctionTimer() {
 	clearInterval(timerInterval);
 	localStorage.removeItem("auctionTimer");
 	remainingTime = 120;
+}
+
+export function getRole() {
+	const role = localStorage.getItem("role");
+	return role;
+}
+
+export function setRole(selectedRole) {
+	role = selectedRole;
+	localStorage.setItem("role", role);
 }
 
 // HEADER

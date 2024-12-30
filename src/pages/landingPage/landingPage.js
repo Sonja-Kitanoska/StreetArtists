@@ -1,4 +1,9 @@
-import { setArtist, updateHeader } from "../../utils/globals.js";
+import {
+	setArtist,
+	updateHeader,
+	getRole,
+	setRole,
+} from "../../utils/globals.js";
 
 const artistsSelect = document.querySelector("#artists");
 const artistDiv = document.querySelector(".artist-div");
@@ -37,6 +42,7 @@ export function initLandingPage() {
 			artistsSelect.addEventListener("change", function (e) {
 				const artist = e.target.value;
 				setArtist(artist);
+				setRole("artist");
 				location.hash = "#artistHomePage";
 			});
 		})
@@ -46,6 +52,7 @@ export function initLandingPage() {
 
 	const visitorDiv = document.querySelector(".visitor-div");
 	visitorDiv.addEventListener("click", () => {
+		setRole("visitor");
 		location.hash = "visitorHomePage";
 	});
 }
