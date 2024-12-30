@@ -81,7 +81,7 @@ export function initArtistItemsPage() {
 		setItems(itemsList);
 
 		renderCards(artistItems, "artist");
-		
+
 		document.querySelectorAll(".auction-btn").forEach((button) => {
 			if (button.dataset.id !== id) {
 				button.disabled = true;

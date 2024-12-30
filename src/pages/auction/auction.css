@@ -1,0 +1,43 @@
+.auction-img-container {
+	height: 165px;
+	width: 100%;
+}
+
+.auction-img-container img {
+	object-fit: cover;
+	object-position: center;
+}
+
+.auction-card {
+	box-shadow: 0px 2px 2px 0px #00000040;
+}
+
+.auction-initial-price {
+	box-shadow: 0px 1px 1px 0px #00000040;
+}
+
+.timer {
+	top: 12%;
+	right: 2%;
+}
+
+.form-group input::placeholder {
+	color: #a16a5e;
+}
+
+.bid-amount {
+	width: 120px;
+}
+
+@media (min-width: 768px) {
+	.bidding {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.auction-card,
+	.bidding-form {
+		max-width: 500px;
+	}
+}
