@@ -1,12 +1,6 @@
 import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/globals.js";
-import {
-	getArtist,
-	getItems,
-	setItems,
-	remainingTime,
-	startAuctionTimer,
-} from "../../utils/globals.js";
+import { getArtist, getItems, setItems } from "../../utils/globals.js";
 import { editItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 import { resetEditingItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 

@@ -18,10 +18,10 @@
 			rel="stylesheet"
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<script
+		<!-- <script
 			src="https://kit.fontawesome.com/359c268938.js"
 			crossorigin="anonymous"
-		></script>
+		></script> -->
 		<script type="module" src="main.js" defer></script>
 	</head>
 
@@ -587,61 +587,68 @@
 				<div class="auction-card">
 					<div class="auction-img-container">
 						<img
-							src="https://picsum.photos/300/200?random=${Math.floor(
-					Math.random() * 1000 )}`"
+							src=""
 							alt="${item.artist}'s image"
 							class="w-100 h-100"
+							id="auctionImg"
 						/>
 					</div>
 					<div class="p-2 brown-bg sand-text">
 						<div class="d-flex justify-content-between align-items-center">
-							<h2 class="auction-artist-name reenie-beanie mb-0">
-								Leanne Graham
-							</h2>
+							<h2
+								id="auctionArtistName"
+								class="auction-artist-name reenie-beanie mb-0"
+							></h2>
 							<div
 								class="d-flex flex-column font-size-12 justify-content-center align-items-center"
 							>
 								<p class="mb-0">Initial price:</p>
 								<p
+									id="auctionInitialPrice"
 									class="auction-initial-price mb-0 sand-bg brown-text py-1 px-2 rounded-1 roboto-700"
 								>
-									$220
+									$
 								</p>
 							</div>
 						</div>
-						<p class="auction-title font-size-14">Serendipitous Serenity</p>
-						<p class="auction-description font-size-12">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-							aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-							urna, porttitor rhoncus dolor...
-						</p>
+						<p id="auctionTitle" class="auction-title font-size-14"></p>
+						<p
+							id="auctionDescription"
+							class="auction-description font-size-12"
+						></p>
 					</div>
 				</div>
 				<div class="timer text-center mt-2 position-fixed">
 					<span
+						id="timerSpan"
 						class="dark-orange-bg sand-text px-2 py-1 font-size-18 rounded-1"
-						>01:59</span
+						>02:00</span
 					>
 				</div>
 				<form
 					class="bidding-form text-center mt-3 brown-bg p-3 d-flex gap-2 align-items-center justify-content-center"
 				>
 					<div class="form-group d-flex align-items-center gap-1">
-						<label for="bid-amount" class="sand-text font-size-18">$</label>
+						<label for="bidAmount" class="sand-text font-size-18">$</label>
 						<input
 							type="number"
-							id="bid-amount"
+							id="bidAmount"
 							placeholder="Apply amount"
 							class="bid-amount sand-bg border-0 p-1 rounded-1"
 						/>
 					</div>
 					<button
+						id="confirmBid"
 						type="submit"
 						class="border-0 rounded-1 dark-orange-bg sand-text px-2 py-1"
 					>
 						Confirm bid
 					</button>
 				</form>
+				<div id="bidsList">
+					<h3>Current Bids</h3>
+					<ul id="bidsContainer"></ul>
+				</div>
 			</div>
 		</section>
 

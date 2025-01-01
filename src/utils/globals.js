@@ -3,7 +3,7 @@ import { items } from "../../data/db.js";
 let currentArtist;
 let itemsList;
 let timerInterval;
-export let remainingTime = 120; // Default to 2 minutes (120s)
+let remainingTime = 120; // Default to 2 minutes (120s)
 let currentBidAmount = 0; // Stores the current highest bid
 let role;
 
@@ -35,43 +35,55 @@ export function setItems(items) {
 
 //AUCTION
 
-export function startAuctionTimer() {
+export function getAuctionTimer() {
 	const savedTime = localStorage.getItem("auctionTimer");
-
-	if (savedTime !== null) {
-		remainingTime = parseInt(savedTime);
-	}
-
-	if (timerInterval) {
-		clearInterval(timerInterval);
-	}
-
-	timerInterval = setInterval(() => {
-		if (remainingTime > 0) {
-			remainingTime--;
-			localStorage.setItem("auctionTimer", remainingTime);
-		} else {
-			clearInterval(timerInterval);
-			localStorage.removeItem("auctionTimer");
-		}
-		// updateTimerDisplay();
-	}, 1000);
+	return savedTime !== null ? parseInt(savedTime, 10) : remainingTime; // Default to 120 if not set
 }
 
-export function resetAuctionTimer() {
-	remainingTime = 120;
-	localStorage.setItem("auctionTimer", remainingTime);
-	// updateTimerDisplay();
-	clearInterval(timerInterval);
-	startAuctionTimer();
+// Setter for auction timer
+export function setAuctionTimer(time) {
+	localStorage.setItem("auctionTimer", time);
+	remainingTime = time;
 }
 
-export function stopAuctionTimer() {
-	clearInterval(timerInterval);
-	localStorage.removeItem("auctionTimer");
-	remainingTime = 120;
-}
+// export function startAuctionTimer() {
+// 	const savedTime = localStorage.getItem("auctionTimer");
 
+// 	if (savedTime !== null) {
+// 		remainingTime = parseInt(savedTime);
+// 	}
+
+// 	if (timerInterval) {
+// 		clearInterval(timerInterval);
+// 	}
+
+// 	timerInterval = setInterval(() => {
+// 		if (remainingTime > 0) {
+// 			remainingTime--;
+// 			localStorage.setItem("auctionTimer", remainingTime);
+// 		} else {
+// 			clearInterval(timerInterval);
+// 			localStorage.removeItem("auctionTimer");
+// 		}
+// 		// updateTimerDisplay();
+// 	}, 1000);
+// }
+
+// export function resetAuctionTimer() {
+// 	remainingTime = 120;
+// 	localStorage.setItem("auctionTimer", remainingTime);
+// 	// updateTimerDisplay();
+// 	clearInterval(timerInterval);
+// 	startAuctionTimer();
+// }
+
+// export function stopAuctionTimer() {
+// 	clearInterval(timerInterval);
+// 	localStorage.removeItem("auctionTimer");
+// 	remainingTime = 120;
+// }
+
+// ROLE
 export function getRole() {
 	const role = localStorage.getItem("role");
 	return role;
