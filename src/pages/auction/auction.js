@@ -35,11 +35,32 @@ export function initAuction() {
 		auctionDescription.textContent = description;
 	}
 
+	restoreBidMessages();
+
 	let currentBid = auctionInitialPrice.textContent.slice(2);
 	let role = getRole();
+	const bidsList = [];
+	let isAuctionOver = false;
+
+	if (timerInterval) {
+		clearInterval(timerInterval);
+		timerInterval = null;
+	}
+
+	remainingTime = getAuctionTimer();
+	if (!remainingTime || isAuctionOver) {
+		remainingTime = 120; // Default auction time
+		setAuctionTimer(remainingTime); // Store in local storage
+		isAuctionOver = false; // Reset auction state
+	}
 
 	confirmBidBtn.addEventListener("click", async (event) => {
 		event.preventDefault();
+
+		if (isAuctionOver) {
+			alert("The auction is over. No further bids are allowed.");
+			return;
+		}
 
 		confirmBidBtn.disabled = true;
 
@@ -74,17 +95,22 @@ export function initAuction() {
 				if (data.isBidding) {
 					const upBid = data.bidAmount;
 					currentBid = upBid;
-					alert(
-						`Another person is bidding for the same item. You need to add an amount larger than $${upBid}.`
+					bidsList.push(upBid);
+					lastBid = upBid;
+
+					addBidMessage(
+						`Someone else is bidding $${upBid}. Add a higher amount to continue bidding.`
 					);
+
 					resetAuctionTimer();
 				} else {
-					alert("Your bid has been successfully placed!");
+					bidsList.push(bidAmount);
 					currentBid = bidAmount;
 					lastBid = bidAmount;
-				}
 
-				displayBids(data);
+					addBidMessage(`Your bid $${bidAmount} has been placed.`);
+				}
+				bidAmountInput.value = "";
 			} else {
 				console.error("Unexpected response from the server:", data);
 			}
@@ -94,33 +120,6 @@ export function initAuction() {
 			confirmBidBtn.disabled = false;
 		}
 	});
-
-	function displayBids(data) {
-		const bidsContainer = document.querySelector("#bidsContainer");
-		const bidAmountInput = document.querySelector("#bidAmount");
-
-		// Clear previous messages
-		bidsContainer.innerHTML = "";
-
-		const yourAmount = document.createElement("p");
-		yourAmount.textContent = `Your amount is $${bidAmountInput.value}`;
-		bidsContainer.appendChild(yourAmount);
-
-		if (data.isBidding) {
-			const p = document.createElement("p");
-			p.textContent = `Someone else's bid is $${currentBid}. Apply a new amount if you want to continue bidding.`;
-			bidsContainer.appendChild(p);
-		} else {
-			const itemSold = document.createElement("p");
-
-			itemSold.textContent =
-				remainingTime === 0
-					? `Auction ended. Item sold for $${lastBid}.`
-					: `Your bid of $${bidAmountInput.value} has been placed successfully.`;
-
-			bidsContainer.appendChild(itemSold);
-		}
-	}
 
 	function startAuctionTimer() {
 		remainingTime = getAuctionTimer();
@@ -157,21 +156,57 @@ export function initAuction() {
 		startAuctionTimer();
 	}
 
+	function addBidMessage(message) {
+		const bidsContainer = document.querySelector("#bidsContainer");
+		const li = document.createElement("li");
+		li.innerHTML = message;
+		bidsContainer.appendChild(li);
+
+		let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
+		storedBids.push(message);
+		localStorage.setItem("bids", JSON.stringify(storedBids));
+	}
+
+	function restoreBidMessages() {
+		const bidsContainer = document.querySelector("#bidsContainer");
+		const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
+		storedBids.forEach((message) => {
+			const li = document.createElement("li");
+			li.innerHTML = message;
+			bidsContainer.appendChild(li);
+		});
+	}
+
 	function endAuction() {
-		// alert("Auction ended! Item has been sold!");
+		const bidsContainer = document.querySelector("#bidsContainer");
+		const bidsList = document.querySelector("#bidsList");
+		isAuctionOver = true;
 		stopAuctionTimer();
 
-		// Update item properties, for example:
-		// Update item with priceSold, dateSold, isAuctioning set to false
+		const finalBid =
+			currentBid > 0 ? currentBid : auctionInitialPrice.textContent.slice(2); // Fallback to initial pric
+
+		const auctionEndMessage = document.createElement("p");
+		auctionEndMessage.classList.add("itemSold");
+		auctionEndMessage.textContent = `Auction is over. Item sold for $${finalBid}.`;
+		bidsContainer.appendChild(auctionEndMessage);
+
+		bidsList.classList.add("shake");
+
+		setTimeout(() => {
+			bidsList.classList.remove("shake");
+		}, 500);
+
+		// auctionItem.isAuctioning = false;
+		// auctionItem.priceSold = lastBid;
+		// auctionItem.dateSold = new Date();
+		localStorage.removeItem("bids");
 	}
 	function stopAuctionTimer() {
 		if (timerInterval) {
 			clearInterval(timerInterval); // Clears the interval, stopping the timer
 			timerInterval = null; // Reset the interval reference
 		}
-		remainingTime = 120; // 120 seconds
-		setAuctionTimer(remainingTime); // Save the reset time to localStorage
-		updateTimerDisplay();
 	}
 
 	startAuctionTimer();
