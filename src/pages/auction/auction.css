@@ -13,12 +13,13 @@
 }
 
 .auction-initial-price {
+	background-color: #1b59ac;
 	box-shadow: 0px 1px 1px 0px #00000040;
 }
 
 .timer {
-	top: 12%;
-	right: 2%;
+	top: 10%;
+	right: 1%;
 }
 
 .form-group input,
@@ -28,6 +29,7 @@
 
 .bid-amount {
 	width: 120px;
+	border: 1px solid #a16a5e;
 }
 
 .bids-list {
@@ -56,6 +58,12 @@
 	top: 0;
 	z-index: 1;
 	padding: 5px;
+}
+
+#confirmBid {
+	background: #1b59ac;
+	box-shadow: 0px 1px 1px 0px #00000040;
+	border-radius: 2px;
 }
 
 .itemSold {
