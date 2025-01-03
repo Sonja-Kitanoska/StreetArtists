@@ -132,7 +132,7 @@ export function initAuction() {
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
 
-					addBidMessage(`Bid $${userBid} has been successfully recorded.`);
+					addBidMessage(`Bid of $${userBid} has been successfully recorded.`);
 				}
 				bidAmountInput.value = "";
 			} else {
@@ -157,7 +157,7 @@ export function initAuction() {
 		timerInterval = setInterval(() => {
 			if (remainingTime > 0) {
 				remainingTime--;
-				setAuctionTimer(remainingTime); // Update timer in localStorage
+				setAuctionTimer(remainingTime);
 			} else {
 				clearInterval(timerInterval);
 				endAuction();
@@ -179,8 +179,8 @@ export function initAuction() {
 	}
 
 	function resetAuctionTimer() {
-		remainingTime = 120; // Reset to 2 minutes
-		setAuctionTimer(remainingTime); // Store the reset time
+		remainingTime = 120;
+		setAuctionTimer(remainingTime);
 		updateTimerDisplay();
 		startAuctionTimer();
 	}
@@ -214,7 +214,7 @@ export function initAuction() {
 		stopAuctionTimer();
 
 		const finalBid =
-			lastBid > 0 ? lastBid : auctionInitialPrice.textContent.slice(2); // Fallback to initial pric
+			lastBid > 0 ? lastBid : auctionInitialPrice.textContent.slice(2);
 
 		const auctionEndMessage = document.createElement("p");
 		auctionEndMessage.classList.add("itemSold");
@@ -235,21 +235,13 @@ export function initAuction() {
 			setItems(itemsList);
 		}
 
-		// if (auctionItem) {
-		// 	auctionItem.isAuctioning = false;
-		// 	auctionItem.priceSold = finalBid;
-		// 	auctionItem.dateSold = new Date().toISOString();
-
-		// 	setItems(itemsList);
-		// }
-
 		localStorage.removeItem("bids");
 	}
 
 	function stopAuctionTimer() {
 		if (timerInterval) {
-			clearInterval(timerInterval); // Clears the interval, stopping the timer
-			timerInterval = null; // Reset the interval reference
+			clearInterval(timerInterval);
+			timerInterval = null;
 		}
 	}
 	if (auctionItem) {
