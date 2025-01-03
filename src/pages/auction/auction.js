@@ -17,7 +17,7 @@ const timer = document.querySelector("#timerSpan");
 
 let remainingTime = getAuctionTimer();
 let timerInterval = null;
-let lastBid = 0;
+let lastBid = parseFloat(localStorage.getItem("lastBid")) || 0;
 
 export function initAuction() {
 	updateHeader("visitor");
@@ -60,6 +60,14 @@ export function initAuction() {
 	const bidsList = [];
 	let isAuctionOver = false;
 
+	const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
+	if (auctionState && auctionState.finalBid) {
+		isAuctionOver = true;
+		restoreBidMessages();
+	} else {
+		restoreBidMessages();
+	}
+
 	if (timerInterval) {
 		clearInterval(timerInterval);
 		timerInterval = null;
@@ -67,9 +75,9 @@ export function initAuction() {
 
 	remainingTime = getAuctionTimer();
 	if (!remainingTime || isAuctionOver) {
-		remainingTime = 120; // Default auction time
-		setAuctionTimer(remainingTime); // Store in local storage
-		isAuctionOver = false; // Reset auction state
+		remainingTime = 120;
+		setAuctionTimer(remainingTime);
+		isAuctionOver = false;
 	}
 
 	confirmBidBtn.addEventListener("click", async (event) => {
@@ -116,6 +124,7 @@ export function initAuction() {
 					currentBid = upBid;
 					bidsList.push(upBid);
 					lastBid = upBid;
+					localStorage.setItem("lastBid", lastBid);
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
 					addBidMessage(`Someone is bidding $${upBid}.`);
@@ -129,6 +138,7 @@ export function initAuction() {
 					bidsList.push(userBid);
 					currentBid = userBid;
 					lastBid = userBid;
+					localStorage.setItem("lastBid", lastBid);
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
 
@@ -199,12 +209,22 @@ export function initAuction() {
 	function restoreBidMessages() {
 		const bidsContainer = document.querySelector("#bidsContainer");
 		bidsContainer.innerHTML = "";
+
 		const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
 		storedBids.forEach((message) => {
 			const li = document.createElement("li");
 			li.innerHTML = message;
 			bidsContainer.appendChild(li);
 		});
+
+		const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
+		if (auctionState && auctionState.finalBid) {
+			const auctionEndMessage = document.createElement("p");
+			auctionEndMessage.classList.add("itemSold");
+			auctionEndMessage.textContent = `Auction is over. Item sold for $${auctionState.finalBid}.`;
+			bidsContainer.appendChild(auctionEndMessage);
+			isAuctionOver = true;
+		}
 	}
 
 	function endAuction() {
@@ -215,6 +235,8 @@ export function initAuction() {
 
 		const finalBid =
 			lastBid > 0 ? lastBid : auctionInitialPrice.textContent.slice(2);
+
+		localStorage.setItem("auctionOver", JSON.stringify({ finalBid }));
 
 		const auctionEndMessage = document.createElement("p");
 		auctionEndMessage.classList.add("itemSold");
@@ -235,7 +257,9 @@ export function initAuction() {
 			setItems(itemsList);
 		}
 
+		localStorage.removeItem("lastBid");
 		localStorage.removeItem("bids");
+		localStorage.removeItem("auctionOver");
 	}
 
 	function stopAuctionTimer() {
