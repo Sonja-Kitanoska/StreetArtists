@@ -18,13 +18,27 @@ let remainingTime = getAuctionTimer();
 let timerInterval = null;
 let lastBid = 0;
 
+function initializeRoleBasedUI(role) {
+	const isArtist = role === "artist";
+
+	confirmBidBtn.disabled = isArtist;
+	confirmBidBtn.style.cursor = isArtist ? "not-allowed" : "pointer";
+
+	if (isArtist) {
+		confirmBidBtn.textContent = "Bidding Disabled for Artists";
+	} else {
+		confirmBidBtn.textContent = "Confirm Bid";
+	}
+}
+
 export function initAuction() {
 	updateHeader("visitor");
 
 	const itemsList = getItems();
+	let role = getRole();
+	initializeRoleBasedUI(role);
 
 	const auctionItem = itemsList.find((item) => item.isAuctioning);
-
 	if (auctionItem) {
 		const { image, artist, price, title, description } = auctionItem;
 
@@ -38,7 +52,7 @@ export function initAuction() {
 	restoreBidMessages();
 
 	let currentBid = auctionInitialPrice.textContent.slice(2);
-	let role = getRole();
+
 	const bidsList = [];
 	let isAuctionOver = false;
 
