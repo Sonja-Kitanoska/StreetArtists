@@ -19,25 +19,12 @@ let remainingTime = getAuctionTimer();
 let timerInterval = null;
 let lastBid = 0;
 
-function initializeRoleBasedUI(role) {
-	const isArtist = role === "artist";
-
-	confirmBidBtn.disabled = isArtist;
-	confirmBidBtn.style.cursor = isArtist ? "not-allowed" : "pointer";
-
-	if (isArtist) {
-		confirmBidBtn.textContent = "Bidding Disabled for Artists";
-	} else {
-		confirmBidBtn.textContent = "Confirm Bid";
-	}
-}
-
 export function initAuction() {
 	updateHeader("visitor");
-
 	const itemsList = getItems();
-	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
 
+	// NO AUCTION MESSAGE
+	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
 	const bidding = document.querySelector(".bidding");
 	const noAuctionMessage = document.querySelector("#noAuctionMessage");
 
@@ -51,6 +38,7 @@ export function initAuction() {
 		noAuctionMessage.classList.add("hidden");
 	}
 
+	// DIFFERENT BUTTON FOR ARTISTS
 	let role = getRole();
 	initializeRoleBasedUI(role);
 
@@ -205,6 +193,7 @@ export function initAuction() {
 
 	function restoreBidMessages() {
 		const bidsContainer = document.querySelector("#bidsContainer");
+		bidsContainer.innerHTML = "";
 		const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
 		storedBids.forEach((message) => {
 			const li = document.createElement("li");
@@ -252,5 +241,18 @@ export function initAuction() {
 	}
 	if (auctionItem) {
 		startAuctionTimer();
+	}
+}
+
+function initializeRoleBasedUI(role) {
+	const isArtist = role === "artist";
+
+	confirmBidBtn.disabled = isArtist;
+	confirmBidBtn.style.cursor = isArtist ? "not-allowed" : "pointer";
+
+	if (isArtist) {
+		confirmBidBtn.textContent = "Bidding Disabled for Artists";
+	} else {
+		confirmBidBtn.textContent = "Confirm Bid";
 	}
 }
