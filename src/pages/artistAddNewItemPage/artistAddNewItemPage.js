@@ -1,4 +1,5 @@
 import { renderCards } from "../../utils/cards.js";
+import { itemTypes } from "../../../data/db.js";
 import {
 	updateHeader,
 	getArtist,
@@ -16,10 +17,10 @@ const titleInput = artistAddNewItemPage.querySelector("#newItemTitle");
 const descriptionTextarea = artistAddNewItemPage.querySelector(
 	"#newItemDescription"
 );
-const typeInput = artistAddNewItemPage.querySelector("#newItemType");
 const priceInput = artistAddNewItemPage.querySelector("#newItemPrice");
 const imageUrlInput = artistAddNewItemPage.querySelector("#newItemImageUrl");
 const cancelBtn = document.querySelector("#cancelBtn");
+const newItemTypeSelect = document.querySelector("#newItemTypeSelect");
 
 let editingItem = undefined;
 let itemsList = getItems();
@@ -33,7 +34,7 @@ export function editItem(id) {
 
 	titleInput.value = item.title;
 	descriptionTextarea.value = item.description;
-	typeInput.value = item.type;
+	newItemTypeSelect.value = item.type;
 	priceInput.value = item.price;
 	imageUrlInput.value = item.image;
 	isPublishedCheckbox.checked = item.isPublished;
@@ -44,7 +45,7 @@ export function editItem(id) {
 function resetValues() {
 	titleInput.value = "";
 	descriptionTextarea.value = "";
-	typeInput.value = "";
+	newItemTypeSelect.value = "";
 	priceInput.value = "";
 	imageUrlInput.value = "";
 	isPublishedCheckbox.checked = true;
@@ -54,7 +55,7 @@ function addOrEditItem() {
 	if (editingItem) {
 		editingItem.title = titleInput.value;
 		editingItem.description = descriptionTextarea.value;
-		editingItem.type = typeInput.value;
+		editingItem.type = newItemTypeSelect.value;
 		editingItem.image = imageUrlInput.value;
 		editingItem.price = priceInput.value;
 		editingItem.isPublished = isPublishedCheckbox.checked;
@@ -67,7 +68,7 @@ function addOrEditItem() {
 			id: crypto.randomUUID(),
 			title: titleInput.value,
 			description: descriptionTextarea.value,
-			type: typeInput.value,
+			type: newItemTypeSelect.value,
 			image: imageUrlInput.value,
 			price: priceInput.value,
 			artist: getArtist(),
@@ -87,6 +88,21 @@ export function initArtistAddNewItemPage() {
 	itemsList = getItems();
 	artistItems = itemsList.filter((item) => item.artist === getArtist());
 
+	if (!newItemTypeSelect.hasChildNodes()) {
+		newItemTypeSelect.innerHTML =
+			'<option value="" disabled selected>Choose</option>';
+
+		itemTypes.forEach((type) => {
+			const option = document.createElement("option");
+			option.value = type.toLowerCase();
+			option.textContent = type;
+			newItemTypeSelect.appendChild(option);
+		});
+	}
+
+	if (editingItem) {
+		newItemTypeSelect.value = editingItem.type;
+	}
 	addNewItemForm.addEventListener(
 		"submit",
 		(e) => {

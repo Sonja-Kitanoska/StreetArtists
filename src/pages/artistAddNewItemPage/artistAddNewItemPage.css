@@ -28,6 +28,13 @@
 	border: 1px solid #fcebd5;
 }
 
+.artist-add-new-item-page select {
+	border-radius: 2px;
+	border: 1px solid #fcebd5;
+	paadding: 10px;
+	height: 30px;
+}
+
 .add-new-item-buttons button {
 	width: 175px;
 	height: 37px;
