@@ -227,6 +227,14 @@ export function initAuction() {
 			bidsList.classList.remove("shake");
 		}, 500);
 
+		if (auctionItem) {
+			auctionItem.isAuctioning = false;
+			auctionItem.priceSold = finalBid;
+			auctionItem.dateSold = new Date().toISOString();
+
+			setItems(itemsList);
+		}
+
 		// if (auctionItem) {
 		// 	auctionItem.isAuctioning = false;
 		// 	auctionItem.priceSold = finalBid;
