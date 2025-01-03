@@ -116,18 +116,23 @@ export function initAuction() {
 					currentBid = upBid;
 					bidsList.push(upBid);
 					lastBid = upBid;
-
 					addBidMessage(
 						`Someone else is bidding $${upBid}. Add a higher amount to continue bidding.`
 					);
 
 					resetAuctionTimer();
 				} else {
-					bidsList.push(bidAmount);
-					currentBid = bidAmount;
-					lastBid = bidAmount;
+					const userBid = parseFloat(bidAmount);
+					if (bidsList.length === 0) {
+						lastBid = userBid;
+					}
+					bidsList.push(userBid);
+					currentBid = userBid;
+					lastBid = userBid;
+					console.log("last bid", lastBid);
+					console.log("current bid", currentBid);
 
-					addBidMessage(`Your bid $${bidAmount} has been placed.`);
+					addBidMessage(`Your bid $${userBid} has been placed.`);
 				}
 				bidAmountInput.value = "";
 			} else {
@@ -209,7 +214,7 @@ export function initAuction() {
 		stopAuctionTimer();
 
 		const finalBid =
-			currentBid > 0 ? currentBid : auctionInitialPrice.textContent.slice(2); // Fallback to initial pric
+			lastBid > 0 ? lastBid : auctionInitialPrice.textContent.slice(2); // Fallback to initial pric
 
 		const auctionEndMessage = document.createElement("p");
 		auctionEndMessage.classList.add("itemSold");
