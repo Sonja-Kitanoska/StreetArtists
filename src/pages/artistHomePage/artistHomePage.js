@@ -49,6 +49,11 @@ function displayCurrentBid() {
 	currentBidElement.textContent = lastBid
 		? `$${lastBid}`
 		: "Currently not available";
+
+	currentBidElement.style.cursor = "pointer"; // Make it look clickable
+	currentBidElement.addEventListener("click", () => {
+		window.location.hash = "auction";
+	});
 }
 
 function drawChart(daysAgo = 7) {
