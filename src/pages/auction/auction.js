@@ -116,9 +116,9 @@ export function initAuction() {
 					currentBid = upBid;
 					bidsList.push(upBid);
 					lastBid = upBid;
-					addBidMessage(
-						`Someone else is bidding $${upBid}. Add a higher amount to continue bidding.`
-					);
+					console.log("last bid", lastBid);
+					console.log("current bid", currentBid);
+					addBidMessage(`Someone is bidding $${upBid}.`);
 
 					resetAuctionTimer();
 				} else {
@@ -132,7 +132,7 @@ export function initAuction() {
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
 
-					addBidMessage(`Your bid $${userBid} has been placed.`);
+					addBidMessage(`Bid $${userBid} has been successfully recorded.`);
 				}
 				bidAmountInput.value = "";
 			} else {
