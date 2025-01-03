@@ -43,8 +43,8 @@ export function initAuction() {
 
 	if (filteredItems.length === 0) {
 		bidding.classList.add("hidden");
-		if(noAuctionMessage){
-		noAuctionMessage.classList.remove("hidden");
+		if (noAuctionMessage) {
+			noAuctionMessage.classList.remove("hidden");
 		}
 	} else {
 		bidding.classList.remove("hidden");
@@ -241,6 +241,7 @@ export function initAuction() {
 			timerInterval = null; // Reset the interval reference
 		}
 	}
-
-	startAuctionTimer();
+	if (auctionItem) {
+		startAuctionTimer();
+	}
 }

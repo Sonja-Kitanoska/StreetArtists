@@ -1,6 +1,11 @@
 import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/globals.js";
-import { getArtist, getItems, setItems } from "../../utils/globals.js";
+import {
+	getArtist,
+	getItems,
+	setItems,
+	getAuctionTimer,
+} from "../../utils/globals.js";
 import { editItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 import { resetEditingItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 
@@ -81,8 +86,7 @@ export function initArtistItemsPage() {
 				button.disabled = true;
 			}
 		});
-		startAuctionTimer();
-
+		location.hash = "#auction";
 		console.log("Item sent to auction, auction started.");
 	}
 
