@@ -86,6 +86,7 @@ export function initAuction() {
 
 	confirmBidBtn.addEventListener("click", async (event) => {
 		event.preventDefault();
+		if (confirmBidBtn.disabled) return;
 
 		if (isAuctionOver) {
 			alert("The auction is over. No further bids are allowed.");
@@ -231,6 +232,14 @@ export function initAuction() {
 		setTimeout(() => {
 			bidsList.classList.remove("shake");
 		}, 500);
+
+		// if (auctionItem) {
+		// 	auctionItem.isAuctioning = false;
+		// 	auctionItem.priceSold = finalBid;
+		// 	auctionItem.dateSold = new Date().toISOString();
+
+		// 	setItems(itemsList);
+		// }
 
 		localStorage.removeItem("bids");
 	}
