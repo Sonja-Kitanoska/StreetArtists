@@ -4,6 +4,7 @@ import {
 	getAuctionTimer,
 	setAuctionTimer,
 	getRole,
+	setItems,
 } from "../../utils/globals.js";
 
 const confirmBidBtn = document.querySelector("#confirmBid");
@@ -35,6 +36,21 @@ export function initAuction() {
 	updateHeader("visitor");
 
 	const itemsList = getItems();
+	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
+
+	const bidding = document.querySelector(".bidding");
+	const noAuctionMessage = document.querySelector("#noAuctionMessage");
+
+	if (filteredItems.length === 0) {
+		bidding.classList.add("hidden");
+		if(noAuctionMessage){
+		noAuctionMessage.classList.remove("hidden");
+		}
+	} else {
+		bidding.classList.remove("hidden");
+		noAuctionMessage.classList.add("hidden");
+	}
+
 	let role = getRole();
 	initializeRoleBasedUI(role);
 
@@ -151,6 +167,11 @@ export function initAuction() {
 			} else {
 				clearInterval(timerInterval);
 				endAuction();
+				auctionItem.isAuctioning = false;
+				auctionItem.priceSold = lastBid;
+				auctionItem.dateSold = new Date().toISOString();
+				setItems(itemsList);
+				stopAuctionTimer();
 			}
 
 			updateTimerDisplay();
@@ -211,11 +232,9 @@ export function initAuction() {
 			bidsList.classList.remove("shake");
 		}, 500);
 
-		// auctionItem.isAuctioning = false;
-		// auctionItem.priceSold = lastBid;
-		// auctionItem.dateSold = new Date();
 		localStorage.removeItem("bids");
 	}
+
 	function stopAuctionTimer() {
 		if (timerInterval) {
 			clearInterval(timerInterval); // Clears the interval, stopping the timer
