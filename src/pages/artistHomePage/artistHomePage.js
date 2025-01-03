@@ -38,8 +38,17 @@ export function initArtistHomePage() {
 	last30.addEventListener("click", function () {
 		drawChart(30);
 	});
-
+	displayCurrentBid();
 	drawChart();
+}
+
+function displayCurrentBid() {
+	const currentBidElement = document.querySelector("#currentBid");
+
+	const lastBid = localStorage.getItem("lastBid");
+	currentBidElement.textContent = lastBid
+		? `$${lastBid}`
+		: "Currently not available";
 }
 
 function drawChart(daysAgo = 7) {
