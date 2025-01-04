@@ -25,7 +25,7 @@
 		<script type="module" src="main.js" defer></script>
 	</head>
 
-	<body class="vh-100 sand-bg">
+	<body class="sand-bg">
 		<!-- HEADER -->
 		<header
 			class="header sand-bg d-flex align-items-center justify-content-center px-2"
@@ -574,13 +574,14 @@
 		</section>
 		<!-- ARTIST CAPTURE IMAGE POPUP -->
 		<section
-			class="page artist-capture-image-popup h-100"
+			class="page artist-capture-image-popup"
 			id="artistCaptureImagePopup"
 		>
-			<div class="capture-image-container brown-bg p-3">
+			<div class="capture-image-container brown-bg p-3 h-100">
 				<video id="video" autoplay class="w-100"></video>
 				<canvas id="canvas" style="display: none"></canvas>
-				<div class="camera-container text-center">
+
+				<div class="camera-container w-100 text-center">
 					<img
 						id="camera"
 						src="./src/assets/fa-solid_camera.png"

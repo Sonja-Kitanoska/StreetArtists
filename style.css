@@ -6,9 +6,11 @@
 @import "./src/pages/artistItemsPage/artistItemsPage.css";
 @import "./src/pages/artistAddNewItemPage/artistAddNewItemPage.css";
 @import "./src/pages/auction/auction.css";
+@import "./src/pages/artistCaptureImagePopup/artistCaptureImagePopup.css";
 
 .page {
 	display: none;
+	height: calc(100vh - 69px);
 }
 
 /* HEADER */
