@@ -1,4 +1,3 @@
-import { renderCards } from "../../utils/cards.js";
 import { itemTypes } from "../../../data/db.js";
 import {
 	updateHeader,
@@ -6,6 +5,8 @@ import {
 	getItems,
 	setItems,
 } from "../../utils/globals.js";
+
+import { capturedImageUrl } from "../artistCaptureImagePopup/artistCaptureImagePopup.js";
 
 // Selectors
 const artistAddNewItemPage = document.querySelector("#artistAddNewItemPage");
@@ -21,6 +22,7 @@ const priceInput = artistAddNewItemPage.querySelector("#newItemPrice");
 const imageUrlInput = artistAddNewItemPage.querySelector("#newItemImageUrl");
 const cancelBtn = document.querySelector("#cancelBtn");
 const newItemTypeSelect = document.querySelector("#newItemTypeSelect");
+const takeSnapshotDiv = document.querySelector(".take-snapshot");
 
 let editingItem = undefined;
 let itemsList = getItems();
@@ -36,7 +38,7 @@ export function editItem(id) {
 	descriptionTextarea.value = item.description;
 	newItemTypeSelect.value = item.type;
 	priceInput.value = item.price;
-	imageUrlInput.value = item.image;
+	imageUrlInput.value = item.image || "";
 	isPublishedCheckbox.checked = item.isPublished;
 
 	editingItem = item;
@@ -56,7 +58,7 @@ function addOrEditItem() {
 		editingItem.title = titleInput.value;
 		editingItem.description = descriptionTextarea.value;
 		editingItem.type = newItemTypeSelect.value;
-		editingItem.image = imageUrlInput.value;
+		editingItem.image = capturedImageUrl || imageUrlInput.value;
 		editingItem.price = priceInput.value;
 		editingItem.isPublished = isPublishedCheckbox.checked;
 
@@ -69,7 +71,7 @@ function addOrEditItem() {
 			title: titleInput.value,
 			description: descriptionTextarea.value,
 			type: newItemTypeSelect.value,
-			image: imageUrlInput.value,
+			image: capturedImageUrl || imageUrlInput.value,
 			price: priceInput.value,
 			artist: getArtist(),
 			isPublished: isPublishedCheckbox.checked,
@@ -82,8 +84,21 @@ function addOrEditItem() {
 	resetValues();
 }
 
+function initRetakeSnapshot() {
+	const imagePreview = takeSnapshotDiv.querySelector("img");
+	imagePreview.addEventListener("click", () => {
+		location.hash = "#artistCaptureImagePopup";
+	});
+}
+
 export function initArtistAddNewItemPage() {
 	updateHeader("artist");
+
+	takeSnapshotDiv.innerHTML = `<img src="${
+		capturedImageUrl ||
+		imageUrlInput.value ||
+		"../../src/assets/fa-solid_camera.png"
+	}" alt="Captured Image" class="image-preview" />`;
 
 	itemsList = getItems();
 	artistItems = itemsList.filter((item) => item.artist === getArtist());
@@ -103,24 +118,47 @@ export function initArtistAddNewItemPage() {
 	if (editingItem) {
 		newItemTypeSelect.value = editingItem.type;
 	}
-	addNewItemForm.addEventListener(
-		"submit",
-		(e) => {
-			e.preventDefault();
-			addOrEditItem();
-			location.hash = "#artistItemsPage";
-		},
-		{ once: true }
-	);
 
-	cancelBtn.addEventListener(
-		"click",
-		() => {
-			resetValues();
-			location.hash = "#artistItemsPage";
-		},
-		{ once: true }
-	);
+	initRetakeSnapshot();
+
+	addNewItemForm.removeEventListener("submit", handleFormSubmit);
+	cancelBtn.removeEventListener("click", handleCancel);
+
+	// Add new event listeners
+	addNewItemForm.addEventListener("submit", handleFormSubmit);
+	cancelBtn.addEventListener("click", handleCancel);
+}
+
+function handleFormSubmit(e) {
+	console.log("Add New Item button clicked");
+	e.preventDefault();
+	addOrEditItem();
+	location.hash = "#artistItemsPage";
+}
+
+function handleCancel() {
+	resetValues();
+	location.hash = "#artistItemsPage";
+
+	// addNewItemForm.addEventListener(
+	// 	"submit",
+	// 	(e) => {
+	// 		console.log("clicked button");
+	// 		e.preventDefault();
+	// 		addOrEditItem();
+	// 		location.hash = "#artistItemsPage";
+	// 	},
+	// 	{ once: true }
+	// );
+
+	// cancelBtn.addEventListener(
+	// 	"click",
+	// 	() => {
+	// 		resetValues();
+	// 		location.hash = "#artistItemsPage";
+	// 	},
+	// 	{ once: true }
+	// );
 }
 
 export function resetEditingItem() {

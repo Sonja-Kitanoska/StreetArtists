@@ -1,0 +1,24 @@
+/* 
+<section
+			class="page artist-capture-image-popup h-100"
+			id="artistCaptureImagePopup"
+		>
+			<div class="brown-bg p-3 h-100">
+				<video id="video" playsinline autoplay class="w-100"></video>
+				<canvas id="canvas" style="display: none"></canvas>
+				<div class="controller">
+					<img src="./src/assets/fa-solid_camera.png" alt="camera" />
+				</div>
+			</div>
+		</section> */
+
+.capture-image-container {
+	position: relative;
+}
+
+.video {
+	position: absolute;
+	top: 69px;
+	left: 0;
+	right: 0;
+}

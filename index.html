@@ -547,8 +547,11 @@
 				<div
 					class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"
 				>
-					<i class="fa-solid fa-camera"></i>
-					<p class="roboto-300">Take a snapshot</p>
+					<div class="take-snapshot text-center">
+						<i class="fa-solid fa-camera"></i>
+						<p class="roboto-300 mb-0">Take a snapshot</p>
+						<div class="snapshot-display"></div>
+					</div>
 				</div>
 				<div
 					class="add-new-item-buttons py-3 d-flex justify-content-between align-items-center gap-2"
@@ -569,11 +572,22 @@
 				</div>
 			</form>
 		</section>
+		<!-- ARTIST CAPTURE IMAGE POPUP -->
 		<section
-			class="page artist-capture-image-popup"
+			class="page artist-capture-image-popup h-100"
 			id="artistCaptureImagePopup"
 		>
-			<h3>artist-capture-image-popup</h3>
+			<div class="capture-image-container brown-bg p-3">
+				<video id="video" autoplay class="w-100"></video>
+				<canvas id="canvas" style="display: none"></canvas>
+				<div class="camera-container text-center">
+					<img
+						id="camera"
+						src="./src/assets/fa-solid_camera.png"
+						alt="camera"
+					/>
+				</div>
+			</div>
 		</section>
 
 		<section
