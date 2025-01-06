@@ -50,11 +50,9 @@ export function initArtistCaptureImagePopup() {
 
 function stopCamera() {
 	const stream = video.srcObject;
-	const tracks = stream.getTracks();
-
-	tracks.forEach((track) => {
-		track.stop();
-	});
-
-	video.srcObject = null;
+	if (stream) {
+		const tracks = stream.getTracks();
+		tracks.forEach((track) => track.stop());
+		video.srcObject = null;
+	}
 }
