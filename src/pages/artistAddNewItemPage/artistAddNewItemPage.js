@@ -59,7 +59,7 @@ function addOrEditItem() {
 		editingItem.title = titleInput.value;
 		editingItem.description = descriptionTextarea.value;
 		editingItem.type = newItemTypeSelect.value;
-		editingItem.image = capturedImageUrl || imageUrlInput.value;
+		editingItem.image = imageUrlInput.value;
 		editingItem.price = priceInput.value;
 		editingItem.isPublished = isPublishedCheckbox.checked;
 
@@ -72,7 +72,7 @@ function addOrEditItem() {
 			title: titleInput.value,
 			description: descriptionTextarea.value,
 			type: newItemTypeSelect.value,
-			image: capturedImageUrl || imageUrlInput.value,
+			image: imageUrlInput.value,
 			price: priceInput.value,
 			artist: getArtist(),
 			isPublished: isPublishedCheckbox.checked,
