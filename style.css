@@ -10,7 +10,6 @@
 
 .page {
 	display: none;
-	height: calc(100vh - 69px);
 }
 
 /* HEADER */

@@ -1,14 +1,14 @@
-.capture-image-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
 #video {
 	object-fit: cover;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	aspect-ratio: 9 / 16;
+}
+
+.artist-capture-image-popup {
+	min-height: 100vh;
+}
+
+.video-container {
+	height: 85vh;
 }
