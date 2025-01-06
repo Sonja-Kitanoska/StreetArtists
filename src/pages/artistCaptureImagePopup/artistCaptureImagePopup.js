@@ -42,6 +42,19 @@ export function initArtistCaptureImagePopup() {
 
 		canvas.style.display = "none";
 
+		stopCamera();
+
 		location.hash = "#artistAddNewItemPage";
 	});
+}
+
+function stopCamera() {
+	const stream = video.srcObject;
+	const tracks = stream.getTracks();
+
+	tracks.forEach((track) => {
+		track.stop();
+	});
+
+	video.srcObject = null;
 }
