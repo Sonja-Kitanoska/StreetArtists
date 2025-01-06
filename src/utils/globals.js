@@ -6,6 +6,7 @@ let timerInterval;
 let remainingTime = 120; // Default to 2 minutes (120s)
 let currentBidAmount = 0; // Stores the current highest bid
 let role;
+let capturedImageUrl;
 
 //ARTIST
 export function getArtist() {
@@ -92,6 +93,14 @@ export function getRole() {
 export function setRole(selectedRole) {
 	role = selectedRole;
 	localStorage.setItem("role", role);
+}
+
+export function getCapturedUrl() {
+	return capturedImageUrl;
+}
+
+export function setCapturedImageUrl(url) {
+	capturedImageUrl = url;
 }
 
 // HEADER

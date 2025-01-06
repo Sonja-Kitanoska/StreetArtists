@@ -8,6 +8,7 @@ import {
 } from "../../utils/globals.js";
 import { editItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 import { resetEditingItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
+import { getCapturedUrl, setCapturedImageUrl } from "../../utils/globals.js";
 
 const addNewItemDiv = document.querySelector(".add-new-item-div");
 const cardsContainer = document.querySelector(
@@ -19,6 +20,7 @@ let artistItems;
 let isAuctioning = false;
 
 export function initArtistItemsPage() {
+	setCapturedImageUrl("");
 	const currentArtist = getArtist();
 	updateHeader("artist");
 

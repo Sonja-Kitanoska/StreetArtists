@@ -1,6 +1,9 @@
-import { updateHeader, getItems } from "../../utils/globals.js";
-
-export let capturedImageUrl = "";
+import {
+	updateHeader,
+	getItems,
+	getCapturedUrl,
+	setCapturedImageUrl,
+} from "../../utils/globals.js";
 
 export function initArtistCaptureImagePopup() {
 	updateHeader("artist");
@@ -35,7 +38,7 @@ export function initArtistCaptureImagePopup() {
 	camera.addEventListener("click", () => {
 		context.drawImage(video, 0, 0, canvas.width, canvas.height);
 		canvas.style.display = "block";
-		capturedImageUrl = canvas.toDataURL("image/png");
+		setCapturedImageUrl(canvas.toDataURL("image/png"));
 
 		canvas.style.display = "none";
 

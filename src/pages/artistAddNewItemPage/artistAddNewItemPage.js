@@ -6,7 +6,7 @@ import {
 	setItems,
 } from "../../utils/globals.js";
 
-import { capturedImageUrl } from "../artistCaptureImagePopup/artistCaptureImagePopup.js";
+import { getCapturedUrl, setCapturedImageUrl } from "../../utils/globals.js";
 
 // Selectors
 const artistAddNewItemPage = document.querySelector("#artistAddNewItemPage");
@@ -27,6 +27,7 @@ const takeSnapshotDiv = document.querySelector(".take-snapshot");
 let editingItem = undefined;
 let itemsList = getItems();
 let artistItems;
+let capturedImageUrl = getCapturedUrl();
 
 export function editItem(id) {
 	editingItem = undefined;
@@ -93,6 +94,11 @@ function initRetakeSnapshot() {
 
 export function initArtistAddNewItemPage() {
 	updateHeader("artist");
+	capturedImageUrl = getCapturedUrl();
+
+	if (capturedImageUrl) {
+		imageUrlInput.value = capturedImageUrl;
+	}
 
 	takeSnapshotDiv.innerHTML = `<img src="${
 		capturedImageUrl ||
@@ -159,6 +165,7 @@ function handleCancel() {
 	// 	},
 	// 	{ once: true }
 	// );
+	setCapturedImageUrl("");
 }
 
 export function resetEditingItem() {
