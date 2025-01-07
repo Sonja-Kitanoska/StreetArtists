@@ -80,4 +80,4 @@ This project helps street artists track income, expenses, and performance stats 
 
 ---
 
-     A big thanks to our instructor, Riste, for his valuable guidance during the development process. His mentorship sessions were extremely valuable, providing clear explanations and guidance that helped us stay on track and continue progressing smoothly throughout the project.
+A big thanks to our instructor, Riste, for his valuable guidance during the development process. His mentorship sessions were extremely valuable, providing clear explanations and guidance that helped us stay on track and continue progressing smoothly throughout the project.
