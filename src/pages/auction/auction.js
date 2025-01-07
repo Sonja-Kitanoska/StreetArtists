@@ -5,6 +5,7 @@ import {
 	setAuctionTimer,
 	getRole,
 	setItems,
+	getArtist,
 } from "../../utils/globals.js";
 
 const confirmBidBtn = document.querySelector("#confirmBid");
@@ -26,6 +27,7 @@ export function initAuction() {
 	updateHeader("visitor");
 	const itemsList = getItems();
 	let role = getRole();
+	let currentArtist = getArtist();
 
 	if (role === "artist") {
 		bidsVisitorContainer.classList.add("d-none");
@@ -299,7 +301,12 @@ export function initAuction() {
 
 		const artistMessageElement = document.createElement("p");
 		artistMessageElement.classList.add("itemSold");
-		artistMessageElement.textContent = auctionEndMessage;
+		if (auctionItem.artist === currentArtist) {
+			artistMessageElement.textContent = `Congratulations. Your artwork is sold for $${finalBid}.`;
+		} else {
+			artistMessageElement.textContent = auctionEndMessage;
+		}
+
 		bidsArtistContainer.appendChild(artistMessageElement);
 
 		const visitorMessageElement = document.createElement("p");
