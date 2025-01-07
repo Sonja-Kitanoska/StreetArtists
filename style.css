@@ -151,21 +151,36 @@
 .font-size-32 {
 	font-size: 32px;
 }
+#warningMessage {
+	display: none;
+	background-color: #a16a5e;
+	color: #fcebd5;
+	font-size: 18px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: 100%;
+}
 
 @media (min-width: 768px) {
-	.cards-container {
+	/* .cards-container {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 20px;
 		padding: 20px;
+	} */
+	#warningMessage {
+		display: flex;
 	}
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
 	.cards-container {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 30px;
 		padding: 20px;
 	}
-}
+} */
