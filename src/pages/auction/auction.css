@@ -113,6 +113,11 @@
 	animation: shake 0.5s ease-in-out;
 }
 
+.err-message {
+	color: #d44c2e;
+	font-weight: bold;
+}
+
 @media (min-width: 768px) {
 	.bidding {
 		display: flex;

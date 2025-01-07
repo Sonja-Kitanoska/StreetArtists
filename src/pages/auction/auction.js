@@ -96,6 +96,7 @@ export function initAuction() {
 
 	async function handleBid(event) {
 		event.preventDefault();
+		console.log("clicked");
 		if (confirmBidBtn.disabled) return;
 
 		if (isAuctionOver) {
@@ -109,8 +110,13 @@ export function initAuction() {
 		const bidAmount = parseFloat(bidAmountInput.value);
 
 		if (isNaN(bidAmount) || bidAmount <= lastBid || bidAmount <= currentBid) {
-			alert("Please enter a valid bid amount.");
+			const errMessage = document.querySelector(".err-message");
+			errMessage.classList.remove("d-none");
+			bidAmountInput.value = "";
 			confirmBidBtn.disabled = false;
+			setTimeout(() => {
+				errMessage.classList.add("d-none");
+			}, 1500);
 			return;
 		}
 
