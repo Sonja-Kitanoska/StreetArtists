@@ -10,7 +10,6 @@ const currentArtist = getArtist();
 
 export function initArtistHomePage() {
 	const currentArtist = getArtist();
-	console.log("ArtistHomePage");
 	updateHeader("artist");
 
 	const publishedItems = itemsList.filter((item) => {
@@ -28,14 +27,17 @@ export function initArtistHomePage() {
 	totalIncome.textContent = `$${totalPriceSold}`;
 
 	last7.addEventListener("click", function () {
+		setActiveButton(last7);
 		drawChart(7);
 	});
 
 	last14.addEventListener("click", function () {
+		setActiveButton(last14);
 		drawChart(14);
 	});
 
 	last30.addEventListener("click", function () {
+		setActiveButton(last30);
 		drawChart(30);
 	});
 	displayCurrentBid();
@@ -50,7 +52,7 @@ function displayCurrentBid() {
 		? `$${lastBid}`
 		: "Currently not available";
 
-	currentBidElement.style.cursor = "pointer"; // Make it look clickable
+	currentBidElement.style.cursor = "pointer";
 	currentBidElement.addEventListener("click", () => {
 		window.location.hash = "auction";
 	});
@@ -148,4 +150,12 @@ function generateChartData(items = [], labels = []) {
 	});
 	console.log("data: ", data);
 	return data;
+}
+
+function setActiveButton(clickedButton) {
+	last7.classList.remove("active-btn");
+	last14.classList.remove("active-btn");
+	last30.classList.remove("active-btn");
+
+	clickedButton.classList.add("active-btn");
 }
