@@ -58,7 +58,7 @@ function displayCurrentBid() {
 	});
 }
 
-function drawChart(daysAgo = 7) {
+function drawChart(daysAgo = 14) {
 	const labels = generateDateLabels(daysAgo);
 
 	const artistItems = itemsList?.filter(
