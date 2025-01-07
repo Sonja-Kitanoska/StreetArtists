@@ -14,14 +14,26 @@ const auctionInitialPrice = document.querySelector("#auctionInitialPrice");
 const auctionTitle = document.querySelector("#auctionTitle");
 const auctionDescription = document.querySelector("#auctionDescription");
 const timer = document.querySelector("#timerSpan");
+const bidsVisitorContainer = document.querySelector("#bidsVisitorContainer");
+const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
 
 let remainingTime = getAuctionTimer();
 let timerInterval = null;
+let currentBid;
 let lastBid = parseFloat(localStorage.getItem("lastBid")) || 0;
 
 export function initAuction() {
 	updateHeader("visitor");
 	const itemsList = getItems();
+	let role = getRole();
+
+	if (role === "artist") {
+		bidsVisitorContainer.classList.add("d-none");
+		bidsArtistContainer.classList.remove("d-none");
+	} else if (role === "visitor") {
+		bidsArtistContainer.classList.add("d-none");
+		bidsVisitorContainer.classList.remove("d-none");
+	}
 
 	// NO AUCTION MESSAGE
 	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
@@ -39,7 +51,6 @@ export function initAuction() {
 	}
 
 	// DIFFERENT BUTTON FOR ARTISTS
-	let role = getRole();
 	initializeRoleBasedUI(role);
 
 	const auctionItem = itemsList.find((item) => item.isAuctioning);
@@ -53,9 +64,9 @@ export function initAuction() {
 		auctionDescription.textContent = description;
 	}
 
-	restoreBidMessages();
+	restoreBidMessages(role);
 
-	let currentBid = auctionInitialPrice.textContent.slice(2);
+	currentBid = auctionInitialPrice.textContent.slice(2);
 
 	const bidsList = [];
 	let isAuctionOver = false;
@@ -63,9 +74,9 @@ export function initAuction() {
 	const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
 	if (auctionState && auctionState.finalBid) {
 		isAuctionOver = true;
-		restoreBidMessages();
+		restoreBidMessages(role);
 	} else {
-		restoreBidMessages();
+		restoreBidMessages(role);
 	}
 
 	if (timerInterval) {
@@ -94,7 +105,7 @@ export function initAuction() {
 		const bidAmountInput = document.querySelector("#bidAmount");
 		const bidAmount = parseFloat(bidAmountInput.value);
 
-		if (isNaN(bidAmount) || bidAmount <= parseFloat(currentBid)) {
+		if (isNaN(bidAmount) || bidAmount <= lastBid || bidAmount <= currentBid) {
 			alert("Please enter a valid bid amount.");
 			confirmBidBtn.disabled = false;
 			return;
@@ -127,7 +138,12 @@ export function initAuction() {
 					localStorage.setItem("lastBid", lastBid);
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
-					addBidMessage(`Someone is bidding $${upBid}.`);
+
+					addBidMessage(`Someone is bidding $${upBid}.`, "artist");
+					addBidMessage(
+						`Someone else is bidding $${upBid}. Apply higher amount if you want to continue bidding`,
+						"visitor"
+					);
 
 					resetAuctionTimer();
 				} else {
@@ -142,7 +158,11 @@ export function initAuction() {
 					console.log("last bid", lastBid);
 					console.log("current bid", currentBid);
 
-					addBidMessage(`Bid of $${userBid} has been successfully recorded.`);
+					addBidMessage(`A bid of $${userBid} has been recorded.`, "artist");
+					addBidMessage(
+						`Your bid of $${userBid} has been successfully placed.`,
+						"visitor"
+					);
 				}
 				bidAmountInput.value = "";
 			} else {
@@ -195,53 +215,82 @@ export function initAuction() {
 		startAuctionTimer();
 	}
 
-	function addBidMessage(message) {
-		const bidsContainer = document.querySelector("#bidsContainer");
+	function addBidMessage(message, role) {
+		const bidsVisitorContainer = document.querySelector(
+			"#bidsVisitorContainer"
+		);
+		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
 		const li = document.createElement("li");
 		li.innerHTML = message;
-		bidsContainer.appendChild(li);
+
+		if (role === "artist") {
+			bidsArtistContainer.appendChild(li);
+		} else if (role === "visitor") {
+			bidsVisitorContainer.appendChild(li);
+		}
 
 		let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
-		storedBids.push(message);
+		storedBids.push({ message, role });
 		localStorage.setItem("bids", JSON.stringify(storedBids));
 	}
 
-	function restoreBidMessages() {
-		const bidsContainer = document.querySelector("#bidsContainer");
-		bidsContainer.innerHTML = "";
+	function restoreBidMessages(role) {
+		const bidsVisitorContainer = document.querySelector(
+			"#bidsVisitorContainer"
+		);
+		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
+		bidsArtistContainer.innerHTML = "";
+		bidsVisitorContainer.innerHTML = "";
 
 		const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
-		storedBids.forEach((message) => {
+		storedBids.forEach(({ message, role: storedRole }) => {
 			const li = document.createElement("li");
 			li.innerHTML = message;
-			bidsContainer.appendChild(li);
+			if (storedRole === "artist") {
+				bidsArtistContainer.appendChild(li);
+			} else if (storedRole === "visitor") {
+				bidsVisitorContainer.appendChild(li);
+			}
 		});
 
 		const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
+		console.log(auctionState);
 		if (auctionState && auctionState.finalBid) {
 			const auctionEndMessage = document.createElement("p");
 			auctionEndMessage.classList.add("itemSold");
 			auctionEndMessage.textContent = `Auction is over. Item sold for $${auctionState.finalBid}.`;
-			bidsContainer.appendChild(auctionEndMessage);
+			bidsArtistContainer.appendChild(auctionEndMessage);
+			bidsVisitorContainer.appendChild(auctionEndMessage);
+
 			isAuctionOver = true;
 		}
 	}
 
 	function endAuction() {
-		const bidsContainer = document.querySelector("#bidsContainer");
+		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
+		const bidsVisitorContainer = document.querySelector(
+			"#bidsVisitorContainer"
+		);
 		const bidsList = document.querySelector("#bidsList");
 		isAuctionOver = true;
 		stopAuctionTimer();
 
-		const finalBid =
-			lastBid > 0 ? lastBid : auctionInitialPrice.textContent.slice(2);
+		const finalBid = lastBid > 0 ? lastBid : 0;
+		const auctionOverState = { finalBid };
+		localStorage.setItem("auctionOver", JSON.stringify(auctionOverState));
+		console.log("auctionOver state set:", auctionOverState);
 
-		localStorage.setItem("auctionOver", JSON.stringify({ finalBid }));
+		const auctionEndMessage = `Auction is over. Item sold for $${finalBid}.`;
 
-		const auctionEndMessage = document.createElement("p");
-		auctionEndMessage.classList.add("itemSold");
-		auctionEndMessage.textContent = `Auction is over. Item sold for $${finalBid}.`;
-		bidsContainer.appendChild(auctionEndMessage);
+		const artistMessageElement = document.createElement("p");
+		artistMessageElement.classList.add("itemSold");
+		artistMessageElement.textContent = auctionEndMessage;
+		bidsArtistContainer.appendChild(artistMessageElement);
+
+		const visitorMessageElement = document.createElement("p");
+		visitorMessageElement.classList.add("itemSold");
+		visitorMessageElement.textContent = auctionEndMessage;
+		bidsVisitorContainer.appendChild(visitorMessageElement);
 
 		bidsList.classList.add("shake");
 
@@ -281,7 +330,9 @@ function initializeRoleBasedUI(role) {
 
 	if (isArtist) {
 		confirmBidBtn.textContent = "Bidding Disabled for Artists";
+		bidsArtistContainer.classList.remove("d-none");
 	} else {
 		confirmBidBtn.textContent = "Confirm Bid";
+		bidsVisitorContainer.classList.remove("d-none");
 	}
 }
