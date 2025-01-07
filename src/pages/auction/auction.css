@@ -66,7 +66,8 @@
 	border-radius: 2px;
 }
 
-.itemSold {
+.itemSold,
+.unsuccessful-auction {
 	color: #d44c2e;
 	font-weight: bold;
 	margin-top: 5px;

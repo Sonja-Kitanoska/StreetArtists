@@ -91,7 +91,10 @@ export function initAuction() {
 		isAuctionOver = false;
 	}
 
-	confirmBidBtn.addEventListener("click", async (event) => {
+	confirmBidBtn.removeEventListener("click", handleBid);
+	confirmBidBtn.addEventListener("click", handleBid);
+
+	async function handleBid(event) {
 		event.preventDefault();
 		if (confirmBidBtn.disabled) return;
 
@@ -173,7 +176,7 @@ export function initAuction() {
 		} finally {
 			confirmBidBtn.disabled = false;
 		}
-	});
+	}
 
 	function startAuctionTimer() {
 		remainingTime = getAuctionTimer();
@@ -280,7 +283,13 @@ export function initAuction() {
 		localStorage.setItem("auctionOver", JSON.stringify(auctionOverState));
 		console.log("auctionOver state set:", auctionOverState);
 
-		const auctionEndMessage = `Auction is over. Item sold for $${finalBid}.`;
+		let auctionEndMessage;
+
+		if (finalBid) {
+			auctionEndMessage = `Auction is over. Item sold for $${finalBid}.`;
+		} else {
+			auctionEndMessage = `Auction unsuccessful.`;
+		}
 
 		const artistMessageElement = document.createElement("p");
 		artistMessageElement.classList.add("itemSold");
