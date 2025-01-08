@@ -15,7 +15,6 @@ export function initVisitorFilters() {
 	fetch("https://jsonplaceholder.typicode.com/users")
 		.then((response) => response.json())
 		.then((users) => {
-			console.log(users);
 			users.forEach((user) => {
 				const option = document.createElement("option");
 				option.value = user.name.toLowerCase();
@@ -35,7 +34,6 @@ export function initVisitorFilters() {
 	if (!offcanvasInstance) {
 		offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
 	}
-	console.log("Offcanvas instance:", offcanvasInstance);
 	offcanvasInstance.show();
 
 	const closeIcon = document.querySelector(".close-icon");

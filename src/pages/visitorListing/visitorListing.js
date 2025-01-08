@@ -38,7 +38,6 @@ export function initVisitorListing() {
 	fetch("https://jsonplaceholder.typicode.com/users")
 		.then((response) => response.json())
 		.then((users) => {
-			console.log(users);
 			users.forEach((user) => {
 				const option = document.createElement("option");
 				option.value = user.name.toLowerCase();
@@ -82,7 +81,6 @@ export function initVisitorListing() {
 				: true;
 			return matchedTitle && matchedArtist && matchedPrice && matchedType;
 		});
-		console.log("Filtered Items:", filteredItems);
 
 		return filteredItems;
 	}
