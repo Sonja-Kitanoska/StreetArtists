@@ -104,7 +104,7 @@ export function initArtistAddNewItemPage() {
 		takeSnapshotDiv.innerHTML = `<img src="${imageUrlInput.value}" alt="Captured Image" class="image-preview" />`;
 	} else {
 		takeSnapshotDiv.innerHTML = `	
-				<i class="fa-solid fa-camera"></i>
+				<img src="../../../src/assets/fa-solid_camera.png">
 				<p class="roboto-300 mb-0">Take a snapshot</p>	
 		`;
 	}
