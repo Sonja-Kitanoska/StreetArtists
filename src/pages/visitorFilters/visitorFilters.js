@@ -1,6 +1,6 @@
-import { updateHeader } from "../../utils/globals.js";
 import { itemTypes } from "../../../data/db.js";
 import { resetFilters } from "../visitorListing/visitorListing.js";
+import { updateHeader } from "../../utils/header.js";
 
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");

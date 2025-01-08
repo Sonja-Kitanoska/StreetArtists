@@ -1,5 +1,5 @@
-import { updateHeader } from "../../utils/globals.js";
+// import { updateHeader } from "../../utils/globals.js";
 
 export function initArtistMenu() {
-	updateHeader("artist");
+	// updateHeader("artist");
 }

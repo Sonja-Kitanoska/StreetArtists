@@ -1,4 +1,5 @@
-import { setArtist, updateHeader, setRole } from "../../utils/globals.js";
+import { setArtist, setRole } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 const artistsSelect = document.querySelector("#artists");
 const artistDiv = document.querySelector(".artist-div");

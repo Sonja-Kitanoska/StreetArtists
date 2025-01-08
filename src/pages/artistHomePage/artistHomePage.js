@@ -1,4 +1,5 @@
-import { getArtist, updateHeader, getItems } from "../../utils/globals.js";
+import { getArtist, getItems } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 const last7 = document.querySelector("#last7");
 const last14 = document.querySelector("#last14");

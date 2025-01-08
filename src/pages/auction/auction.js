@@ -1,5 +1,4 @@
 import {
-	updateHeader,
 	getItems,
 	getAuctionTimer,
 	setAuctionTimer,
@@ -7,6 +6,7 @@ import {
 	setItems,
 	getArtist,
 } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 const confirmBidBtn = document.querySelector("#confirmBid");
 const auctionImage = document.querySelector("#auctionImg");

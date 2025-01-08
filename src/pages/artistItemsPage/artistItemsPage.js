@@ -1,5 +1,5 @@
 import { renderCards } from "../../utils/cards.js";
-import { updateHeader } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 import {
 	getArtist,
 	getItems,

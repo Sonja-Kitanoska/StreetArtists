@@ -1,9 +1,9 @@
 import {
-	updateHeader,
 	getItems,
 	getCapturedUrl,
 	setCapturedImageUrl,
 } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 export function initArtistCaptureImagePopup() {
 	updateHeader("artist");

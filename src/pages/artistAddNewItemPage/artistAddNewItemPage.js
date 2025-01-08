@@ -1,10 +1,6 @@
 import { itemTypes } from "../../../data/db.js";
-import {
-	updateHeader,
-	getArtist,
-	getItems,
-	setItems,
-} from "../../utils/globals.js";
+import { getArtist, getItems, setItems } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 import { getCapturedUrl, setCapturedImageUrl } from "../../utils/globals.js";
 

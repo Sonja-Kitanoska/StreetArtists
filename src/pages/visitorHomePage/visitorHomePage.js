@@ -1,4 +1,4 @@
-import { updateHeader } from "../../utils/globals.js";
+import { updateHeader } from "../../utils/header.js";
 
 export function initVisitorHomePage() {
 	console.log("visitorHomePage");

@@ -1,6 +1,7 @@
-import { getItems, updateHeader } from "../../utils/globals.js";
+import { getItems } from "../../utils/globals.js";
 import { itemTypes } from "../../../data/db.js";
 import { renderCards } from "../../utils/cards.js";
+import { updateHeader } from "../../utils/header.js";
 
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");
