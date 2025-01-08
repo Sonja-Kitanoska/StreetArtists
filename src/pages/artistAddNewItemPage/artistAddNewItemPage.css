@@ -30,12 +30,17 @@
 .artist-add-new-item-page textarea {
 	border-radius: 2px;
 	border: 1px solid #fcebd5;
+	color: #fcebd5;
 }
 
 .artist-add-new-item-page select {
 	border-radius: 2px;
 	border: 1px solid #fcebd5;
 	height: 30px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	color: #fcebd5;
 }
 
 .add-new-item-buttons button {

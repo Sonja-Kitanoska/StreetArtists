@@ -1,38 +1,14 @@
-import {
-	getItems,
-	getCapturedUrl,
-	setCapturedImageUrl,
-} from "../../utils/globals.js";
+import { setCapturedImageUrl } from "../../utils/globals.js";
 import { updateHeader } from "../../utils/header.js";
+
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const camera = document.getElementById("camera");
 
 export function initArtistCaptureImagePopup() {
 	updateHeader("artist");
 
-	const video = document.getElementById("video");
-	const canvas = document.getElementById("canvas");
-	const camera = document.getElementById("camera");
-
-	const constraints = {
-		video: true,
-	};
-
-	async function init() {
-		try {
-			const stream = await navigator.mediaDevices.getUserMedia(constraints);
-			handleSuccess(stream);
-		} catch (e) {
-			console.log("error ");
-		}
-	}
-	function handleSuccess(stream) {
-		window.stream = stream;
-		video.srcObject = stream;
-		video.onloadedmetadata = () => {
-			canvas.width = video.videoWidth;
-			canvas.height = video.videoHeight;
-		};
-	}
-	init();
+	startStream();
 
 	const context = canvas.getContext("2d");
 	camera.addEventListener("click", () => {
@@ -46,6 +22,24 @@ export function initArtistCaptureImagePopup() {
 
 		location.hash = "#artistAddNewItemPage";
 	});
+}
+
+async function startStream() {
+	try {
+		const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+		handleCamera(stream);
+	} catch (err) {
+		console.error("Error accessing camera: ", err);
+	}
+}
+
+function handleCamera(stream) {
+	window.stream = stream;
+	video.srcObject = stream;
+	video.onloadedmetadata = () => {
+		canvas.width = video.videoWidth;
+		canvas.height = video.videoHeight;
+	};
 }
 
 function stopCamera() {

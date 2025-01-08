@@ -47,7 +47,6 @@ export function updateHeader(type = "landingPage") {
 		headerTextArtist.classList.remove("d-block");
 		headerTextArtist.classList.add("d-none");
 	} else if (type === "artist") {
-		console.log(location.hash, headerTextArtist);
 		menu.classList.remove("d-none");
 		menu.classList.add("d-block");
 

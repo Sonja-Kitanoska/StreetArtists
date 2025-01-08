@@ -65,11 +65,8 @@ function drawChart(daysAgo = 14) {
 	const artistItems = itemsList?.filter(
 		(item) => item.artist === currentArtist && item.priceSold
 	);
-	console.log(artistItems);
 
 	const data = generateChartData(artistItems, labels);
-	console.log(data);
-	artistItems.forEach((item) => console.log(item.priceSold));
 
 	if (chartInstance) {
 		chartInstance.data.labels = labels;
@@ -89,7 +86,6 @@ function generateDateLabels(daysAgo = 7) {
 		labels.push(formatDate(offsetDate));
 	}
 
-	console.log(labels);
 	return labels;
 }
 
@@ -149,7 +145,7 @@ function generateChartData(items = [], labels = []) {
 
 		data.push(sum);
 	});
-	console.log("data: ", data);
+
 	return data;
 }
 

@@ -1,14 +1,9 @@
 import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/header.js";
-import {
-	getArtist,
-	getItems,
-	setItems,
-	getAuctionTimer,
-} from "../../utils/globals.js";
+import { getArtist, getItems, setItems } from "../../utils/globals.js";
 import { editItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
 import { resetEditingItem } from "../artistAddNewItemPage/artistAddNewItemPage.js";
-import { getCapturedUrl, setCapturedImageUrl } from "../../utils/globals.js";
+import { setCapturedImageUrl } from "../../utils/globals.js";
 
 const addNewItemDiv = document.querySelector(".add-new-item-div");
 const cardsContainer = document.querySelector(
@@ -27,18 +22,15 @@ export function initArtistItemsPage() {
 	itemsList = getItems();
 
 	artistItems = itemsList.filter((item) => item.artist === currentArtist);
-	console.log("Filtered items for artist:", artistItems);
 	renderCards(artistItems, "artist");
 
 	addNewItemDiv.addEventListener("click", () => {
-		console.log("addNewItemDiv clicked");
 		resetEditingItem();
 		location.hash = "#artistAddNewItemPage";
 	});
 
 	function removeItem(id) {
 		itemsList = getItems();
-		console.log("Removing item with id:", id);
 
 		artistItems = artistItems.filter((item) => String(item.id) !== id);
 
@@ -89,11 +81,9 @@ export function initArtistItemsPage() {
 			}
 		});
 		location.hash = "#auction";
-		console.log("Item sent to auction, auction started.");
 	}
 
 	cardsContainer.addEventListener("click", (event) => {
-		console.log("Event listener triggered:", event.target);
 		if (event.target.classList.contains("edit-btn")) {
 			editItem(event.target.dataset.id);
 			location.hash = "#artistAddNewItemPage";

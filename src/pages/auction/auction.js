@@ -37,7 +37,7 @@ export function initAuction() {
 		bidsVisitorContainer.classList.remove("d-none");
 	}
 
-	// NO AUCTION MESSAGE
+	// no-auction message
 	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
 	const bidding = document.querySelector(".bidding");
 	const noAuctionMessage = document.querySelector("#noAuctionMessage");
@@ -52,7 +52,6 @@ export function initAuction() {
 		noAuctionMessage.classList.add("hidden");
 	}
 
-	// DIFFERENT BUTTON FOR ARTISTS
 	initializeRoleBasedUI(role);
 
 	const auctionItem = itemsList.find((item) => item.isAuctioning);
@@ -98,7 +97,7 @@ export function initAuction() {
 
 	async function handleBid(event) {
 		event.preventDefault();
-		console.log("clicked");
+
 		if (confirmBidBtn.disabled) return;
 
 		if (isAuctionOver) {
@@ -147,8 +146,6 @@ export function initAuction() {
 					bidsList.push(upBid);
 					lastBid = upBid;
 					localStorage.setItem("lastBid", lastBid);
-					console.log("last bid", lastBid);
-					console.log("current bid", currentBid);
 
 					addBidMessage(`Someone is bidding $${upBid}.`, "artist");
 					addBidMessage(
@@ -166,8 +163,6 @@ export function initAuction() {
 					currentBid = userBid;
 					lastBid = userBid;
 					localStorage.setItem("lastBid", lastBid);
-					console.log("last bid", lastBid);
-					console.log("current bid", currentBid);
 
 					addBidMessage(`A bid of $${userBid} has been recorded.`, "artist");
 					addBidMessage(
@@ -265,7 +260,6 @@ export function initAuction() {
 		});
 
 		const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
-		console.log(auctionState);
 		if (auctionState && auctionState.finalBid) {
 			const auctionEndMessage = document.createElement("p");
 			auctionEndMessage.classList.add("itemSold");
@@ -289,7 +283,6 @@ export function initAuction() {
 		const finalBid = lastBid > 0 ? lastBid : 0;
 		const auctionOverState = { finalBid };
 		localStorage.setItem("auctionOver", JSON.stringify(auctionOverState));
-		console.log("auctionOver state set:", auctionOverState);
 
 		let auctionEndMessage;
 

@@ -107,7 +107,7 @@ export function initArtistAddNewItemPage() {
 
 	if (!newItemTypeSelect.hasChildNodes()) {
 		newItemTypeSelect.innerHTML =
-			'<option value="" disabled selected>Choose</option>';
+			'<option value="" disabled selected></option>';
 
 		itemTypes.forEach((type) => {
 			const option = document.createElement("option");
@@ -126,13 +126,12 @@ export function initArtistAddNewItemPage() {
 	addNewItemForm.removeEventListener("submit", handleFormSubmit);
 	cancelBtn.removeEventListener("click", handleCancel);
 
-	// Add new event listeners
+	//  Add new event listeners
 	addNewItemForm.addEventListener("submit", handleFormSubmit);
 	cancelBtn.addEventListener("click", handleCancel);
 }
 
 function handleFormSubmit(e) {
-	console.log("Add New Item button clicked");
 	e.preventDefault();
 	addOrEditItem();
 	location.hash = "#artistItemsPage";
@@ -141,26 +140,6 @@ function handleFormSubmit(e) {
 function handleCancel() {
 	resetValues();
 	location.hash = "#artistItemsPage";
-
-	// addNewItemForm.addEventListener(
-	// 	"submit",
-	// 	(e) => {
-	// 		console.log("clicked button");
-	// 		e.preventDefault();
-	// 		addOrEditItem();
-	// 		location.hash = "#artistItemsPage";
-	// 	},
-	// 	{ once: true }
-	// );
-
-	// cancelBtn.addEventListener(
-	// 	"click",
-	// 	() => {
-	// 		resetValues();
-	// 		location.hash = "#artistItemsPage";
-	// 	},
-	// 	{ once: true }
-	// );
 	setCapturedImageUrl("");
 }
 
