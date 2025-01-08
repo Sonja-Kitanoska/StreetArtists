@@ -22,7 +22,7 @@ export function renderCards(items, mode = "visitor") {
 
 	filteredItems.forEach((item, index) => {
 		const artistCard = document.createElement("div");
-		artistCard.classList.add("artist-card", "mt-4");
+		artistCard.classList.add("artist-card", "pt-4");
 		artistCard.setAttribute("id", `${item.id}`);
 
 		const cardBodyClass =
