@@ -1,11 +1,8 @@
 import { getItems } from "../../utils/globals.js";
-import { itemTypes } from "../../../data/db.js";
 import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/header.js";
 
 const checkContainer = document.querySelector(".check-container");
-const artistSelect = document.querySelector("#artist");
-const typeSelect = document.querySelector("#type");
 const offcanvasElement = document.querySelector("#offcanvasExample");
 
 export function initVisitorListing() {
@@ -20,37 +17,19 @@ export function initVisitorListing() {
 		location.hash = "#visitorListing";
 	}
 
-	resetFilters();
-
-	document.body.style.overflow = "auto";
-
 	let offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
 	if (!offcanvasInstance) {
 		offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
 	}
 	offcanvasInstance.show();
 
+	offcanvasElement.addEventListener("shown.bs.offcanvas", () => {
+		document.body.style.overflow = "scroll";
+	});
+
 	const filtersImage = document.querySelector(".filters-image");
 	filtersImage.addEventListener("click", () => {
 		location.hash = "#visitorFilters";
-	});
-
-	fetch("https://jsonplaceholder.typicode.com/users")
-		.then((response) => response.json())
-		.then((users) => {
-			users.forEach((user) => {
-				const option = document.createElement("option");
-				option.value = user.name.toLowerCase();
-				option.textContent = user.name;
-				artistSelect.appendChild(option);
-			});
-		});
-
-	itemTypes.forEach((type) => {
-		const option = document.createElement("option");
-		option.value = type.toLowerCase();
-		option.textContent = type;
-		typeSelect.appendChild(option);
 	});
 
 	function filterItems() {
@@ -88,12 +67,4 @@ export function initVisitorListing() {
 	checkContainer.addEventListener("click", () => {
 		location.hash = "#visitorListing";
 	});
-}
-
-export function resetFilters() {
-	artistSelect.innerHTML = '<option value="">Choose</option>';
-	typeSelect.innerHTML = '<option value="">Choose</option>';
-	document.querySelector("#itemTitle").value = "";
-	document.querySelector("#minPrice").value = "";
-	document.querySelector("#maxPrice").value = "";
 }
