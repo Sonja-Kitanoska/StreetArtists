@@ -9,55 +9,36 @@ export function updateHeader(type = "landingPage") {
 	const headerText = document.querySelector("#headerText");
 	const headerTextArtist = document.querySelector("#headerTextArtist");
 
+	function toggleVisibility(element, show) {
+		element.classList.toggle("d-none", !show);
+		element.classList.toggle("d-block", show);
+	}
+
 	if (type === "landingPage") {
-		logo.classList.remove("d-block");
-		logo.classList.add("d-none");
-
-		iconContainer.classList.remove("d-block");
-		iconContainer.classList.add("d-none");
-
-		headerText.classList.remove("d-none");
-		headerText.classList.add("d-block");
-
-		headerTextArtist.classList.remove("d-block");
-		headerTextArtist.classList.add("d-none");
+		toggleVisibility(logo, false);
+		toggleVisibility(iconContainer, false);
+		toggleVisibility(headerText, true);
+		toggleVisibility(headerTextArtist, false);
 		return;
 	}
 
-	logo.classList.remove("d-none");
-	logo.classList.add("d-block");
-
-	iconContainer.classList.remove("d-none");
-	iconContainer.classList.add("d-block");
+	toggleVisibility(logo, true);
+	toggleVisibility(iconContainer, true);
 
 	if (type === "visitor") {
-		auctionIcon.classList.remove("d-none");
-		auctionIcon.classList.add("d-block");
+		toggleVisibility(auctionIcon, true);
+		toggleVisibility(menu, false);
+		toggleVisibility(headerText, true);
+		toggleVisibility(headerTextArtist, false);
 
 		auctionIcon.addEventListener("click", () => {
 			location.hash = "auction";
 		});
-
-		menu.classList.remove("d-block");
-		menu.classList.add("d-none");
-
-		headerText.classList.remove("d-none");
-		headerText.classList.add("d-block");
-
-		headerTextArtist.classList.remove("d-block");
-		headerTextArtist.classList.add("d-none");
 	} else if (type === "artist") {
-		menu.classList.remove("d-none");
-		menu.classList.add("d-block");
-
-		auctionIcon.classList.remove("d-block");
-		auctionIcon.classList.add("d-none");
-
-		headerText.classList.remove("d-block");
-		headerText.classList.add("d-none");
-
-		headerTextArtist.classList.remove("d-none");
-		headerTextArtist.classList.add("d-block");
+		toggleVisibility(menu, true);
+		toggleVisibility(auctionIcon, false);
+		toggleVisibility(headerText, false);
+		toggleVisibility(headerTextArtist, true);
 
 		const currentArtist = getArtist();
 		headerTextArtist.textContent = currentArtist;
