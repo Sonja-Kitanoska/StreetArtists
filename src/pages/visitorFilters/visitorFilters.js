@@ -41,7 +41,9 @@ export function initVisitorFilters() {
 	const closeIcon = document.querySelector(".close-icon");
 	closeIcon.addEventListener("click", () => {
 		document.body.style.overflow = "auto";
-		location.hash = "visitorListing";
+		setTimeout(() => {
+			location.hash = "visitorListing";
+		}, 300);
 	});
 
 	checkContainer.addEventListener("click", () => {

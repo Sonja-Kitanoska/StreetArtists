@@ -6,14 +6,7 @@ import { updateHeader } from "../../utils/header.js";
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");
 const typeSelect = document.querySelector("#type");
-
-export function resetFilters() {
-	artistSelect.innerHTML = '<option value="">Choose</option>';
-	typeSelect.innerHTML = '<option value="">Choose</option>';
-	document.querySelector("#itemTitle").value = "";
-	document.querySelector("#minPrice").value = "";
-	document.querySelector("#maxPrice").value = "";
-}
+const offcanvasElement = document.querySelector("#offcanvasExample");
 
 export function initVisitorListing() {
 	updateHeader("visitor");
@@ -30,6 +23,12 @@ export function initVisitorListing() {
 	resetFilters();
 
 	document.body.style.overflow = "auto";
+
+	let offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+	if (!offcanvasInstance) {
+		offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
+	}
+	offcanvasInstance.show();
 
 	const filtersImage = document.querySelector(".filters-image");
 	filtersImage.addEventListener("click", () => {
@@ -91,4 +90,12 @@ export function initVisitorListing() {
 	checkContainer.addEventListener("click", () => {
 		location.hash = "#visitorListing";
 	});
+}
+
+export function resetFilters() {
+	artistSelect.innerHTML = '<option value="">Choose</option>';
+	typeSelect.innerHTML = '<option value="">Choose</option>';
+	document.querySelector("#itemTitle").value = "";
+	document.querySelector("#minPrice").value = "";
+	document.querySelector("#maxPrice").value = "";
 }
