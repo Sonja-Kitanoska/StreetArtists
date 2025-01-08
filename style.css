@@ -39,7 +39,6 @@ body {
 }
 
 /* MENU  */
-
 .menu-links {
 	background-color: #a16a5e;
 	padding: 10px;
@@ -57,12 +56,8 @@ body {
 }
 
 /* HELPER CLASSES */
+
 /* FONTS */
-
-/* .roboto {
-	font-family: "Roboto", serif;
-} */
-
 .roboto-300 {
 	font-weight: 300;
 }
@@ -86,8 +81,21 @@ body {
 	font-size: 30px;
 }
 
-/* COLORS */
+/* WARNING MESSAGE */
+#warningMessage {
+	display: none;
+	background-color: #a16a5e;
+	color: #fcebd5;
+	font-size: 18px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: 100%;
+}
 
+/* COLORS */
 .sand-bg {
 	background-color: #fcebd5;
 }
@@ -154,18 +162,6 @@ body {
 
 .font-size-32 {
 	font-size: 32px;
-}
-#warningMessage {
-	display: none;
-	background-color: #a16a5e;
-	color: #fcebd5;
-	font-size: 18px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 10;
-	height: 100%;
 }
 
 @media (min-width: 768px) {

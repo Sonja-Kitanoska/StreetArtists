@@ -72,7 +72,6 @@ export function initVisitorListing() {
 			.value.trim()
 			.toLowerCase();
 
-		// Filter logic
 		const filteredItems = itemsList.filter((item) => {
 			const matchedTitle = item.title.toLowerCase().includes(titleFilter);
 			const matchedArtist = artistFilter

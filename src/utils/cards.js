@@ -13,10 +13,9 @@ export function renderCards(items, mode = "visitor") {
 
 	if (filteredItems.length === 0) {
 		cardsContainer.innerHTML = `
-            <div class="no-results">
-                <p>No items found.</p>
+            <div class="no-results reenie-beanie font-size-45">
+                <p class="mb-0">No items found.</p>
             </div>`;
-		cardsContainer.classList.add("h-100");
 		return;
 	}
 

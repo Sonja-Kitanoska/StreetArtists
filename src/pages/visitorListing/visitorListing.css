@@ -42,5 +42,8 @@
 .no-results {
 	text-align: center;
 	color: #a16a5e;
-	border: 1px solid #a16a5e;
+	height: calc(100vh - 69px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
