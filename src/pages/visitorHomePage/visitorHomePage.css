@@ -52,14 +52,9 @@
 	object-fit: cover;
 }
 
-/* Carousel */
 .carousel-item {
 	height: 244px;
 	font-size: 9px;
-}
-
-.dark-orange-bg {
-	background-color: #e09686;
 }
 
 .carousel-caption img {
