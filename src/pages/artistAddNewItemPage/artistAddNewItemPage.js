@@ -83,9 +83,11 @@ function addOrEditItem() {
 
 function initRetakeSnapshot() {
 	const imagePreview = takeSnapshotDiv.querySelector("img");
-	imagePreview.addEventListener("click", () => {
-		location.hash = "#artistCaptureImagePopup";
-	});
+	if (imagePreview) {
+		imagePreview.addEventListener("click", () => {
+			location.hash = "#artistCaptureImagePopup";
+		});
+	}
 }
 
 export function initArtistAddNewItemPage() {
@@ -96,11 +98,19 @@ export function initArtistAddNewItemPage() {
 		imageUrlInput.value = capturedImageUrl;
 	}
 
-	takeSnapshotDiv.innerHTML = `<img src="${
-		capturedImageUrl ||
-		imageUrlInput.value ||
-		"../../src/assets/fa-solid_camera.png"
-	}" alt="Captured Image" class="image-preview" />`;
+	if (capturedImageUrl) {
+		takeSnapshotDiv.innerHTML = `<img src="${capturedImageUrl}" alt="Captured Image" class="image-preview" />`;
+	} else if (imageUrlInput.value) {
+		takeSnapshotDiv.innerHTML = `<img src="${imageUrlInput.value}" alt="Captured Image" class="image-preview" />`;
+	} else {
+		takeSnapshotDiv.innerHTML = `	
+				<i class="fa-solid fa-camera"></i>
+				<p class="roboto-300 mb-0">Take a snapshot</p>	
+		`;
+	}
+	takeSnapshotDiv.addEventListener("click", () => {
+		location.hash = "#artistCaptureImagePopup";
+	});
 
 	itemsList = getItems();
 	artistItems = itemsList.filter((item) => item.artist === getArtist());
