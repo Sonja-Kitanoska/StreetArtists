@@ -8,6 +8,10 @@
 @import "./src/pages/auction/auction.css";
 @import "./src/pages/artistCaptureImagePopup/artistCaptureImagePopup.css";
 
+body {
+	font-family: "Roboto", serif;
+}
+
 .page {
 	display: none;
 }
@@ -55,8 +59,12 @@
 /* HELPER CLASSES */
 /* FONTS */
 
-.roboto {
+/* .roboto {
 	font-family: "Roboto", serif;
+} */
+
+.roboto-300 {
+	font-weight: 300;
 }
 
 .roboto-500 {
@@ -69,10 +77,6 @@
 
 .roboto-400 {
 	font-weight: 400;
-}
-
-.roboto-300 {
-	font-weight: 300;
 }
 
 .reenie-beanie {

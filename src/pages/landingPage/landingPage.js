@@ -1,14 +1,8 @@
-import {
-	setArtist,
-	updateHeader,
-	getRole,
-	setRole,
-} from "../../utils/globals.js";
+import { setArtist, updateHeader, setRole } from "../../utils/globals.js";
 
 const artistsSelect = document.querySelector("#artists");
 const artistDiv = document.querySelector(".artist-div");
 const header = document.querySelector(".header");
-const landingPageLogo = document.querySelector("#landingPageLogo");
 
 export function initLandingPage() {
 	updateHeader();
