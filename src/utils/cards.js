@@ -42,7 +42,7 @@ export function renderCards(items, mode = "visitor") {
 		const additionalDiv =
 			mode === "artist"
 				? `<div
-				class="card-buttons brown-bg gap-2 py-2 px-3"
+				class="card-buttons brown-bg gap-2 p-2"
 			>
 				<button
 					class="auction-btn roboto roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
@@ -107,7 +107,7 @@ export function renderCards(items, mode = "visitor") {
                     class="w-100 h-100"
                 />
             </div>
-            <div class="py-2 px-3 ${cardBodyClass}">
+            <div class="p-2 ${cardBodyClass}">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                         ${headerContent}
                     <span class="price-span ${priceSpanClass} py-1 px-2 font-size-12">$${item.price}</span>
