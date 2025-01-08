@@ -3,7 +3,7 @@ import { updateHeader } from "../../utils/header.js";
 
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
-const snapshotImg = document.getElementById("snapshotBtn");
+const snapshotBtn = document.getElementById("snapshotBtn");
 
 const constraints = {
 	video: {
