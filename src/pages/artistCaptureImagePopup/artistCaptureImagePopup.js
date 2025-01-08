@@ -3,7 +3,15 @@ import { updateHeader } from "../../utils/header.js";
 
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
-const camera = document.getElementById("camera");
+const snapshotImg = document.getElementById("snapshotBtn");
+
+const constraints = {
+	video: {
+		facingMode: {
+			ideal: "environment",
+		},
+	},
+};
 
 export function initArtistCaptureImagePopup() {
 	updateHeader("artist");
@@ -11,8 +19,8 @@ export function initArtistCaptureImagePopup() {
 	startStream();
 
 	const context = canvas.getContext("2d");
-	camera.addEventListener("click", () => {
-		context.drawImage(video, 0, 0, canvas.width, canvas.height);
+	snapshotBtn.addEventListener("click", () => {
+		context.drawImage(video, 0, 0);
 		canvas.style.display = "block";
 		setCapturedImageUrl(canvas.toDataURL("image/png"));
 
@@ -26,20 +34,21 @@ export function initArtistCaptureImagePopup() {
 
 async function startStream() {
 	try {
-		const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-		handleCamera(stream);
+		const stream = await navigator.mediaDevices.getUserMedia(constraints);
+		video.srcObject = stream;
+		video.onloadedmetadata = () => {
+			canvas.width = video.videoWidth;
+			canvas.height = video.videoHeight;
+		};
 	} catch (err) {
-		console.error("Error accessing camera: ", err);
+		if (err.name === "NotAllowedError") {
+			alert("You need to allow camera access to proceed.");
+		} else if (err.name === "NotFoundError") {
+			alert("No camera found. Please connect a camera and try again.");
+		} else {
+			alert("An unexpected error occurred while trying to access the camera.");
+		}
 	}
-}
-
-function handleCamera(stream) {
-	window.stream = stream;
-	video.srcObject = stream;
-	video.onloadedmetadata = () => {
-		canvas.width = video.videoWidth;
-		canvas.height = video.videoHeight;
-	};
 }
 
 function stopCamera() {
