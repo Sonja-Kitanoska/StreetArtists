@@ -30,28 +30,9 @@ export function initAuction() {
 	let role = getRole();
 	let currentArtist = getArtist();
 
-	if (role === "artist") {
-		bidsVisitorContainer.classList.add("d-none");
-		bidsArtistContainer.classList.remove("d-none");
-	} else if (role === "visitor") {
-		bidsArtistContainer.classList.add("d-none");
-		bidsVisitorContainer.classList.remove("d-none");
-	}
+	toggleBidContainers(role);
 
-	// no-auction message
-	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
-	const bidding = document.querySelector(".bidding");
-	const noAuctionMessage = document.querySelector("#noAuctionMessage");
-
-	if (filteredItems.length === 0) {
-		bidding.classList.add("hidden");
-		if (noAuctionMessage) {
-			noAuctionMessage.classList.remove("hidden");
-		}
-	} else {
-		bidding.classList.remove("hidden");
-		noAuctionMessage.classList.add("hidden");
-	}
+	displayNoAuctionMessage(itemsList);
 
 	initializeRoleBasedUI(role);
 
@@ -112,33 +93,14 @@ export function initAuction() {
 		const bidAmount = parseFloat(bidAmountInput.value);
 
 		if (isNaN(bidAmount) || bidAmount <= lastBid || bidAmount <= currentBid) {
-			const errMessage = document.querySelector(".err-message");
-			errMessage.classList.remove("d-none");
 			bidAmountInput.value = "";
 			confirmBidBtn.disabled = false;
-			setTimeout(() => {
-				errMessage.classList.add("d-none");
-			}, 1500);
+			showErrorMessage();
 			return;
 		}
 
 		try {
-			const formData = new FormData();
-			formData.append("amount", bidAmount);
-
-			const response = await fetch(
-				"https://projects.brainster.tech/bidding/api",
-				{
-					method: "POST",
-					body: formData,
-				}
-			);
-
-			if (!response.ok) {
-				throw new Error("Failed to place the bid. Please try again.");
-			}
-
-			const data = await response.json();
+			const data = await placeBid(bidAmount);
 
 			if (data) {
 				if (data.isBidding) {
@@ -220,25 +182,6 @@ export function initAuction() {
 		setAuctionTimer(remainingTime);
 		updateTimerDisplay();
 		startAuctionTimer();
-	}
-
-	function addBidMessage(message, role) {
-		const bidsVisitorContainer = document.querySelector(
-			"#bidsVisitorContainer"
-		);
-		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
-		const li = document.createElement("li");
-		li.innerHTML = message;
-
-		if (role === "artist") {
-			bidsArtistContainer.appendChild(li);
-		} else if (role === "visitor") {
-			bidsVisitorContainer.appendChild(li);
-		}
-
-		let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
-		storedBids.push({ message, role });
-		localStorage.setItem("bids", JSON.stringify(storedBids));
 	}
 
 	function restoreBidMessages(role) {
@@ -327,7 +270,7 @@ export function initAuction() {
 		localStorage.removeItem("auctionOver");
 		setTimeout(() => {
 			location.reload();
-		}, 5000);
+		}, 8000);
 	}
 
 	function stopAuctionTimer() {
@@ -341,6 +284,18 @@ export function initAuction() {
 	}
 }
 
+// Toggle Containers
+function toggleBidContainers(role) {
+	if (role === "artist") {
+		bidsVisitorContainer.classList.add("d-none");
+		bidsArtistContainer.classList.remove("d-none");
+	} else if (role === "visitor") {
+		bidsArtistContainer.classList.add("d-none");
+		bidsVisitorContainer.classList.remove("d-none");
+	}
+}
+
+// Initialize UI based on role
 function initializeRoleBasedUI(role) {
 	const isArtist = role === "artist";
 
@@ -355,4 +310,64 @@ function initializeRoleBasedUI(role) {
 		confirmBidBtn.textContent = "Confirm Bid";
 		bidsVisitorContainer.classList.remove("d-none");
 	}
+}
+
+// No-auction message
+function displayNoAuctionMessage(itemsList) {
+	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
+	const bidding = document.querySelector(".bidding");
+	const noAuctionMessage = document.querySelector("#noAuctionMessage");
+
+	if (filteredItems.length === 0) {
+		bidding.classList.add("hidden");
+		if (noAuctionMessage) {
+			noAuctionMessage.classList.remove("hidden");
+		}
+	} else {
+		bidding.classList.remove("hidden");
+		noAuctionMessage.classList.add("hidden");
+	}
+}
+
+// Show error message
+function showErrorMessage() {
+	const errMessage = document.querySelector(".err-message");
+	errMessage.classList.remove("d-none");
+
+	setTimeout(() => {
+		errMessage.classList.add("d-none");
+	}, 1500);
+}
+
+// Post request to the API
+async function placeBid(bidAmount) {
+	const formData = new FormData();
+	formData.append("amount", bidAmount);
+
+	const response = await fetch("https://projects.brainster.tech/bidding/api", {
+		method: "POST",
+		body: formData,
+	});
+
+	if (!response.ok) {
+		throw new Error("Failed to place the bid. Please try again.");
+	}
+
+	return response.json();
+}
+
+// addBidMessage
+function addBidMessage(message, role) {
+	const li = document.createElement("li");
+	li.innerHTML = message;
+
+	if (role === "artist") {
+		bidsArtistContainer.appendChild(li);
+	} else if (role === "visitor") {
+		bidsVisitorContainer.appendChild(li);
+	}
+
+	let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
+	storedBids.push({ message, role });
+	localStorage.setItem("bids", JSON.stringify(storedBids));
 }

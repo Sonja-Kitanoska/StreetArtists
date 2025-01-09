@@ -33,7 +33,7 @@
 }
 
 .bids-list {
-	height: 200px;
+	max-height: 200px;
 	overflow: auto;
 	position: relative;
 	color: #a16a5e;
@@ -118,6 +118,10 @@
 	font-weight: bold;
 }
 
+.hidden {
+	display: none;
+}
+
 @media (min-width: 768px) {
 	.bidding {
 		display: flex;
@@ -129,8 +133,4 @@
 	.bidding-form {
 		max-width: 500px;
 	}
-}
-
-.hidden {
-	display: none;
 }
