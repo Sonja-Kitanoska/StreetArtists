@@ -30,9 +30,28 @@ export function initAuction() {
 	let role = getRole();
 	let currentArtist = getArtist();
 
-	toggleBidContainers(role);
+	if (role === "artist") {
+		bidsVisitorContainer.classList.add("d-none");
+		bidsArtistContainer.classList.remove("d-none");
+	} else if (role === "visitor") {
+		bidsArtistContainer.classList.add("d-none");
+		bidsVisitorContainer.classList.remove("d-none");
+	}
 
-	displayNoAuctionMessage(itemsList);
+	// no-auction message
+	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
+	const bidding = document.querySelector(".bidding");
+	const noAuctionMessage = document.querySelector("#noAuctionMessage");
+
+	if (filteredItems.length === 0) {
+		bidding.classList.add("hidden");
+		if (noAuctionMessage) {
+			noAuctionMessage.classList.remove("hidden");
+		}
+	} else {
+		bidding.classList.remove("hidden");
+		noAuctionMessage.classList.add("hidden");
+	}
 
 	initializeRoleBasedUI(role);
 
@@ -89,17 +108,38 @@ export function initAuction() {
 
 		confirmBidBtn.disabled = true;
 
+		const bidAmountInput = document.querySelector("#bidAmount");
 		const bidAmount = parseFloat(bidAmountInput.value);
 
 		if (isNaN(bidAmount) || bidAmount <= lastBid || bidAmount <= currentBid) {
+			const errMessage = document.querySelector(".err-message");
+			errMessage.classList.remove("d-none");
 			bidAmountInput.value = "";
 			confirmBidBtn.disabled = false;
-			showErrorMessage();
+			setTimeout(() => {
+				errMessage.classList.add("d-none");
+			}, 1500);
 			return;
 		}
 
 		try {
-			const data = await placeBid(bidAmount);
+			const formData = new FormData();
+			formData.append("amount", bidAmount);
+
+			const response = await fetch(
+				"https://projects.brainster.tech/bidding/api",
+				{
+					method: "POST",
+					body: formData,
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error("Failed to place the bid. Please try again.");
+			}
+
+			const data = await response.json();
+
 			if (data) {
 				if (data.isBidding) {
 					const upBid = data.bidAmount;
@@ -169,11 +209,67 @@ export function initAuction() {
 		}, 1000);
 	}
 
+	function updateTimerDisplay() {
+		const minutes = Math.floor(remainingTime / 60);
+		const seconds = remainingTime % 60;
+		timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+	}
+
 	function resetAuctionTimer() {
 		remainingTime = 120;
 		setAuctionTimer(remainingTime);
 		updateTimerDisplay();
 		startAuctionTimer();
+	}
+
+	function addBidMessage(message, role) {
+		const bidsVisitorContainer = document.querySelector(
+			"#bidsVisitorContainer"
+		);
+		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
+		const li = document.createElement("li");
+		li.innerHTML = message;
+
+		if (role === "artist") {
+			bidsArtistContainer.appendChild(li);
+		} else if (role === "visitor") {
+			bidsVisitorContainer.appendChild(li);
+		}
+
+		let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
+		storedBids.push({ message, role });
+		localStorage.setItem("bids", JSON.stringify(storedBids));
+	}
+
+	function restoreBidMessages(role) {
+		const bidsVisitorContainer = document.querySelector(
+			"#bidsVisitorContainer"
+		);
+		const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
+		bidsArtistContainer.innerHTML = "";
+		bidsVisitorContainer.innerHTML = "";
+
+		const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
+		storedBids.forEach(({ message, role: storedRole }) => {
+			const li = document.createElement("li");
+			li.innerHTML = message;
+			if (storedRole === "artist") {
+				bidsArtistContainer.appendChild(li);
+			} else if (storedRole === "visitor") {
+				bidsVisitorContainer.appendChild(li);
+			}
+		});
+
+		const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
+		if (auctionState && auctionState.finalBid) {
+			const auctionEndMessage = document.createElement("p");
+			auctionEndMessage.classList.add("itemSold");
+			auctionEndMessage.textContent = `Auction is over. Item sold for $${auctionState.finalBid}.`;
+			bidsArtistContainer.appendChild(auctionEndMessage);
+			bidsVisitorContainer.appendChild(auctionEndMessage);
+
+			isAuctionOver = true;
+		}
 	}
 
 	function endAuction() {
@@ -234,23 +330,17 @@ export function initAuction() {
 		}, 5000);
 	}
 
+	function stopAuctionTimer() {
+		if (timerInterval) {
+			clearInterval(timerInterval);
+			timerInterval = null;
+		}
+	}
 	if (auctionItem) {
 		startAuctionTimer();
 	}
 }
 
-// Toggle Containers
-function toggleBidContainers(role) {
-	if (role === "artist") {
-		bidsVisitorContainer.classList.add("d-none");
-		bidsArtistContainer.classList.remove("d-none");
-	} else if (role === "visitor") {
-		bidsArtistContainer.classList.add("d-none");
-		bidsVisitorContainer.classList.remove("d-none");
-	}
-}
-
-// Initialize UI based on role
 function initializeRoleBasedUI(role) {
 	const isArtist = role === "artist";
 
@@ -264,112 +354,5 @@ function initializeRoleBasedUI(role) {
 	} else {
 		confirmBidBtn.textContent = "Confirm Bid";
 		bidsVisitorContainer.classList.remove("d-none");
-	}
-}
-
-// No-auction message
-function displayNoAuctionMessage(itemsList) {
-	const filteredItems = itemsList.filter((item) => item.isAuctioning === true);
-	const bidding = document.querySelector(".bidding");
-	const noAuctionMessage = document.querySelector("#noAuctionMessage");
-
-	if (filteredItems.length === 0) {
-		bidding.classList.add("hidden");
-		if (noAuctionMessage) {
-			noAuctionMessage.classList.remove("hidden");
-		}
-	} else {
-		bidding.classList.remove("hidden");
-		noAuctionMessage.classList.add("hidden");
-	}
-}
-
-// Show error message
-function showErrorMessage() {
-	const errMessage = document.querySelector(".err-message");
-	errMessage.classList.remove("d-none");
-
-	setTimeout(() => {
-		errMessage.classList.add("d-none");
-	}, 1500);
-}
-
-// Post request to the API
-async function placeBid(bidAmount) {
-	const formData = new FormData();
-	formData.append("amount", bidAmount);
-
-	const response = await fetch("https://projects.brainster.tech/bidding/api", {
-		method: "POST",
-		body: formData,
-	});
-
-	if (!response.ok) {
-		throw new Error("Failed to place the bid. Please try again.");
-	}
-
-	return response.json();
-}
-
-// Add bid message
-function addBidMessage(message, role) {
-	const bidsVisitorContainer = document.querySelector("#bidsVisitorContainer");
-	const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
-	const li = document.createElement("li");
-	li.innerHTML = message;
-
-	if (role === "artist") {
-		bidsArtistContainer.appendChild(li);
-	} else if (role === "visitor") {
-		bidsVisitorContainer.appendChild(li);
-	}
-
-	let storedBids = JSON.parse(localStorage.getItem("bids")) || [];
-	storedBids.push({ message, role });
-	localStorage.setItem("bids", JSON.stringify(storedBids));
-}
-
-// Restore bid messages
-function restoreBidMessages(role) {
-	const bidsVisitorContainer = document.querySelector("#bidsVisitorContainer");
-	const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
-	bidsArtistContainer.innerHTML = "";
-	bidsVisitorContainer.innerHTML = "";
-
-	const storedBids = JSON.parse(localStorage.getItem("bids")) || [];
-	storedBids.forEach(({ message, role: storedRole }) => {
-		const li = document.createElement("li");
-		li.innerHTML = message;
-		if (storedRole === "artist") {
-			bidsArtistContainer.appendChild(li);
-		} else if (storedRole === "visitor") {
-			bidsVisitorContainer.appendChild(li);
-		}
-	});
-
-	const auctionState = JSON.parse(localStorage.getItem("auctionOver"));
-	if (auctionState && auctionState.finalBid) {
-		const auctionEndMessage = document.createElement("p");
-		auctionEndMessage.classList.add("itemSold");
-		auctionEndMessage.textContent = `Auction is over. Item sold for $${auctionState.finalBid}.`;
-		bidsArtistContainer.appendChild(auctionEndMessage);
-		bidsVisitorContainer.appendChild(auctionEndMessage);
-
-		isAuctionOver = true;
-	}
-}
-
-// Update timer display
-function updateTimerDisplay() {
-	const minutes = Math.floor(remainingTime / 60);
-	const seconds = remainingTime % 60;
-	timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-}
-
-// Stop auction timer
-function stopAuctionTimer() {
-	if (timerInterval) {
-		clearInterval(timerInterval);
-		timerInterval = null;
 	}
 }
