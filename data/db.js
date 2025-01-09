@@ -7,9 +7,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "painting",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/1/300/200",
 		price: 493,
 		artist: "Leanne Graham",
 		dateCreated: "2024-12-27T11:18:10.662Z",
@@ -24,9 +22,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "sculpture",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/2/300/200",
 		price: 1192,
 		artist: "Ervin Howell",
 		dateCreated: "2024-12-25T12:15:47.203Z",
@@ -41,9 +37,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "digital",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/3/300/200",
 		price: 426,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-10-11T21:35:03.114Z",
@@ -56,9 +50,7 @@ export const items = [
 		id: 4,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/4/300/200",
 		price: 407,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-08T08:41:23.084Z",
@@ -73,9 +65,7 @@ export const items = [
 		id: 5,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/5/300/200",
 		price: 1048,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-10-09T16:13:44.404Z",
@@ -90,9 +80,7 @@ export const items = [
 		id: 6,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/6/300/200",
 		price: 2879,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-10-05T00:02:09.889Z",
@@ -107,9 +95,7 @@ export const items = [
 		id: 7,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/7/300/200",
 		price: 1076,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-09-27T13:05:58.800Z",
@@ -124,9 +110,7 @@ export const items = [
 		id: 8,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/8/300/200",
 		price: 1250,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-09-28T11:36:45.761Z",
@@ -141,9 +125,7 @@ export const items = [
 		id: 9,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/9/300/200",
 		price: 824,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-09-26T06:35:30.661Z",
@@ -158,9 +140,7 @@ export const items = [
 		id: 10,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/10/300/200",
 		price: 464,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-10-05T19:35:48.813Z",
@@ -175,9 +155,7 @@ export const items = [
 		id: 11,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/11/300/200",
 		price: 1987,
 		artist: "Leanne Graham",
 		dateCreated: "2024-12-24T23:55:05.775Z",
@@ -192,9 +170,7 @@ export const items = [
 		id: 12,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/12/300/200",
 		price: 2674,
 		artist: "Ervin Howell",
 		dateCreated: "2024-12-24T06:18:00.899Z",
@@ -209,9 +185,7 @@ export const items = [
 		id: 13,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/13/300/200",
 		price: 2444,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-09-27T02:01:35.788Z",
@@ -226,9 +200,7 @@ export const items = [
 		id: 14,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/14/300/200",
 		price: 1106,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-14T00:56:53.686Z",
@@ -243,9 +215,7 @@ export const items = [
 		id: 15,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/15/300/200",
 		price: 1503,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-09-17T05:38:25.878Z",
@@ -260,9 +230,7 @@ export const items = [
 		id: 16,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/16/300/200",
 		price: 2450,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-09-23T11:21:03.674Z",
@@ -277,9 +245,7 @@ export const items = [
 		id: 17,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/17/300/200",
 		price: 2575,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-10-05T09:15:24.734Z",
@@ -294,9 +260,7 @@ export const items = [
 		id: 18,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/18/300/200",
 		price: 2981,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-10-13T06:44:47.046Z",
@@ -311,9 +275,7 @@ export const items = [
 		id: 19,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/19/300/200",
 		price: 1782,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-10-05T16:37:13.364Z",
@@ -328,9 +290,7 @@ export const items = [
 		id: 20,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/20/300/200",
 		price: 2963,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-09-27T22:48:52.136Z",
@@ -347,9 +307,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "painting",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/21/300/200",
 		price: 2695,
 		artist: "Leanne Graham",
 		dateCreated: "2024-09-22T18:27:33.104Z",
@@ -364,9 +322,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "sculpture",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/22/300/200",
 		price: 2160,
 		artist: "Ervin Howell",
 		dateCreated: "2024-09-22T04:32:49.377Z",
@@ -381,9 +337,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "digital",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/23/300/200",
 		price: 899,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-10-10T13:54:13.530Z",
@@ -396,9 +350,7 @@ export const items = [
 		id: 24,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/24/300/200",
 		price: 1508,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-12T16:19:06.191Z",
@@ -413,9 +365,7 @@ export const items = [
 		id: 25,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/25/300/200",
 		price: 2372,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-09-27T08:11:01.522Z",
@@ -430,9 +380,7 @@ export const items = [
 		id: 26,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/26/300/200",
 		price: 1251,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-09-20T12:09:06.893Z",
@@ -447,9 +395,7 @@ export const items = [
 		id: 27,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/27/300/200",
 		price: 2806,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-09-24T12:46:11.922Z",
@@ -464,9 +410,7 @@ export const items = [
 		id: 28,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/28/300/200",
 		price: 1254,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-09-17T12:26:59.673Z",
@@ -481,9 +425,7 @@ export const items = [
 		id: 29,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/29/300/200",
 		price: 2109,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-10-01T08:58:12.712Z",
@@ -498,9 +440,7 @@ export const items = [
 		id: 30,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/30/300/200",
 		price: 2774,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-10-10T22:47:21.397Z",
@@ -515,9 +455,7 @@ export const items = [
 		id: 31,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/31/300/200",
 		price: 2582,
 		artist: "Leanne Graham",
 		dateCreated: "2024-10-06T23:42:12.393Z",
@@ -532,9 +470,7 @@ export const items = [
 		id: 32,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/32/300/200",
 		price: 2294,
 		artist: "Ervin Howell",
 		dateCreated: "2024-10-11T11:07:03.469Z",
@@ -549,9 +485,7 @@ export const items = [
 		id: 33,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/33/300/200",
 		price: 1373,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-10-04T10:01:31.059Z",
@@ -566,9 +500,7 @@ export const items = [
 		id: 34,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/34/300/200",
 		price: 1306,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-14T15:17:25.427Z",
@@ -583,9 +515,7 @@ export const items = [
 		id: 35,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/35/300/200",
 		price: 396,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-10-12T14:31:19.961Z",
@@ -600,9 +530,7 @@ export const items = [
 		id: 36,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/36/300/200",
 		price: 1987,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-10-02T18:58:13.612Z",
@@ -617,9 +545,7 @@ export const items = [
 		id: 37,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/37/300/200",
 		price: 2064,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-09-26T02:03:07.885Z",
@@ -634,9 +560,7 @@ export const items = [
 		id: 38,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/38/300/200",
 		price: 2248,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-10-14T03:14:50.380Z",
@@ -651,9 +575,7 @@ export const items = [
 		id: 39,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/39/300/200",
 		price: 1836,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-10-07T01:46:43.848Z",
@@ -668,9 +590,7 @@ export const items = [
 		id: 40,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/40/300/200",
 		price: 1301,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-09-29T11:37:19.309Z",
@@ -687,9 +607,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "painting",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/41/300/200",
 		price: 2225,
 		artist: "Leanne Graham",
 		dateCreated: "2024-10-05T09:31:52.894Z",
@@ -704,9 +622,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "sculpture",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/42/300/200",
 		price: 685,
 		artist: "Ervin Howell",
 		dateCreated: "2024-10-14T11:08:11.720Z",
@@ -721,9 +637,7 @@ export const items = [
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
 		type: "digital",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/43/300/200",
 		price: 2541,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-10-06T08:45:17.754Z",
@@ -736,9 +650,7 @@ export const items = [
 		id: 44,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/44/300/200",
 		price: 584,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-02T06:37:17.088Z",
@@ -753,9 +665,7 @@ export const items = [
 		id: 45,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/45/300/200",
 		price: 1552,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-09-23T18:57:59.642Z",
@@ -770,9 +680,7 @@ export const items = [
 		id: 46,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/46/300/200",
 		price: 2178,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-09-22T14:01:13.319Z",
@@ -787,9 +695,7 @@ export const items = [
 		id: 47,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/47/300/200",
 		price: 930,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-09-22T07:18:36.614Z",
@@ -804,9 +710,7 @@ export const items = [
 		id: 48,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/48/300/200",
 		price: 1344,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-10-14T04:01:21.647Z",
@@ -821,9 +725,7 @@ export const items = [
 		id: 49,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/49/300/200",
 		price: 1281,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-10-12T06:12:10.994Z",
@@ -838,9 +740,7 @@ export const items = [
 		id: 50,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/50/300/200",
 		price: 1980,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-09-25T21:07:38.698Z",
@@ -855,9 +755,7 @@ export const items = [
 		id: 51,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/51/300/200",
 		price: 1528,
 		artist: "Leanne Graham",
 		dateCreated: "2024-09-19T21:26:02.761Z",
@@ -872,9 +770,7 @@ export const items = [
 		id: 52,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/52/300/200",
 		price: 571,
 		artist: "Ervin Howell",
 		dateCreated: "2024-09-30T18:38:37.672Z",
@@ -889,9 +785,7 @@ export const items = [
 		id: 53,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/53/300/200",
 		price: 1936,
 		artist: "Clementine Bauch",
 		dateCreated: "2024-09-20T15:49:08.651Z",
@@ -906,9 +800,7 @@ export const items = [
 		id: 54,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/54/300/200",
 		price: 1619,
 		artist: "Patricia Lebsack",
 		dateCreated: "2024-10-14T20:35:04.724Z",
@@ -923,9 +815,7 @@ export const items = [
 		id: 55,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/55/300/200",
 		price: 1246,
 		artist: "Chelsey Dietrich",
 		dateCreated: "2024-10-13T13:32:36.818Z",
@@ -940,9 +830,7 @@ export const items = [
 		id: 56,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/56/300/200",
 		price: 2643,
 		artist: "Mrs. Dennis Schulist",
 		dateCreated: "2024-10-13T06:22:14.616Z",
@@ -957,9 +845,7 @@ export const items = [
 		id: 57,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/57/300/200",
 		price: 2254,
 		artist: "Kurtis Weissnat",
 		dateCreated: "2024-10-06T18:35:33.438Z",
@@ -974,9 +860,7 @@ export const items = [
 		id: 58,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/58/300/200",
 		price: 541,
 		artist: "Nicholas Runolfsdottir V",
 		dateCreated: "2024-10-12T01:44:48.629Z",
@@ -991,9 +875,7 @@ export const items = [
 		id: 59,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/59/300/200",
 		price: 2667,
 		artist: "Glenna Reichert",
 		dateCreated: "2024-09-27T01:56:31.030Z",
@@ -1008,9 +890,7 @@ export const items = [
 		id: 60,
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor...",
-		image: `https://picsum.photos/300/200?random=${Math.floor(
-			Math.random() * 1000
-		)}`,
+		image: "https://picsum.photos/id/60/300/200",
 		price: 1529,
 		artist: "Clementina DuBuque",
 		dateCreated: "2024-10-08T13:07:58.940Z",
