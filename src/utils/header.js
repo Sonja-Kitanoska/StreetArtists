@@ -1,6 +1,5 @@
 import { getArtist } from "./globals.js";
 
-// HEADER
 export function updateHeader(type = "landingPage") {
 	const logo = document.querySelector("#logo");
 	const iconContainer = document.querySelector(".icon-container");
