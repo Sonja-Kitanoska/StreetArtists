@@ -19,6 +19,7 @@ const imageUrlInput = artistAddNewItemPage.querySelector("#newItemImageUrl");
 const cancelBtn = document.querySelector("#cancelBtn");
 const newItemTypeSelect = document.querySelector("#newItemTypeSelect");
 const takeSnapshotDiv = document.querySelector(".take-snapshot");
+const addNewItemBtn = document.querySelector("#addNewItemBtn");
 
 let editingItem = undefined;
 let itemsList = getItems();
@@ -129,6 +130,9 @@ export function initArtistAddNewItemPage() {
 
 	if (editingItem) {
 		newItemTypeSelect.value = editingItem.type;
+		addNewItemBtn.textContent = "Save";
+	} else {
+		addNewItemBtn.textContent = "Add New Item";
 	}
 
 	initRetakeSnapshot();
