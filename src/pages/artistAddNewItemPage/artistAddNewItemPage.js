@@ -26,71 +26,6 @@ let itemsList = getItems();
 let artistItems;
 let capturedImageUrl = getCapturedUrl();
 
-export function editItem(id) {
-	editingItem = undefined;
-	itemsList = getItems();
-	const item = itemsList.find((item) => String(item.id) === id);
-	artistItems = itemsList.filter((item) => item.artist === getArtist());
-
-	titleInput.value = item.title;
-	descriptionTextarea.value = item.description;
-	newItemTypeSelect.value = item.type;
-	priceInput.value = item.price;
-	imageUrlInput.value = item.image || "";
-	isPublishedCheckbox.checked = item.isPublished;
-
-	editingItem = item;
-}
-
-function resetValues() {
-	titleInput.value = "";
-	descriptionTextarea.value = "";
-	newItemTypeSelect.value = "";
-	priceInput.value = "";
-	imageUrlInput.value = "";
-	isPublishedCheckbox.checked = true;
-}
-
-function addOrEditItem() {
-	if (editingItem) {
-		editingItem.title = titleInput.value;
-		editingItem.description = descriptionTextarea.value;
-		editingItem.type = newItemTypeSelect.value;
-		editingItem.image = imageUrlInput.value;
-		editingItem.price = priceInput.value;
-		editingItem.isPublished = isPublishedCheckbox.checked;
-
-		itemsList = itemsList.map((item) =>
-			item.id === editingItem.id ? editingItem : item
-		);
-	} else if (editingItem === undefined) {
-		const newItem = {
-			id: crypto.randomUUID(),
-			title: titleInput.value,
-			description: descriptionTextarea.value,
-			type: newItemTypeSelect.value,
-			image: imageUrlInput.value,
-			price: priceInput.value,
-			artist: getArtist(),
-			isPublished: isPublishedCheckbox.checked,
-			dateCreated: new Date().toISOString(),
-		};
-		itemsList.push(newItem);
-	}
-	artistItems = itemsList.filter((item) => item.artist === getArtist());
-	setItems(itemsList);
-	resetValues();
-}
-
-function initRetakeSnapshot() {
-	const imagePreview = takeSnapshotDiv.querySelector("img");
-	if (imagePreview) {
-		imagePreview.addEventListener("click", () => {
-			location.hash = "#artistCaptureImagePopup";
-		});
-	}
-}
-
 export function initArtistAddNewItemPage() {
 	updateHeader("artist");
 	capturedImageUrl = getCapturedUrl();
@@ -147,7 +82,11 @@ export function initArtistAddNewItemPage() {
 
 function handleFormSubmit(e) {
 	e.preventDefault();
-	addOrEditItem();
+	if (editingItem) {
+		updateItem();
+	} else {
+		createNewItem();
+	}
 	location.hash = "#artistItemsPage";
 }
 
@@ -159,4 +98,80 @@ function handleCancel() {
 
 export function resetEditingItem() {
 	editingItem = undefined;
+}
+
+// Read and populate item fields for editing
+export function editItem(id) {
+	editingItem = undefined;
+	itemsList = getItems();
+	const item = itemsList.find((item) => String(item.id) === id);
+	artistItems = itemsList.filter((item) => item.artist === getArtist());
+
+	titleInput.value = item.title;
+	descriptionTextarea.value = item.description;
+	newItemTypeSelect.value = item.type;
+	priceInput.value = item.price;
+	imageUrlInput.value = item.image || "";
+	isPublishedCheckbox.checked = item.isPublished;
+
+	editingItem = item;
+}
+
+// Reset input fields
+function resetValues() {
+	titleInput.value = "";
+	descriptionTextarea.value = "";
+	newItemTypeSelect.value = "";
+	priceInput.value = "";
+	imageUrlInput.value = "";
+	isPublishedCheckbox.checked = true;
+}
+
+// Create a new item
+function createNewItem() {
+	const newItem = {
+		id: crypto.randomUUID(),
+		title: titleInput.value,
+		description: descriptionTextarea.value,
+		type: newItemTypeSelect.value,
+		image: imageUrlInput.value,
+		price: priceInput.value,
+		artist: getArtist(),
+		isPublished: isPublishedCheckbox.checked,
+		dateCreated: new Date().toISOString(),
+	};
+	itemsList.push(newItem);
+	saveItems();
+}
+
+// Update an existing item
+function updateItem() {
+	if (editingItem) {
+		editingItem.title = titleInput.value;
+		editingItem.description = descriptionTextarea.value;
+		editingItem.type = newItemTypeSelect.value;
+		editingItem.image = imageUrlInput.value;
+		editingItem.price = priceInput.value;
+		editingItem.isPublished = isPublishedCheckbox.checked;
+
+		itemsList = itemsList.map((item) =>
+			item.id === editingItem.id ? editingItem : item
+		);
+		saveItems();
+	}
+}
+
+function saveItems() {
+	setItems(itemsList);
+	artistItems = itemsList.filter((item) => item.artist === getArtist());
+	resetValues();
+}
+
+function initRetakeSnapshot() {
+	const imagePreview = takeSnapshotDiv.querySelector("img");
+	if (imagePreview) {
+		imagePreview.addEventListener("click", () => {
+			location.hash = "#artistCaptureImagePopup";
+		});
+	}
 }
