@@ -17,6 +17,7 @@ const auctionDescription = document.querySelector("#auctionDescription");
 const timer = document.querySelector("#timerSpan");
 const bidsVisitorContainer = document.querySelector("#bidsVisitorContainer");
 const bidsArtistContainer = document.querySelector("#bidsArtistContainer");
+const bidAmountInput = document.querySelector("#bidAmount");
 
 let remainingTime = getAuctionTimer();
 let timerInterval = null;
@@ -294,7 +295,7 @@ export function initAuction() {
 
 		const artistMessageElement = document.createElement("p");
 		artistMessageElement.classList.add("itemSold");
-		if (auctionItem.artist === currentArtist) {
+		if (auctionItem.artist === currentArtist && lastBid) {
 			artistMessageElement.textContent = `Congratulations. Your artwork is sold for $${finalBid}.`;
 		} else {
 			artistMessageElement.textContent = auctionEndMessage;
@@ -324,6 +325,9 @@ export function initAuction() {
 		localStorage.removeItem("lastBid");
 		localStorage.removeItem("bids");
 		localStorage.removeItem("auctionOver");
+		setTimeout(() => {
+			location.reload();
+		}, 5000);
 	}
 
 	function stopAuctionTimer() {
@@ -342,6 +346,7 @@ function initializeRoleBasedUI(role) {
 
 	confirmBidBtn.disabled = isArtist;
 	confirmBidBtn.style.cursor = isArtist ? "not-allowed" : "pointer";
+	bidAmountInput.disabled = isArtist;
 
 	if (isArtist) {
 		confirmBidBtn.textContent = "Bidding Disabled for Artists";
