@@ -19,10 +19,10 @@
 			rel="stylesheet"
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<script
+		<!-- <script
 			src="https://kit.fontawesome.com/359c268938.js"
 			crossorigin="anonymous"
-		></script>
+		></script> -->
 		<script type="module" src="main.js" defer></script>
 	</head>
 
@@ -58,7 +58,7 @@
 					<i class="fa-solid fa-bars brown-text" type="button"></i>
 					<div class="menu-links d-none" id="menuLinks">
 						<ul
-							class="d-flex flex-column align-items-center justify-content-center p-0 roboto-300 font-size-30 list-unstyled mb-0"
+							class="d-flex flex-column align-items-center justify-content-center p-0 font-size-30 list-unstyled mb-0"
 						>
 							<li class="mb-1"><a href="#artistHomePage">Home</a></li>
 							<li class="mb-1"><a href="#artistItemsPage">Items</a></li>
@@ -87,7 +87,7 @@
 						<div class="select-container">
 							<select
 								id="artists"
-								class="roboto-300 dark-sand-bg brown-text d-flex justify-between ms-auto"
+								class="dark-sand-bg brown-text d-flex justify-between ms-auto"
 							></select>
 							<i class="fa-solid fa-caret-down select-icon"></i>
 						</div>
@@ -314,7 +314,7 @@
 					></div>
 				</div>
 				<div class="offcanvas-body sand-text relative">
-					<div class="filters-div roboto-300 sand-text d-flex flex-column">
+					<div class="filters-div sand-text d-flex flex-column">
 						<!-- By Item Title -->
 						<div class="filter-container">
 							<label for="itemTitle" class="w-100 mb-3">By Item Title</label>
@@ -323,7 +323,7 @@
 								id="itemTitle"
 								name="itemTitle"
 								placeholder="Label"
-								class="brown-bg sand-text mb-4 roboto-300 font-size-13"
+								class="brown-bg sand-text mb-4 font-size-13"
 							/>
 						</div>
 						<div class="divider mb-3"></div>
@@ -333,7 +333,7 @@
 							<select
 								id="artist"
 								name="artist"
-								class="brown-bg sand-text mb-4 roboto-300 font-size-13"
+								class="brown-bg sand-text mb-4 font-size-13"
 							></select>
 						</div>
 						<div class="divider mb-3"></div>
@@ -348,7 +348,7 @@
 										id="minPrice"
 										name="minPrice"
 										placeholder="Label"
-										class="brown-bg sand-text mb-4 roboto-300 font-size-13"
+										class="brown-bg sand-text mb-4 font-size-13"
 									/>
 								</div>
 								<div>
@@ -358,7 +358,7 @@
 										id="maxPrice"
 										name="maxPrice"
 										placeholder="Label"
-										class="brown-bg sand-text mb-4 roboto-300 font-size-13"
+										class="brown-bg sand-text mb-4 font-size-13"
 									/>
 								</div>
 							</div>
@@ -370,7 +370,7 @@
 							<select
 								id="type"
 								name="type"
-								class="brown-bg sand-text roboto-300 font-size-13"
+								class="brown-bg sand-text font-size-13"
 							></select>
 						</div>
 					</div>
@@ -405,7 +405,7 @@
 						<div
 							class="brown-bg p-2 h-100 d-flex flex-column align-items-center justify-content-between"
 						>
-							<p class="font-size-18 roboto-300 m-0">Total Items Sold</p>
+							<p class="font-size-18 m-0">Total Items Sold</p>
 							<p class="total-items-sold roboto-500 font-size-33"></p>
 						</div>
 					</div>
@@ -413,26 +413,24 @@
 						<div
 							class="brown-bg p-2 h-100 d-flex flex-column align-items-center justify-content-between"
 						>
-							<p class="font-size-18 roboto-300 m-0">Total Income</p>
+							<p class="font-size-18 m-0">Total Income</p>
 							<p class="total-income roboto-500 font-size-33"></p>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="dark-orange-bg p-2">
-							<p class="font-size-18 roboto-300 m-0">Live Auctioning Item</p>
+							<p class="font-size-18 m-0">Live Auctioning Item</p>
 							<p id="currentBid" class="m-0 roboto-500 font-size-33">
 								Currently not available
 							</p>
-							<p class="m-0 font-size-18 roboto-300">current bid</p>
+							<p class="m-0 font-size-18">current bid</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="container">
 				<div>
-					<p class="brown-text font-size-18 roboto-300">
-						Display my income for last
-					</p>
+					<p class="brown-text font-size-18">Display my income for last</p>
 					<div class="font-size-12 d-flex justify-content-between">
 						<button
 							id="last7"
@@ -467,7 +465,7 @@
 			<div class="dark-sand-bg py-3">
 				<div class="add-new-item-div-wrapper p-2 py-2 sand-bg w-100">
 					<div class="add-new-item-div py-4">
-						<p class="text-center m-0 roboto-300 brown-text font-size-18 p-3">
+						<p class="text-center m-0 brown-text font-size-18 p-3">
 							+ Add new item
 						</p>
 					</div>
@@ -486,64 +484,62 @@
 				>
 					<h2 class="roboto-500 font-size-25 mb-0">Add New Item</h2>
 					<div class="d-flex gap-2 align-items-center">
-						<label for="isPublishedCheckbox" class="roboto-300"
-							>Is published</label
-						>
+						<label for="isPublishedCheckbox">Is published</label>
 						<input type="checkbox" id="isPublishedCheckbox" checked />
 					</div>
 				</div>
 				<div class="w-100 mb-4">
-					<label for="newItemTitle" class="roboto-300">Title</label>
+					<label for="newItemTitle">Title</label>
 					<input
 						type="text"
 						id="newItemTitle"
 						name="newItemTitle"
 						required
-						class="w-100 brown-bg roboto-300"
+						class="w-100 brown-bg"
 					/>
 				</div>
 				<div class="mb-4">
-					<label for="newItemDescription" class="roboto-300">Description</label>
+					<label for="newItemDescription">Description</label>
 					<textarea
 						id="newItemDescription"
 						name="newItemDescription"
-						class="w-100 brown-bg roboto-300"
+						class="w-100 brown-bg"
 					></textarea>
 				</div>
 				<div class="row mb-4">
 					<div class="col-6">
 						<div class="d-flex flex-column">
-							<label for="newItemTypeSelect" class="roboto-300">Type</label>
+							<label for="newItemTypeSelect">Type</label>
 							<select
 								id="newItemTypeSelect"
 								name="newItemType"
-								class="brown-bg roboto-300 w-100"
+								class="brown-bg w-100"
 							></select>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="d-flex flex-column">
-							<label for="newItemPrice" class="roboto-300">Price</label>
+							<label for="newItemPrice">Price</label>
 							<input
 								type="number"
 								id="newItemPrice"
 								name="newItemPrice"
 								required
-								class="brown-bg roboto-300"
+								class="brown-bg"
 							/>
 						</div>
 					</div>
 				</div>
 				<div class="mb-4">
-					<label for="newItemImageUrl" class="roboto-300">Image URL</label>
+					<label for="newItemImageUrl">Image URL</label>
 					<input
 						type="text"
 						id="newItemImageUrl"
 						name="newItemImageUrl"
-						class="w-100 brown-bg roboto-300"
+						class="w-100 brown-bg"
 					/>
 				</div>
-				<p class="text-center roboto-300">or</p>
+				<p class="text-center">or</p>
 
 				<div
 					class="take-snapshot-container d-flex flex-column justify-content-center align-items-center gap-3"

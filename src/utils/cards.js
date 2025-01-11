@@ -45,7 +45,7 @@ export function renderCards(items, mode = "visitor") {
 				class="card-buttons brown-bg gap-2 p-2"
 			>
 				<button
-					class="auction-btn roboto roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+					class="auction-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
 						item.id
 					}" 
 
@@ -61,14 +61,14 @@ export function renderCards(items, mode = "visitor") {
 					 ${item.isPublished ? "Unpublish" : "Publish"}
 				</button>
 				<button
-					class="remove-btn roboto roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
+					class="remove-btn roboto-700 font-size-12 border-0 text-white px-2 py-1" data-id="${
 						item.id
 					}"
 				>
 					Remove
 				</button>
 				<button
-					class="edit-btn roboto roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${
+					class="edit-btn roboto-700 font-size-12 border-0 brown-text sand-bg px-2 py-1" data-id="${
 						item.id
 					}"
 
@@ -96,7 +96,7 @@ export function renderCards(items, mode = "visitor") {
 					   </div>`
 				: `<div>
 						   <h3 class="reenie-beanie">${item.artist}</h3>
-						   <h6 class="font-size-14 roboto roboto-400">${item.title}</h6>
+						   <h6 class="font-size-14 roboto-400">${item.title}</h6>
 					   </div>`;
 
 		artistCard.innerHTML = `
@@ -112,7 +112,7 @@ export function renderCards(items, mode = "visitor") {
                         ${headerContent}
                     <span class="price-span ${priceSpanClass} py-1 px-2 font-size-12">$${item.price}</span>
                 </div>
-                <p class="mb-0 font-size-11">
+                <p class="mb-0 font-size-11 roboto-400">
                     ${item.description}
                 </p>
             </div>
