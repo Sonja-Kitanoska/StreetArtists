@@ -91,7 +91,7 @@ function generateDateLabels(daysAgo = 7) {
 }
 
 function formatDate(date) {
-	return new Date(date).toLocaleDateString("en-GB");
+	return new Date(date).toISOString().split("T")[0];
 }
 
 function initChart(labels = [], data = []) {
