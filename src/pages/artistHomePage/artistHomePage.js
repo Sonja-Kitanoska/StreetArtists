@@ -43,6 +43,7 @@ export function initArtistHomePage() {
 	});
 	displayCurrentBid();
 	drawChart();
+	setActiveButton(last14);
 }
 
 function displayCurrentBid() {
