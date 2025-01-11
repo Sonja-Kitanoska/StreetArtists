@@ -10,7 +10,7 @@
 	position: relative;
 }
 .artist-add-new-item-page input[type="checkbox"]:checked {
-	background: url("../../assets/checkbox.png") no-repeat center;
+	background: url("../../assets/checkbox.svg") no-repeat center;
 }
 
 .take-snapshot-container {

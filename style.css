@@ -17,6 +17,20 @@ body {
 	display: none;
 }
 
+/* WARNING MESSAGE */
+#warningMessage {
+	display: none;
+	background-color: #a16a5e;
+	color: #fcebd5;
+	font-size: 18px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: 100%;
+}
+
 /* HEADER */
 
 .header {
@@ -59,6 +73,10 @@ body {
 /* HELPER CLASSES */
 
 /* FONTS */
+.roboto-400 {
+	font-weight: 400;
+}
+
 .roboto-500 {
 	font-weight: 500;
 }
@@ -67,29 +85,11 @@ body {
 	font-weight: 700;
 }
 
-.roboto-400 {
-	font-weight: 400;
-}
-
 .reenie-beanie {
 	font-family: "Reenie Beanie", serif;
 	font-weight: 500;
 	font-style: normal;
 	font-size: 30px;
-}
-
-/* WARNING MESSAGE */
-#warningMessage {
-	display: none;
-	background-color: #a16a5e;
-	color: #fcebd5;
-	font-size: 18px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 10;
-	height: 100%;
 }
 
 /* COLORS */

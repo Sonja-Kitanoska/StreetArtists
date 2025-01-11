@@ -20,6 +20,7 @@
 .odd-index-colors {
 	color: #a16a5e;
 	background-color: #fcebd5;
+	font-weight: 400;
 }
 
 .even-index-colors {

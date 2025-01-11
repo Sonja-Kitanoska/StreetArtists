@@ -110,7 +110,7 @@ export function renderCards(items, mode = "visitor") {
             <div class="p-2 ${cardBodyClass}">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                         ${headerContent}
-                    <span class="price-span ${priceSpanClass} py-1 px-2 font-size-12">$${item.price}</span>
+                    <span class="price-span ${priceSpanClass} py-1 px-2 roboto-400 font-size-12">$${item.price}</span>
                 </div>
                 <p class="mb-0 font-size-11 roboto-400">
                     ${item.description}
