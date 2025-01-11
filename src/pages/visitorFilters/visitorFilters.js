@@ -4,7 +4,7 @@ import { updateHeader } from "../../utils/header.js";
 const checkContainer = document.querySelector(".check-container");
 const artistSelect = document.querySelector("#artist");
 const typeSelect = document.querySelector("#type");
-const offcanvasElement = document.querySelector("#offcanvasExample");
+const offcanvasElement = document.querySelector("#offcanvasFilter");
 
 export function initVisitorFilters() {
 	updateHeader("visitor");
@@ -23,7 +23,7 @@ export function initVisitorFilters() {
 	closeIcon.addEventListener("click", () => {
 		setTimeout(() => {
 			location.hash = "visitorListing";
-		}, 300);
+		}, 400);
 	});
 
 	checkContainer.addEventListener("click", () => {

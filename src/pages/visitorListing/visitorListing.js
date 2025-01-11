@@ -3,7 +3,7 @@ import { renderCards } from "../../utils/cards.js";
 import { updateHeader } from "../../utils/header.js";
 
 const checkContainer = document.querySelector(".check-container");
-const offcanvasElement = document.querySelector("#offcanvasExample");
+const offcanvasElement = document.querySelector("#offcanvasFilter");
 const toTopButton = document.querySelector(".to-the-top");
 
 export function initVisitorListing() {
@@ -68,7 +68,7 @@ export function initVisitorListing() {
 	checkContainer.addEventListener("click", () => {
 		location.hash = "#visitorListing";
 	});
-	
+
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > window.innerHeight) {
 			toTopButton.style.opacity = 1;
